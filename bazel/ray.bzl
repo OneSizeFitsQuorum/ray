@@ -11,7 +11,16 @@ COPTS_WITHOUT_LOG = select({
         # TODO(mehrdadn): (How to) support dynamic linking?
         "-DRAY_STATIC",
     ],
-    "//conditions:default": [],
+    "@platforms//os:osx": [
+        # TODO(dayshah): The fixes required to keep this on break Java tests. Fix ASAP!
+        "-Wno-thread-safety-reference-return",
+    ],
+    "//conditions:default": [
+        "-Wunused-result",
+        "-Wconversion-null",
+        "-Wno-misleading-indentation",
+        "-Wimplicit-fallthrough",
+    ],
 }) + select({
     "//:clang-cl": [
         "-Wno-builtin-macro-redefined",  # To get rid of warnings caused by deterministic build macros (e.g. #define __DATE__ "redacted")
