@@ -58,7 +58,7 @@ raycluster-kuberay-worker-workergroup-xvfkr   1/1     Running   0          XXs
 ```
 
 Wait for the pods to reach `Running` state. This may take a few minutes, downloading the Ray images takes most of this time.
-If your pods stick in the `Pending` state, you can check for errors using `kubectl describe pod raycluster-kuberay-xxxx-xxxxx` and ensure your Docker resource limits meet the requirements.
+If your pods stick in the `Pending` state, you can check for errors using `kubectl describe pod raycluster-kuberay-xxxx-xxxxx` and ensure that your Docker resource limits meet the requirements.
 
 ## Step 4: Run an application on a RayCluster
 
