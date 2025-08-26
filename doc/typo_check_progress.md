@@ -23,7 +23,7 @@ This file tracks progress on checking all documentation files in the Ray reposit
 ## File Progress
 
 ### A-C Files
-- [ ] /home/runner/work/ray/ray/doc/README.md
+- [x] /home/runner/work/ray/ray/doc/README.md
 - [ ] /home/runner/work/ray/ray/doc/requirements-doc.txt
 - [ ] /home/runner/work/ray/ray/doc/source/_includes/_help.rst
 - [ ] /home/runner/work/ray/ray/doc/source/_includes/_latest_contribution_doc.rst

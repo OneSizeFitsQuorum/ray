@@ -5,7 +5,7 @@ Repository for documentation of the Ray project, hosted at [docs.ray.io](https:/
 ## Installation
 
 To build the documentation, make sure you have `ray` installed first.
-For building the documentation locally install the following dependencies:
+For building the documentation locally, install the following dependencies:
 
 ```bash
 pip install -r requirements-doc.txt
@@ -21,7 +21,7 @@ make develop && open _build/html/index.html
 
 ## Building just one subproject
 
-Often your changes in documentation just concern one subproject, such as Tune or Train.
+Often, your changes in documentation just concern one subproject, such as Tune or Train.
 To build just this one subproject, and ignore the rest
 (leading to build warnings due to broken references etc.), run the following command:
 
@@ -48,7 +48,7 @@ This ensures consistent messaging across documentation pages.
 ## Checking for broken links
 
 To check if there are broken links, run the following (we are currently not running this
-in the CI since there are false positives).
+in CI since there are false positives).
 
 ```bash
 make linkcheck
@@ -85,11 +85,11 @@ The benefits of working with notebooks for examples are that you don't separate 
 ## Adding Markdown docs from external (ecosystem) repositories
 
 In order to avoid a situation where duplicate documentation files live in both the `doc/` folder
-in this repository and in external repositories of ecosystem libraries (eg. xgboost-ray), you can
+in this repository and in external repositories of ecosystem libraries (e.g., xgboost-ray), you can
 specify Markdown files that will be downloaded from other GitHub repositories during the build process.
 
 In order to do that, simply edit the `EXTERNAL_MARKDOWN_FILES` list in `source/custom_directives.py`
-using the format in the comment. Before build process, the specified files will be downloaded, preprocessed
+using the format in the comment. Before the build process, the specified files will be downloaded, preprocessed,
 and saved to given paths. The build process will then proceed as normal.
 
 While both GitHub Markdown and MyST are supersets of Common Markdown, there are differences in syntax.
@@ -130,4 +130,4 @@ Please note that the parsing is extremely simple (regex replace) and will not su
 
 ## Testing changes locally
 
-If you want to run the preprocessing locally on a specific file (to eg. see how it will render after docs have been built), run `source/preprocess_github_markdown.py PATH_TO_MARKDOWN_FILE PATH_TO_PREPROCESSED_MARKDOWN_FILE`. Make sure to also edit `EXTERNAL_MARKDOWN_FILES` in `source/custom_directives.py` so that your file does not get overwritten by one downloaded from GitHub.
+If you want to run the preprocessing locally on a specific file (to e.g., see how it will render after docs have been built), run `source/preprocess_github_markdown.py PATH_TO_MARKDOWN_FILE PATH_TO_PREPROCESSED_MARKDOWN_FILE`. Make sure to also edit `EXTERNAL_MARKDOWN_FILES` in `source/custom_directives.py` so that your file does not get overwritten by one downloaded from GitHub.
