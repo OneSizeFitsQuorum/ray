@@ -70,7 +70,7 @@ There are a couple steps to merge a contribution.
    Run ``setup_hooks.sh`` to create a git hook that will run the linter before you push your changes.
 3. If introducing a new feature or patching a bug, be sure to add new test cases
    in the relevant file in ``ray/python/ray/tests/``.
-4. Document the code. Public functions need to be documented, and remember to provide an usage
+4. Document the code. Public functions need to be documented, and remember to provide a usage
    example if applicable. See ``doc/README.md`` for instructions on editing and building public documentation.
 5. Address comments on your PR. During the review
    process you may need to address merge conflicts with other changes. To resolve merge conflicts,
@@ -85,7 +85,7 @@ PR Review Process
 For contributors who are in the ``ray-project`` organization:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- When you first create a PR, add an reviewer to the `assignee` section.
+- When you first create a PR, add a reviewer to the `assignee` section.
 - Assignees will review your PR and add the `@author-action-required` label if further actions are required.
 - Address their comments and remove the `@author-action-required` label from the PR.
 - Repeat this process until assignees approve your PR.

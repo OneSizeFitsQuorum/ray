@@ -299,7 +299,7 @@ pip install -U "ray[serve]" scikit-learn
 ```
 ````
 
-This example runs serves a scikit-learn gradient boosting classifier.
+This example serves a scikit-learn gradient boosting classifier.
 
 ```{literalinclude} ../serve/doc_code/sklearn_quickstart.py
 :language: python
@@ -380,7 +380,7 @@ pip install -U "ray"
 ```
 :::
 
-Import Ray and and initialize it with `ray.init()`.
+Import Ray and initialize it with `ray.init()`.
 Then decorate the function with ``@ray.remote`` to declare that you want to run this function remotely.
 Lastly, call the function with ``.remote()`` instead of calling it normally.
 This remote call yields a future, a Ray _object reference_, that you can then fetch with ``ray.get``.
