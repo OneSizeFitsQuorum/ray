@@ -43,7 +43,7 @@ connect. Use this command:
 
 .. code:: bash
 
-    ray start --head --node-ip-address xx.xx.xx.xx --port nnnn``
+    ray start --head --node-ip-address xx.xx.xx.xx --port nnnn
 
 Then when starting the worker node, use this command to connect to the head node:
 

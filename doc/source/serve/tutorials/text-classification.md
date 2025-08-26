@@ -24,7 +24,7 @@ Use the following Serve code:
 Use `serve run distilbert_app:entrypoint` to start the Serve application.
 
 :::{note}
-The autoscaling config sets `min_replicas` to 0, which means the deployment starts with no `ObjectDetection` replicas. These replicas spawn only when a request arrives. When no requests arrive after a certain period of time, Serve downscales `ObjectDetection` back to 0 replica to save GPU resources.
+The autoscaling config sets `min_replicas` to 0, which means the deployment starts with no replicas. These replicas spawn only when a request arrives. When no requests arrive after a certain period of time, Serve downscales back to 0 replicas to save GPU resources.
 :::
 
 You should see the following messages in the logs:

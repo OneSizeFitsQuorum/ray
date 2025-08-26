@@ -2,7 +2,7 @@
 # Configuring and Managing Ray Dashboard
 {ref}`Ray Dashboard<observability-getting-started>` is one of the most important tools to monitor and debug Ray applications and Clusters. This page describes how to configure Ray Dashboard on your Clusters.
 
-Dashboard configurations may differ depending on how you launch Ray Clusters (e.g., local Ray Cluster v.s. KubeRay). Integrations with Prometheus and Grafana are optional for enhanced Dashboard experience.
+Dashboard configurations may differ depending on how you launch Ray Clusters (e.g., local Ray Cluster vs. KubeRay). Integrations with Prometheus and Grafana are optional for enhanced Dashboard experience.
 
 :::{note}
 Ray Dashboard is useful for interactive development and debugging because when clusters terminate, the dashboard UI and the underlying data are no longer accessible. For production monitoring and debugging, you should rely on [persisted logs](../cluster/kubernetes/user-guides/persist-kuberay-custom-resource-logs.md), [persisted metrics](./metrics.md), [persisted Ray states](../ray-observability/user-guides/cli-sdk.rst), and other observability tools.
