@@ -12,7 +12,7 @@ There are two main concepts in Ray Data:
 * Datasets
 * Blocks
 
-`Dataset` is the main user-facing Python API. It represents a distributed data collection and define data loading and processing operations. Users typically use the API by:
+`Dataset` is the main user-facing Python API. It represents a distributed data collection and defines data loading and processing operations. Users typically use the API by:
 
 1. Create a :class:`Dataset <ray.data.Dataset>` from external storage or in-memory data.
 2. Apply transformations to the data.
@@ -22,7 +22,7 @@ The Dataset API is lazy, meaning that operations aren't executed until you mater
 like :meth:`~ray.data.Dataset.show`. This allows Ray Data to optimize the execution plan
 and execute operations in a pipelined, streaming fashion.
 
-*Block* is a set of rows representing single partition of the dataset. Blocks, as collection of rows represented by columnar formats (like Arrow)
+*Block* is a set of rows representing a single partition of the dataset. Blocks, as collections of rows represented by columnar formats (like Arrow),
  are the basic unit of data processing in Ray Data:
 
  1. Every dataset is partitioned into a number of blocks, then

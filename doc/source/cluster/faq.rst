@@ -66,8 +66,8 @@ debugging routing issues.
 
 You may also see failures in the log like:
 
-    This node has an IP address of xx.xx.xx.xx, while we can not found the
-    matched Raylet address. This maybe come from when you connect the Ray
+    This node has an IP address of xx.xx.xx.xx, while we cannot find the
+    matched Raylet address. This may come from when you connect the Ray
     cluster with a different IP address or connect a container.
 
 The cause of this error may be the head node overloading with too many simultaneous
@@ -76,7 +76,7 @@ connections. The solution for this problem is to start the worker nodes more slo
 Problems getting a SLURM cluster to work
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A class of issues exist with starting Ray on SLURM clusters. While the exact causes aren't understood, (as of June 2023), some Ray
+A class of issues exists with starting Ray on SLURM clusters. While the exact causes aren't understood (as of June 2023), some Ray
 improvements mitigate some of the resource contention. Some of the issues
 reported are as follows:
 
