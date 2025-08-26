@@ -24,20 +24,20 @@ This file tracks progress on checking all documentation files in the Ray reposit
 
 ### A-C Files
 - [x] /home/runner/work/ray/ray/doc/README.md
-- [ ] /home/runner/work/ray/ray/doc/requirements-doc.txt
-- [ ] /home/runner/work/ray/ray/doc/source/_includes/_help.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_includes/_latest_contribution_doc.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_includes/rllib/new_api_stack.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_includes/rllib/we_are_hiring.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/autosummary/autopydantic.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/autosummary/autopydantic_show_json.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_v2.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_autosummary.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_autosummary_noindex.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_autosummary_noinheritance.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_init_args.rst
-- [ ] /home/runner/work/ray/ray/doc/source/_templates/template.md
+- [x] /home/runner/work/ray/ray/doc/requirements-doc.txt
+- [x] /home/runner/work/ray/ray/doc/source/_includes/_help.rst
+- [x] /home/runner/work/ray/ray/doc/source/_includes/_latest_contribution_doc.rst
+- [x] /home/runner/work/ray/ray/doc/source/_includes/rllib/new_api_stack.rst
+- [x] /home/runner/work/ray/ray/doc/source/_includes/rllib/we_are_hiring.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/autopydantic.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/autopydantic_show_json.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_v2.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_autosummary.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_autosummary_noindex.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_autosummary_noinheritance.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_init_args.rst
+- [x] /home/runner/work/ray/ray/doc/source/_templates/template.md
 - [ ] /home/runner/work/ray/ray/doc/source/cluster/cli.rst
 - [ ] /home/runner/work/ray/ray/doc/source/cluster/configure-manage-dashboard.md
 - [ ] /home/runner/work/ray/ray/doc/source/cluster/faq.rst
@@ -47,9 +47,9 @@ This file tracks progress on checking all documentation files in the Ray reposit
 *[Full file list will be populated as work progresses - showing first 20 files as sample]*
 
 ## Summary Statistics
-- **Files Completed**: 0/536
-- **Files with Changes**: 0
-- **Total Commits**: 0
+- **Files Completed**: 15/536
+- **Files with Changes**: 3
+- **Total Commits**: 2
 
 ## Identified Issues Summary
 *Will be populated as issues are found and fixed*
