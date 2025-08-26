@@ -37,19 +37,39 @@ This file tracks progress on checking all documentation files in the Ray reposit
 - [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_autosummary_noindex.rst
 - [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_autosummary_noinheritance.rst
 - [x] /home/runner/work/ray/ray/doc/source/_templates/autosummary/class_without_init_args.rst
-- [x] /home/runner/work/ray/ray/doc/source/_templates/template.md
-- [ ] /home/runner/work/ray/ray/doc/source/cluster/cli.rst
-- [ ] /home/runner/work/ray/ray/doc/source/cluster/configure-manage-dashboard.md
-- [ ] /home/runner/work/ray/ray/doc/source/cluster/faq.rst
-- [ ] /home/runner/work/ray/ray/doc/source/cluster/getting-started.rst
-- [ ] /home/runner/work/ray/ray/doc/source/cluster/key-concepts.rst
+- [x] /home/runner/work/ray/ray/doc/source/cluster/cli.rst
+- [x] /home/runner/work/ray/ray/doc/source/cluster/configure-manage-dashboard.md
+- [x] /home/runner/work/ray/ray/doc/source/cluster/faq.rst
+- [x] /home/runner/work/ray/ray/doc/source/cluster/getting-started.rst
+- [x] /home/runner/work/ray/ray/doc/source/cluster/key-concepts.rst
 
 *[Full file list will be populated as work progresses - showing first 20 files as sample]*
 
 ## Summary Statistics
-- **Files Completed**: 15/536
-- **Files with Changes**: 3
-- **Total Commits**: 2
+- **Files Completed**: 20/536
+- **Files with Changes**: 4
+- **Total Commits**: 3
 
 ## Identified Issues Summary
-*Will be populated as issues are found and fixed*
+### README.md (6 fixes)
+- Missing comma: "For building the documentation locally, install..."
+- Missing comma: "Often, your changes in documentation..."
+- "the CI" → "CI" (remove unnecessary article)
+- "eg." → "e.g.," (proper abbreviation format)
+- "Before build process" → "Before the build process" (missing article)
+- "to eg." → "to e.g.," (proper abbreviation format)
+
+### _help.rst (1 fix) 
+- Missing preposition: "Use the [ray] tag for questions about Ray"
+
+### template.md (2 fixes)
+- "if you can use" → "you can use" (removed redundant "if")
+- "a here's" → "here's" (removed incorrect article)
+
+### configure-manage-dashboard.md (6 fixes)
+- "v.s." → "vs." (standard abbreviation)
+- "only allows" → "only allow" (subject-verb agreement)
+- Clarified argument usage for disabling dashboard
+- Fixed missing space in URL example
+- "browsers of can" → "browsers can" (removed unnecessary "of")
+- "Grafana ," → "Grafana," (extra space before comma)

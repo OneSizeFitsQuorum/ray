@@ -2,7 +2,7 @@
 # Configuring and Managing Ray Dashboard
 {ref}`Ray Dashboard<observability-getting-started>` is one of the most important tools to monitor and debug Ray applications and Clusters. This page describes how to configure Ray Dashboard on your Clusters.
 
-Dashboard configurations may differ depending on how you launch Ray Clusters (e.g., local Ray Cluster v.s. KubeRay). Integrations with Prometheus and Grafana are optional for enhanced Dashboard experience.
+Dashboard configurations may differ depending on how you launch Ray Clusters (e.g., local Ray Cluster vs. KubeRay). Integrations with Prometheus and Grafana are optional for enhanced Dashboard experience.
 
 :::{note}
 Ray Dashboard is useful for interactive development and debugging because when clusters terminate, the dashboard UI and the underlying data are no longer accessible. For production monitoring and debugging, you should rely on [persisted logs](../cluster/kubernetes/user-guides/persist-kuberay-custom-resource-logs.md), [persisted metrics](./metrics.md), [persisted Ray states](../ray-observability/user-guides/cli-sdk.rst), and other observability tools.
@@ -71,7 +71,7 @@ Dashboard from within the Kubernetes cluster at ``http://<RayCluster name>-head-
 There are two ways to expose Dashboard outside the Cluster:
 
 **1. Setting up ingress** <br/>
-Follow the [instructions](kuberay-ingress) to set up ingress to access Ray Dashboard. **The Ingress must only allows access from trusted sources.**
+Follow the [instructions](kuberay-ingress) to set up ingress to access Ray Dashboard. **The Ingress must only allow access from trusted sources.**
 
 **2. Port forwarding** <br/>
 You can also view the dashboard from outside the Kubernetes cluster by using port-forwarding:
@@ -135,7 +135,7 @@ The Ray Dashboard provides read **and write** access to the Ray Cluster. The rev
 
 Dashboard is included if you use `ray[default]` or {ref}`other installation commands <installation>` and automatically started.
 
-To disable Dashboard, use the following arguments `--include-dashboard`.
+To disable Dashboard, use the following argument `--include-dashboard=False`.
 
 ::::{tab-set}
 
@@ -234,7 +234,7 @@ If Prometheus requires additional headers for authentication, set `RAY_PROMETHEU
 
 
 #### Alternate Grafana host location
-By default, Ray Dashboard assumes Grafana is hosted at `localhost:3000`. You can choose to run Grafana on a non-default port or on a different machine as long as the head node and the dashboard browsers of can access it.
+By default, Ray Dashboard assumes Grafana is hosted at `localhost:3000`. You can choose to run Grafana on a non-default port or on a different machine as long as the head node and the dashboard browsers can access it.
 
 If Grafana is exposed with NGINX ingress on a Kubernetes cluster, the following line should be present in the Grafana ingress annotation:
 
@@ -261,13 +261,13 @@ When the Grafana instance requires user authentication, the following settings h
 
 ##### Dashboard message: either Prometheus or Grafana server is not detected
 If you have followed the instructions above to set up everything, run the connection checks below in your browser:
-* check Head Node connection to Prometheus server: add `api/prometheus_health` to the end of Ray Dashboard URL (for example: http://127.0.0.1:8265/api/prometheus_health)and visit it.
+* check Head Node connection to Prometheus server: add `api/prometheus_health` to the end of Ray Dashboard URL (for example: http://127.0.0.1:8265/api/prometheus_health) and visit it.
 * check Head Node connection to Grafana server: add `api/grafana_health` to the end of Ray Dashboard URL (for example: http://127.0.0.1:8265/api/grafana_health) and visit it.
 * check browser connection to Grafana server: visit the URL used in `RAY_GRAFANA_IFRAME_HOST`.
 
 
 ##### Getting an error that says `RAY_GRAFANA_HOST` is not setup
-If you have set up Grafana , check that:
+If you have set up Grafana, check that:
 * You've included the protocol in the URL (e.g., `http://your-grafana-url.com` instead of `your-grafana-url.com`).
 * The URL doesn't have a trailing slash (e.g., `http://your-grafana-url.com` instead of `http://your-grafana-url.com/`).
 
