@@ -371,8 +371,7 @@ You can find Ray Prometheus metrics in the ``{cluster_name}-ray-prometheus`` met
   # Copy `prometheus.yml` to Unified CloudWatch Agent folder
   - >-
     RAY_INSTALL_DIR=`pip show ray | grep -Po "(?<=Location:).*"`
-    && sudo cp -f $RAY_INSTALL_DIR/ray/autoscaler/aws/cloudwatch/prometheus.yml /opt/aws/amazon-cloudwatch-agent/etc
-  # First get current cluster name, then let the Unified CloudWatch Agent restart and use `AmazonCloudWatch-ray_agent_config_{cluster_name}` parameter at SSM Parameter Store.
+    && sudo cp -f $RAY_INSTALL_DIR/ray/autoscaler/aws/cloudwatch/prometheus.yml /opt/aws/amazon-cloudwatch-agent/etc.   # First get current cluster name, then let the Unified CloudWatch Agent restart and use `AmazonCloudWatch-ray_agent_config_{cluster_name}` parameter at SSM Parameter Store.
   - >-
     nohup sudo sh -c "`pip show ray | grep -Po "(?<=Location:).*"`/ray/autoscaler/aws/cloudwatch/ray_prometheus_waiter.sh
     `cat ~/ray_bootstrap_config.yaml | jq '.cluster_name'`

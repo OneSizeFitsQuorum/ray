@@ -51,7 +51,7 @@ Deciding on which to use mostly depends on your problem:
 * How many hyperparameters would you like to tune?
 * What values are valid for hyperparameters?
 
-**If your model returns incremental results** (eg. results per epoch in deep learning,
+**If your model returns incremental results** (e.g., results per epoch in deep learning,
 results per each added tree in GBDTs, etc.) using early stopping usually allows for sampling
 more configurations, as unpromising trials are pruned before they run their full course.
 Please note that not all search algorithms can use information from pruned trials.

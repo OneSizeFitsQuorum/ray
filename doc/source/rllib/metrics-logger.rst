@@ -200,7 +200,7 @@ Logging a set of nested scalar values
 
 If you're logging a nested structure of values, for example
 ``{"time_s": 0.1, "lives": 5, "rounds_played": {"player1": 10, "player2": 4}}`` and all values have the exact same log settings
-in terms of the ``reduce``, ``clear_on_reduce``, ``window``, etc arguments, you can also call the shortcut
+in terms of the ``reduce``, ``clear_on_reduce``, ``window``, etc. arguments, you can also call the shortcut
 :py:meth:`~ray.rllib.utils.metrics.metrics_logger.MetricsLogger.log_dict` method to do so:
 
 

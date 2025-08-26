@@ -70,8 +70,7 @@ splits evenly across worker processes.
     related to local parallelism or threading
     :ref:`aside from "OMP_NUM_THREADS" <omp-num-thread-note>`.
     If you want greater control over TensorFlow threading, use
-    the ``tf.config.threading`` module (eg.
-    ``tf.config.threading.set_inter_op_parallelism_threads(num_cpus)``)
+    the ``tf.config.threading`` module (e.g.,     ``tf.config.threading.set_inter_op_parallelism_threads(num_cpus)``)
     at the beginning of your ``train_loop_per_worker`` function.
 
 Create a TensorflowTrainer

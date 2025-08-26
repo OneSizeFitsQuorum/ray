@@ -260,7 +260,7 @@ PB2 can be enabled by setting the ``scheduler`` parameter of ``tune.TuneConfig``
         ...
         }
     )
-    tuner = tune.Tuner( ... , tune_config=tune.TuneConfig(scheduler=pb2_scheduler))
+    tuner = tune.Tuner( ..., tune_config=tune.TuneConfig(scheduler=pb2_scheduler))
     results = tuner.fit()
 
 

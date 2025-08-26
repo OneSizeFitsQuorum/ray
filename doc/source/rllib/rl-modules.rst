@@ -364,7 +364,7 @@ tell RLlib to use the particular module class and constructor arguments:
             print(ppo.get_module())
 
         .. note::
-            Often when creating an :py:class:`~ray.rllib.core.rl_module.rl_module.RLModuleSpec` , you don't have to define attributes
+            Often when creating an :py:class:`~ray.rllib.core.rl_module.rl_module.RLModuleSpec`, you don't have to define attributes
             like ``observation_space`` or ``action_space``
             because RLlib automatically infers these attributes based on the used
             environment or other configuration parameters.

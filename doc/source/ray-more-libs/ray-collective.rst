@@ -278,8 +278,7 @@ Single-GPU and Multi-GPU Collective Primitives
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In many cluster setups, a machine usually has more than 1 GPU;
-effectively leveraging the GPU-GPU bandwidth, such as `NVLINK <https://www.nvidia.com/en-us/data-center/nvlink/>`_\ ,
-can significantly improve communication performance.
+effectively leveraging the GPU-GPU bandwidth, such as `NVLINK <https://www.nvidia.com/en-us/data-center/nvlink/>`_\, can significantly improve communication performance.
 
 ``ray.util.collective`` supports multi-GPU collective calls, in which case, a process (actor/tasks) manages more than 1 GPU (e.g., via ``ray.remote(num_gpus=4)``\ ).
 Using these multi-GPU collective functions are normally more performance-advantageous than using single-GPU collective API

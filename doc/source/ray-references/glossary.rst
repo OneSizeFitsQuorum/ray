@@ -66,7 +66,7 @@ documentation, sorted alphabetically.
 
     Backend
         A class containing the initialization and teardown logic for a specific deep
-        learning framework (eg. Torch, TensorFlow), used to set up distributed
+        learning framework (e.g., Torch, TensorFlow), used to set up distributed
         data-parallel training for :ref:`Ray Train’s built-in trainers<train-api>`.
 
     Batch format

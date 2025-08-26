@@ -107,7 +107,7 @@ for distributed processing.
     :options: +NORMALIZE_WHITESPACE
 
     {'sepal length (cm)': array([5.1, 4.9, 4.7]),
-        'sepal width (cm)': array([3.5, 3. , 3.2]),
+        'sepal width (cm)': array([3.5, 3., 3.2]),
         'petal length (cm)': array([1.4, 1.4, 1.3]),
         'petal width (cm)': array([0.2, 0.2, 0.2]),
         'target': array([0, 0, 0]),
