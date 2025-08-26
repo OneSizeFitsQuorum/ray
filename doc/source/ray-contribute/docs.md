@@ -1,14 +1,14 @@
 # Contributing to the Ray Documentation
 
-There are many ways to contribute to the Ray documentation, and we're always looking for new contributors.
-Even if you just want to fix a typo or expand on a section, please feel free to do so!
+There are many ways to contribute to the Ray documentation, and contributors are always welcome.
+Even if you just want to fix a typo or expand on a section, feel free to do so.
 
 This document walks you through everything you need to do to get started.
 
 
 ## Editorial style
 
-We follow the [Google developer documentation style guide](https://developers.google.com/style).
+Ray follows the [Google developer documentation style guide](https://developers.google.com/style).
 Here are some highlights:
 
 * [Use present tense](https://developers.google.com/style/tense)
@@ -17,7 +17,7 @@ Here are some highlights:
 * [Use active voice](https://developers.google.com/style/voice)
 * [Use sentence case](https://developers.google.com/style/capitalization)
 
-The editorial style is enforced in CI by Vale. For more information, see
+The editorial style guides CI enforcement by Vale. For more information, see
 [How to use Vale](vale).
 
 ## Building the Ray documentation
@@ -43,7 +43,7 @@ If you haven't done so already, create a Python environment separate from the on
 ```shell
 conda create -n docs python=3.12
 ```
-Next, activate the Python environment you are using (e.g., venv, conda, etc.). With `conda` this would be:
+Next, activate the Python environment you are using, for example, venv, conda, and so on. With `conda` this would be:
 ```shell
 conda activate docs
 ```
