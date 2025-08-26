@@ -505,7 +505,7 @@ The following metrics are exposed by Ray Serve:
        * replica
        * application
      - The number of times this replica has been restarted due to failure.
-   * - ``ray_serve_deployment_replica_healthy``
+   * - ``ray_serve_deployment_replica_healthy`
      - * deployment
        * replica
        * application
@@ -611,38 +611,38 @@ The following metrics are exposed by Ray Serve:
        * application
        * status_code
      - The end-to-end latency of gRPC requests (measured from the Serve gRPC proxy).
-   * - ``ray_serve_multiplexed_model_load_latency_ms``
+   * - ``ray_serve_multiplexed_model_load_latency_ms`
      - * deployment
        * replica
        * application
      - The time it takes to load a model.
-   * - ``ray_serve_multiplexed_model_unload_latency_ms``
+   * - ``ray_serve_multiplexed_model_unload_latency_ms`
      - * deployment
        * replica
        * application
      - The time it takes to unload a model.
-   * - ``ray_serve_num_multiplexed_models``
+   * - ``ray_serve_num_multiplexed_models`
      - * deployment
        * replica
        * application
      - The number of models loaded on the current replica.
-   * - ``ray_serve_multiplexed_models_unload_counter_total``
+   * - ``ray_serve_multiplexed_models_unload_counter_total`
      - * deployment
        * replica
        * application
      - The number of times models unloaded on the current replica.
-   * - ``ray_serve_multiplexed_models_load_counter_total``
+   * - ``ray_serve_multiplexed_models_load_counter_total`
      - * deployment
        * replica
        * application
      - The number of times models loaded on the current replica.
-   * - ``ray_serve_registered_multiplexed_model_id``
+   * - ``ray_serve_registered_multiplexed_model_id`
      - * deployment
        * replica
        * application
        * model_id
      - The multiplexed model ID registered on the current replica.
-   * - ``ray_serve_multiplexed_get_model_requests_counter_total``
+   * - ``ray_serve_multiplexed_get_model_requests_counter_total`
      - * deployment
        * replica
        * application

@@ -129,7 +129,7 @@ example to record expert data to disk, which is later utilized for offline train
 
 Example: Record expert data to local disk
 -----------------------------------------
-After you train an expert policy to play `CartPole-v1` you load its policy here to record expert data during evaluation. You use ``5``
+After you train an expert policy to play `CartPole-v1` you load its policy here to record expert data during evaluation. You use ``5`
 :py:class:`~ray.rllib.offline.offline_env_runner.OfflineSingleAgentEnvRunner` instances to collect ``50`` complete episodes per `sample()` call. In this
 example you store experiences directly in RLlib's :py:class:`~ray.rllib.env.single_agent_episode.SingleAgentEpisode` objects with no more than
 ``25`` episode objects per Parquet file. Altogether you run 10 evaluation runs, which should result in ``500`` recorded episodes from the expert policy.
@@ -643,7 +643,7 @@ behavior of the expert policy.
 Scaling I/O throughput
 ----------------------
 
-Just as online training can be scaled, offline recording I/O throughput can also be increased by configuring the number of RLlib env-runners. Use the ``num_env_runners`` setting to scale recording during training or ``evaluation_num_env_runners``
+Just as online training can be scaled, offline recording I/O throughput can also be increased by configuring the number of RLlib env-runners. Use the ``num_env_runners`` setting to scale recording during training or ``evaluation_num_env_runners`
 for scaling during evaluation-only recording. Each worker operates independently, writing experiences in parallel, enabling linear scaling of I/O throughput for write operations. Within each :py:class:`~ray.rllib.offline.offline_env_runner.OfflineSingleAgentEnvRunner`, episodes
 are sampled and serialized before being written to disk.
 
@@ -926,7 +926,7 @@ This allows :ref:`Ray Data <data>` to start up to ``8`` post-processing actors t
 
 Allocated resources
 ~~~~~~~~~~~~~~~~~~~
-Other than the number of post-processing actors you can tune performance on the **Post-Processing (PreLearner)** layer through defining resources to be allocated to each :py:class:`~ray.rllib.offline.offline_prelearner.OffLinePreLearner` in the actor pool. Such resources can be defined either through ``num_cpus`` and ``num_gpus``
+Other than the number of post-processing actors you can tune performance on the **Post-Processing (PreLearner)** layer through defining resources to be allocated to each :py:class:`~ray.rllib.offline.offline_prelearner.OffLinePreLearner` in the actor pool. Such resources can be defined either through ``num_cpus`` and ``num_gpus`
 or in the ``ray_remote_args``.
 
 .. note:: Typically, increasing the number of CPUs is sufficient for performance tuning in the post-processing stage of your pipeline. GPUs are only needed in specialized cases, such as in customized pipelines. For example, RLlib’s :py:class:`~ray.rllib.algorithms.marwil.marwil.MARWIL` implementation uses the

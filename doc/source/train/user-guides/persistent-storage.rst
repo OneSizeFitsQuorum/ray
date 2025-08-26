@@ -460,7 +460,7 @@ Here's an example of what the Train run output directory looks like, with the wo
 
 .. warning::
 
-    Prior to 2.10, the ``RAY_AIR_LOCAL_CACHE_DIR`` environment variable and ``RunConfig(local_dir)``
+    Prior to 2.10, the ``RAY_AIR_LOCAL_CACHE_DIR`` environment variable and ``RunConfig(local_dir)`
     were ways to configure the local staging directory to be outside of the home directory (``~/ray_results``).
 
     **These configurations are no longer used to configure the local staging directory.

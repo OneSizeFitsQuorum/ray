@@ -49,7 +49,7 @@ For example, to configure a :py:class:`~ray.rllib.algorithms.ppo.ppo.PPO` ("Prox
 you use the :py:class:`~ray.rllib.algorithms.ppo.ppo.PPOConfig` class.
 
 During its construction, the :py:class:`~ray.rllib.algorithms.algorithm.Algorithm` first sets up its
-:py:class:`~ray.rllib.env.env_runner_group.EnvRunnerGroup`, containing ``n``
+:py:class:`~ray.rllib.env.env_runner_group.EnvRunnerGroup`, containing ``n`
 :py:class:`~ray.rllib.env.env_runner.EnvRunner` `actors <actors.html>`__, and
 its :py:class:`~ray.rllib.core.learner.learner_group.LearnerGroup`, containing
 ``m`` :py:class:`~ray.rllib.core.learner.learner.Learner` `actors <actors.html>`__.
@@ -238,7 +238,7 @@ model computations along the way, like recurrent states, action logits, or actio
 
     Note that episodes conveniently don't have to store any ``next obs`` information as it always overlaps
     with the information under ``obs``. This design saves almost 50% of memory, because
-    observations are often the largest piece in a trajectory. The same is true for ``state_in`` and ``state_out``
+    observations are often the largest piece in a trajectory. The same is true for ``state_in`` and ``state_out`
     information for stateful networks. RLlib only keeps the ``state_out`` key in the episodes.
 
 Typically, RLlib generates episode chunks of size ``config.rollout_fragment_length`` through the :ref:`EnvRunner <rllib-key-concepts-env-runners>`

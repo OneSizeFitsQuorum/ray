@@ -259,14 +259,14 @@ The OS setup:
 
 - Set the maximum number of opening files to 1048576
 - Increase the ARP cache size:
-    - ``net.ipv4.neigh.default.gc_thresh1=2048``
-    - ``net.ipv4.neigh.default.gc_thresh2=4096``
-    - ``net.ipv4.neigh.default.gc_thresh3=8192``
+    - ``net.ipv4.neigh.default.gc_thresh1=2048`
+    - ``net.ipv4.neigh.default.gc_thresh2=4096`
+    - ``net.ipv4.neigh.default.gc_thresh3=8192`
 
 
 The Ray setup:
 
-- ``RAY_event_stats=false``
+- ``RAY_event_stats=false`
 
 Test workload:
 

@@ -105,9 +105,9 @@ You interact with the Ray Train API in only a few locations, which follow in-lin
 Remember that you want to do data-parallel training for all the models.
 
 
-#. Load the data shard for each worker with `session.get_dataset_shard("train")``
-#. Iterate over the dataset with `train_dataset.iter_torch_batches()``
-#. Report results to Ray Train with `session.report(results)``
+#. Load the data shard for each worker with `session.get_dataset_shard("train")`
+#. Iterate over the dataset with `train_dataset.iter_torch_batches()`
+#. Report results to Ray Train with `session.report(results)`
 
 The code is compacted for brevity. The `full code <https://github.com/ray-project/ray/tree/master/doc/source/templates/05_dreambooth_finetuning/dreambooth/train.py>`_ is more thoroughly annotated.
 

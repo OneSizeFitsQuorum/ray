@@ -158,7 +158,7 @@ Where to find ``log_to_file`` files?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If your Tune workload is configured with syncing to head node, then the corresponding ``log_to_file`` outputs
 can be located under each trial folder.
-If your Tune workload is instead configured with syncing to cloud, then the corresponding ``log_to_file``
+If your Tune workload is instead configured with syncing to cloud, then the corresponding ``log_to_file`
 outputs are *NOT* synced to cloud and can only be found in the worker nodes that the corresponding trial happens.
 
 .. note::

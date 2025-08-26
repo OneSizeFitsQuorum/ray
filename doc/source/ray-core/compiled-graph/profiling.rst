@@ -7,7 +7,7 @@ of individual tasks, systems overhead, and performance bottlenecks. You can pick
 PyTorch profiler
 ----------------
 
-To run PyTorch Profiling on Compiled Graph, simply set the environment variable ``RAY_CGRAPH_ENABLE_TORCH_PROFILING=1``
+To run PyTorch Profiling on Compiled Graph, simply set the environment variable ``RAY_CGRAPH_ENABLE_TORCH_PROFILING=1`
 when running the script. For example, for a Compiled Graph script in ``example.py``, run the following command:
 
 .. code-block:: bash

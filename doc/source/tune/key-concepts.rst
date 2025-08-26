@@ -104,7 +104,7 @@ to define the search space.
 
 The ``Tuner.fit()`` function also provides many features such as :ref:`logging <tune-logging>`,
 :ref:`checkpointing <tune-trial-checkpoint>`, and :ref:`early stopping <tune-stopping-ref>`.
-In the example, minimizing ``a (x ** 2) + b``, a simple Tune run with a simplistic search space for ``a`` and ``b``
+In the example, minimizing ``a (x ** 2) + b``, a simple Tune run with a simplistic search space for ``a`` and ``b`
 looks like this:
 
 .. literalinclude:: doc_code/key_concepts.py

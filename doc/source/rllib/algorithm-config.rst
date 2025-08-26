@@ -235,7 +235,7 @@ Disable `explore` behavior
 
 Switch off/on exploratory behavior
 through the ``explore`` argument to the :py:meth:`~ray.rllib.algorithms.algorithm_config.AlgorithmConfig.env_runners`
-method. To compute actions, the :py:class:`~ray.rllib.env.env_runner.EnvRunner` calls `forward_exploration()` on the RLModule when ``explore=True``
+method. To compute actions, the :py:class:`~ray.rllib.env.env_runner.EnvRunner` calls `forward_exploration()` on the RLModule when ``explore=True`
 and `forward_inference()` when ``explore=False``. The default value is ``explore=True``.
 
 .. testcode::

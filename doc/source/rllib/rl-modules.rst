@@ -365,7 +365,7 @@ tell RLlib to use the particular module class and constructor arguments:
 
         .. note::
             Often when creating an :py:class:`~ray.rllib.core.rl_module.rl_module.RLModuleSpec` , you don't have to define attributes
-            like ``observation_space`` or ``action_space``
+            like ``observation_space`` or ``action_space`
             because RLlib automatically infers these attributes based on the used
             environment or other configuration parameters.
 
@@ -469,9 +469,9 @@ Note that you should call ``super().setup()`` in your implementation.
 
 You also have access to the following attributes anywhere in the class, including in :py:meth:`~ray.rllib.core.rl_module.rl_module.RLModule.setup`:
 
-#. ``self.observation_space``
-#. ``self.action_space``
-#. ``self.inference_only``
+#. ``self.observation_space`
+#. ``self.action_space`
+#. ``self.inference_only`
 #. ``self.model_config`` (a dict with any custom config settings)
 
 
@@ -545,7 +545,7 @@ If you don't return the ``actions`` key from your forward method:
     In case of :py:meth:`~ray.rllib.core.rl_module.rl_module.RLModule._forward_inference`,
     RLlib always makes the generated distributions from returned key ``action_dist_inputs`` deterministic first through
     the :py:meth:`~ray.rllib.models.distributions.Distribution.to_deterministic` utility before a possible action sample step.
-    For example, RLlib reduces the sampling from a Categorical distribution to selecting the ``argmax``
+    For example, RLlib reduces the sampling from a Categorical distribution to selecting the ``argmax`
     actions from the distribution logits or probabilities.
     If you return the "actions" key, RLlib skips that sampling step.
 
@@ -634,7 +634,7 @@ To find out, what APIs your Algorithms require, do the following:
     from ray.rllib.algorithms.sac import SACConfig
 
     # Print out the abstract APIs, you need to subclass from and whose
-    # abstract methods you need to implement, besides the ``setup()`` and ``_forward_..()``
+    # abstract methods you need to implement, besides the ``setup()`` and ``_forward_..()`
     # methods.
     print(
         SACConfig()

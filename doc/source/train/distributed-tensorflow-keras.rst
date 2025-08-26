@@ -225,7 +225,7 @@ training function. This call saves the checkpoint state from the distributed
 workers on the ``Trainer``, where you executed your python script.
 
 You can access the latest saved checkpoint through the ``checkpoint`` attribute of
-the :py:class:`~ray.train.Result`, and access the best saved checkpoints with the ``best_checkpoints``
+the :py:class:`~ray.train.Result`, and access the best saved checkpoints with the ``best_checkpoints`
 attribute.
 
 These concrete examples demonstrate how Ray Train appropriately saves checkpoints, model weights but not models, in distributed training.

@@ -37,9 +37,9 @@ for the average RLlib user from eight on the old stack, to only five on the new 
 The **core** new API stack classes are:
 
 * :py:class:`~ray.rllib.core.rl_module.rl_module.RLModule`, which replaces ``ModelV2`` and ``PolicyMap`` APIs
-* :py:class:`~ray.rllib.core.learner.learner.Learner`, which replaces ``RolloutWorker`` and some of ``Policy``
-* :py:class:`~ray.rllib.env.single_agent_episode.SingleAgentEpisode` and :py:class:`~ray.rllib.env.multi_agent_episode.MultiAgentEpisode`, which replace ``ViewRequirement``, ``SampleCollector``, ``Episode``, and ``EpisodeV2``
-* :py:class:`~ray.rllib.connector.connector_v2.ConnectorV2`, which replaces ``Connector`` and some of ``RolloutWorker`` and ``Policy``
+* :py:class:`~ray.rllib.core.learner.learner.Learner`, which replaces ``RolloutWorker`` and some of ``Policy`
+* :py:class:`~ray.rllib.env.single_agent_episode.SingleAgentEpisode` and :py:class:`~ray.rllib.env.multi_agent_episode.MultiAgentEpisode`, which replace ``ViewRequirement``, ``SampleCollector``, ``Episode``, and ``EpisodeV2`
+* :py:class:`~ray.rllib.connector.connector_v2.ConnectorV2`, which replaces ``Connector`` and some of ``RolloutWorker`` and ``Policy`
 
 The :py:class:`~ray.rllib.algorithm.algorithm_config.AlgorithmConfig` and
 :py:class:`~ray.rllib.algorithm.algorithm.Algorithm` APIs remain as-is.

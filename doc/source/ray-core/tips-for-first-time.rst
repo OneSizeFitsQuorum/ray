@@ -11,25 +11,25 @@ For an in-depth treatment of advanced design patterns, please read :ref:`core de
 
    * - API
      - Description
-   * - ``ray.init()``
+   * - ``ray.init()`
      - Initialize Ray context.
-   * - ``@ray.remote``
+   * - ``@ray.remote`
      - | Function or class decorator specifying that the function will be
        | executed as a task or the class as an actor in a different process.
-   * - ``.remote()``
+   * - ``.remote()`
      - | Postfix to every remote function, remote class declaration, or
        | invocation of a remote class method.
        | Remote operations are asynchronous.
-   * - ``ray.put()``
+   * - ``ray.put()`
      - | Store object in object store, and return its ID.
        | This ID can be used to pass object as an argument
        | to any remote function or method call.
        | This is a synchronous operation.
-   * - ``ray.get()``
+   * - ``ray.get()`
      - | Return an object or list of objects from the object ID
        | or list of object IDs.
        | This is a synchronous (i.e., blocking) operation.
-   * - ``ray.wait()``
+   * - ``ray.wait()`
      - | From a list of object IDs, returns
        | (1) the list of IDs of the objects that are ready, and
        | (2) the list of IDs of the objects that are not ready yet.

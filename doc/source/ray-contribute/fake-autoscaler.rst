@@ -7,7 +7,7 @@ Testing autoscaling behavior is important for autoscaler development and the deb
 on autoscaler behavior. You can run the autoscaler locally without needing to launch a real cluster with one of the
 following methods:
 
-Using ``RAY_FAKE_CLUSTER=1 ray start``
+Using ``RAY_FAKE_CLUSTER=1 ray start`
 --------------------------------------
 
 Instructions:
@@ -55,7 +55,7 @@ Instructions:
    Demands:
     (no resource demands)
 
-Using ``ray.cluster_utils.AutoscalingCluster``
+Using ``ray.cluster_utils.AutoscalingCluster`
 ----------------------------------------------
 
 To programmatically create a fake multi-node autoscaling cluster and connect to it, you can use `cluster_utils.AutoscalingCluster <https://github.com/ray-project/ray/blob/master/python/ray/cluster_utils.py>`__. Here's an example of a basic autoscaling test that launches tasks triggering autoscaling:
@@ -71,7 +71,7 @@ Python documentation:
 .. autoclass:: ray.cluster_utils.AutoscalingCluster
     :members:
 
-Features and Limitations of ``fake_multinode``
+Features and Limitations of ``fake_multinode`
 ----------------------------------------------
 
 Most of the features of the autoscaler are supported in fake multi-node mode. For example, if you update the contents of the YAML file, the autoscaler will pick up the new configuration and apply changes, as it does in a real cluster. Node selection, launch, and termination are governed by the same bin-packing and idle timeout algorithms as in a real cluster.
@@ -100,7 +100,7 @@ Prerequisites:
 
 2. Make sure you have the `docker compose V2 plugin <https://docs.docker.com/compose/cli-command/#installing-compose-v2>`_ installed.
 
-Using ``RAY_FAKE_CLUSTER=1 ray up``
+Using ``RAY_FAKE_CLUSTER=1 ray up`
 -----------------------------------
 Instructions:
 
@@ -133,7 +133,7 @@ Instructions:
 
     $ docker exec -it fake_docker_fffffffffffffffffffffffffffffffffffffffffffffffffff00000_1 bash
 
-Using ``ray.autoscaler._private.fake_multi_node.test_utils.DockerCluster``
+Using ``ray.autoscaler._private.fake_multi_node.test_utils.DockerCluster`
 --------------------------------------------------------------------------
 This utility is used to write tests that use multi node behavior. The ``DockerCluster`` class can
 be used to setup a Docker-compose cluster in a temporary directory, start the monitoring process,
@@ -145,7 +145,7 @@ Please see the API documentation and example test cases on how to use this utili
     :members:
 
 
-Features and Limitations of ``fake_multinode_docker``
+Features and Limitations of ``fake_multinode_docker`
 -----------------------------------------------------
 
 The fake multinode docker node provider provides fully fledged nodes in their own containers. However,
@@ -178,7 +178,7 @@ things have to be kept in mind. To make this clear, consider these concepts:
   two containers are started - a *dind* network host and a container with the Ray source code and wheel in it.
 * The **inner container** is a container started by the fake multinode docker node provider.
 
-The control plane for the multinode docker node provider lives in the outer container. However, ``docker compose``
+The control plane for the multinode docker node provider lives in the outer container. However, ``docker compose`
 commands are executed from the connected docker-in-docker network. In the Ray OSS Buildkite environment, this is
 the ``dind-daemon`` container running on the host docker. If you e.g. mounted ``/var/run/docker.sock`` from the
 host instead, it would be the host docker daemon. We will refer to both as the **host daemon** from now on.
@@ -196,7 +196,7 @@ For the Ray OSS Buildkite environment, we thus set some environment variables:
   and the inner container. In the inner container, we can control the directory name.
 
 * ``RAY_HOSTDIR="/ray"``. In the case where the shared directory has a different name on the host, we can
-  rewrite the mount points dynamically. In this example, the outer container is started with ``-v /ray:/ray-mount``
+  rewrite the mount points dynamically. In this example, the outer container is started with ``-v /ray:/ray-mount`
   or similar, so the directory on the host is ``/ray`` and in the outer container ``/ray-mount`` (see ``RAY_TEMPDIR``).
 
 * ``RAY_TESTHOST="dind-daemon"`` As the containers are started by the host daemon, we can't just connect to
@@ -210,9 +210,9 @@ This base image is built in one of the previous build steps.
 
 Thus, we set
 
-* ``RAY_DOCKER_IMAGE="rayproject/ray:multinode-py38"``
+* ``RAY_DOCKER_IMAGE="rayproject/ray:multinode-py38"`
 
-* ``RAY_HAS_SSH=1``
+* ``RAY_HAS_SSH=1`
 
 to use this docker image and inform our multinode infrastructure that SSH is already installed.
 
@@ -221,14 +221,14 @@ Local development
 
 If you're doing local development on the fake multi node docker module, you can set
 
-* ``FAKE_CLUSTER_DEV="auto"``
+* ``FAKE_CLUSTER_DEV="auto"`
 
 this will mount the ``ray/python/ray/autoscaler`` directory to the started nodes. Please note that
 this is will probably not work in your docker-in-docker setup.
 
 If you want to to specify which top-level Ray directories to mount, you can use e.g.
 
-* ``FAKE_CLUSTER_DEV_MODULES="autoscaler,tune"``
+* ``FAKE_CLUSTER_DEV_MODULES="autoscaler,tune"`
 
 This will mount both ``ray/python/ray/autoscaler`` and ``ray/python/ray/tune`` within the node containers. The
 list of modules should be comma separated and without spaces.

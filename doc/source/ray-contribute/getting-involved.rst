@@ -300,11 +300,11 @@ invoke other test scripts via ``pytest``, ``bazel``-based test or other bash
 scripts. Some of the examples include:
 
 * Bazel test command:
-    * ``bazel test --build_tests_only //:all``
+    * ``bazel test --build_tests_only //:all`
 
 * Ray serving test commands:
-    * ``pytest python/ray/serve/tests``
-    * ``python python/ray/serve/examples/echo_full.py``
+    * ``pytest python/ray/serve/tests`
+    * ``python python/ray/serve/examples/echo_full.py`
 
 If a CI build exception doesn't appear to be related to your change,
 please visit `this link <https://flakey-tests.ray.io/>`_ to
@@ -350,7 +350,7 @@ include a link to your example in the ``examples.yml`` file for that library:
        contributor: community
 
 Give your example a title, a skill level (``beginner``, ``intermediate``, or ``advanced``), and a
-link (relative links point to other documentation pages, but direct links starting with ``http://``
+link (relative links point to other documentation pages, but direct links starting with ``http://`
 also work). Include the ``contributor: community`` metadata to ensure that the example is correctly
 labeled as a community example in the example gallery.
 

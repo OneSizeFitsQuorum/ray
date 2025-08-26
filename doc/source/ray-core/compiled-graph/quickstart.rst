@@ -209,7 +209,7 @@ the GPU actor receives a CPU tensor:
     # and the GPU actor also receives a CPU copy.
     ray.get(actor.process.remote(torch.zeros(10)))
 
-With Ray Compiled Graph, you can annotate DAG nodes with type hints to indicate that there may be a ``torch.Tensor``
+With Ray Compiled Graph, you can annotate DAG nodes with type hints to indicate that there may be a ``torch.Tensor`
 contained in the value:
 
 .. literalinclude:: ../doc_code/cgraph_nccl.py

@@ -227,7 +227,7 @@ hyperparameter configurations. This is useful in cases where the evaluated
 training procedure has high variance (i.e., in reinforcement learning).
 
 By default, ``Repeater`` will take in a ``repeat`` parameter and a ``search_alg``.
-The ``search_alg`` will suggest new configurations to try, and the ``Repeater``
+The ``search_alg`` will suggest new configurations to try, and the ``Repeater`
 will run ``repeat`` trials of the configuration. It will then average the
 ``search_alg.metric`` from the final results of each repeated trial.
 

@@ -228,7 +228,7 @@ Put all your logic into this function, including:
 
 .. note::
 
-    When using Hugging Face Datasets or Evaluate, always call ``datasets.load_dataset`` and ``evaluate.load``
+    When using Hugging Face Datasets or Evaluate, always call ``datasets.load_dataset`` and ``evaluate.load`
     inside the training function. Don't pass loaded datasets and metrics from outside the training
     function, as this can cause serialization errors when transferring objects to workers.
 

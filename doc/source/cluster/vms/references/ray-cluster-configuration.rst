@@ -340,7 +340,7 @@ Properties and Definitions
 
 .. _cluster-configuration-cluster-name:
 
-``cluster_name``
+``cluster_name`
 ~~~~~~~~~~~~~~~~
 
 The name of the cluster. This is the namespace of the cluster.
@@ -349,11 +349,11 @@ The name of the cluster. This is the namespace of the cluster.
 * **Importance:** High
 * **Type:** String
 * **Default:** "default"
-* **Pattern:** ``[a-zA-Z0-9_]+``
+* **Pattern:** ``[a-zA-Z0-9_]+`
 
 .. _cluster-configuration-max-workers:
 
-``max_workers``
+``max_workers`
 ~~~~~~~~~~~~~~~
 
 The maximum number of workers the cluster will have at any given time.
@@ -361,13 +361,13 @@ The maximum number of workers the cluster will have at any given time.
 * **Required:** No
 * **Importance:** High
 * **Type:** Integer
-* **Default:** ``2``
-* **Minimum:** ``0``
+* **Default:** ``2`
+* **Minimum:** ``0`
 * **Maximum:** Unbounded
 
 .. _cluster-configuration-upscaling-speed:
 
-``upscaling_speed``
+``upscaling_speed`
 ~~~~~~~~~~~~~~~~~~~
 
 The number of nodes allowed to be pending as a multiple of the current number of nodes. For example, if set to 1.0, the cluster can grow in size by at most 100% at any time, so if the cluster currently has 20 nodes, at most 20 pending launches are allowed. Note that although the autoscaler will scale down to `min_workers` (which could be 0), it will always scale up to 5 nodes at a minimum when scaling up.
@@ -375,13 +375,13 @@ The number of nodes allowed to be pending as a multiple of the current number of
 * **Required:** No
 * **Importance:** Medium
 * **Type:** Float
-* **Default:** ``1.0``
-* **Minimum:** ``0.0``
+* **Default:** ``1.0`
+* **Minimum:** ``0.0`
 * **Maximum:** Unbounded
 
 .. _cluster-configuration-idle-timeout-minutes:
 
-``idle_timeout_minutes``
+``idle_timeout_minutes`
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The number of minutes that need to pass before an idle worker node is removed by the Autoscaler.
@@ -389,13 +389,13 @@ The number of minutes that need to pass before an idle worker node is removed by
 * **Required:** No
 * **Importance:** Medium
 * **Type:** Integer
-* **Default:** ``5``
-* **Minimum:** ``0``
+* **Default:** ``5`
+* **Minimum:** ``0`
 * **Maximum:** Unbounded
 
 .. _cluster-configuration-docker:
 
-``docker``
+``docker`
 ~~~~~~~~~~
 
 Configure Ray to run in Docker containers.
@@ -403,7 +403,7 @@ Configure Ray to run in Docker containers.
 * **Required:** No
 * **Importance:** High
 * **Type:** :ref:`Docker <cluster-configuration-docker-type>`
-* **Default:** ``{}``
+* **Default:** ``{}`
 
 In rare cases when Docker is not available on the system by default (e.g., bad AMI), add the following commands to :ref:`initialization_commands <cluster-configuration-initialization-commands>` to install it.
 
@@ -417,7 +417,7 @@ In rare cases when Docker is not available on the system by default (e.g., bad A
 
 .. _cluster-configuration-provider:
 
-``provider``
+``provider`
 ~~~~~~~~~~~~
 
 The cloud provider-specific configuration properties.
@@ -428,7 +428,7 @@ The cloud provider-specific configuration properties.
 
 .. _cluster-configuration-auth:
 
-``auth``
+``auth`
 ~~~~~~~~
 
 Authentication credentials that Ray will use to launch nodes.
@@ -439,7 +439,7 @@ Authentication credentials that Ray will use to launch nodes.
 
 .. _cluster-configuration-available-node-types:
 
-``available_node_types``
+``available_node_types`
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Tells the autoscaler the allowed node types and the resources they provide.
@@ -475,7 +475,7 @@ Each node type is identified by a user-specified key.
 
 .. _cluster-configuration-head-node-type:
 
-``head_node_type``
+``head_node_type`
 ~~~~~~~~~~~~~~~~~~
 
 The key for one of the node types in :ref:`available_node_types <cluster-configuration-available-node-types>`. This node type will be used to launch the head node.
@@ -489,11 +489,11 @@ head node. Changing the :ref:`node_config<cluster-configuration-node-config>` of
 * **Required:** Yes
 * **Importance:** High
 * **Type:** String
-* **Pattern:** ``[a-zA-Z0-9_]+``
+* **Pattern:** ``[a-zA-Z0-9_]+`
 
 .. _cluster-configuration-file-mounts:
 
-``file_mounts``
+``file_mounts`
 ~~~~~~~~~~~~~~~
 
 The files or directories to copy to the head and worker nodes.
@@ -501,11 +501,11 @@ The files or directories to copy to the head and worker nodes.
 * **Required:** No
 * **Importance:** High
 * **Type:** :ref:`File mounts <cluster-configuration-file-mounts-type>`
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-cluster-synced-files:
 
-``cluster_synced_files``
+``cluster_synced_files`
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 A list of paths to the files or directories to copy from the head node to the worker nodes. The same path on the head node will be copied to the worker node. This behavior is a subset of the file_mounts behavior, so in the vast majority of cases one should just use :ref:`file_mounts <cluster-configuration-file-mounts>`.
@@ -513,11 +513,11 @@ A list of paths to the files or directories to copy from the head node to the wo
 * **Required:** No
 * **Importance:** Low
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-rsync-exclude:
 
-``rsync_exclude``
+``rsync_exclude`
 ~~~~~~~~~~~~~~~~~
 
 A list of patterns for files to exclude when running ``rsync up`` or ``rsync down``. The filter is applied on the source directory only.
@@ -527,11 +527,11 @@ Example for a pattern in the list: ``**/.git/**``.
 * **Required:** No
 * **Importance:** Low
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-rsync-filter:
 
-``rsync_filter``
+``rsync_filter`
 ~~~~~~~~~~~~~~~~
 
 A list of patterns for files to exclude when running ``rsync up`` or ``rsync down``. The filter is applied on the source directory and recursively through all subdirectories.
@@ -541,11 +541,11 @@ Example for a pattern in the list: ``.gitignore``.
 * **Required:** No
 * **Importance:** Low
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-initialization-commands:
 
-``initialization_commands``
+``initialization_commands`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A list of commands that will be run before the :ref:`setup commands <cluster-configuration-setup-commands>`. If Docker is enabled, these commands will run outside the container and before Docker is setup.
@@ -553,11 +553,11 @@ A list of commands that will be run before the :ref:`setup commands <cluster-con
 * **Required:** No
 * **Importance:** Medium
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-setup-commands:
 
-``setup_commands``
+``setup_commands`
 ~~~~~~~~~~~~~~~~~~
 
 A list of commands to run to set up nodes. These commands will always run on the head and worker nodes and will be merged with :ref:`head setup commands <cluster-configuration-head-setup-commands>` for head and with :ref:`worker setup commands <cluster-configuration-worker-setup-commands>` for workers.
@@ -595,7 +595,7 @@ A list of commands to run to set up nodes. These commands will always run on the
 
 .. _cluster-configuration-head-setup-commands:
 
-``head_setup_commands``
+``head_setup_commands`
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 A list of commands to run to set up the head node. These commands will be merged with the general :ref:`setup commands <cluster-configuration-setup-commands>`.
@@ -603,11 +603,11 @@ A list of commands to run to set up the head node. These commands will be merged
 * **Required:** No
 * **Importance:** Low
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-worker-setup-commands:
 
-``worker_setup_commands``
+``worker_setup_commands`
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A list of commands to run to set up the worker nodes. These commands will be merged with the general :ref:`setup commands <cluster-configuration-setup-commands>`.
@@ -615,11 +615,11 @@ A list of commands to run to set up the worker nodes. These commands will be mer
 * **Required:** No
 * **Importance:** Low
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-head-start-ray-commands:
 
-``head_start_ray_commands``
+``head_start_ray_commands`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Commands to start ray on the head node. You don't need to change this.
@@ -641,7 +641,7 @@ Commands to start ray on the head node. You don't need to change this.
 
 .. _cluster-configuration-worker-start-ray-commands:
 
-``worker_start_ray_commands``
+``worker_start_ray_commands`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Command to start ray on worker nodes. You don't need to change this.
@@ -663,7 +663,7 @@ Command to start ray on worker nodes. You don't need to change this.
 
 .. _cluster-configuration-image:
 
-``docker.image``
+``docker.image`
 ~~~~~~~~~~~~~~~~
 
 The default Docker image to pull in the head and worker nodes. This can be overridden by the :ref:`head_image <cluster-configuration-head-image>` and :ref:`worker_image <cluster-configuration-worker-image>` fields. If neither `image` nor (:ref:`head_image <cluster-configuration-head-image>` and :ref:`worker_image <cluster-configuration-worker-image>`) are specified, Ray will not use Docker.
@@ -681,7 +681,7 @@ The Ray project provides Docker images on `DockerHub <https://hub.docker.com/u/r
 
 .. _cluster-configuration-head-image:
 
-``docker.head_image``
+``docker.head_image`
 ~~~~~~~~~~~~~~~~~~~~~
 Docker image for the head node to override the default :ref:`docker image <cluster-configuration-image>`.
 
@@ -691,7 +691,7 @@ Docker image for the head node to override the default :ref:`docker image <clust
 
 .. _cluster-configuration-worker-image:
 
-``docker.worker_image``
+``docker.worker_image`
 ~~~~~~~~~~~~~~~~~~~~~~~
 Docker image for the worker nodes to override the default :ref:`docker image <cluster-configuration-image>`.
 
@@ -701,7 +701,7 @@ Docker image for the worker nodes to override the default :ref:`docker image <cl
 
 .. _cluster-configuration-container-name:
 
-``docker.container_name``
+``docker.container_name`
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The name to use when starting the Docker container.
@@ -713,7 +713,7 @@ The name to use when starting the Docker container.
 
 .. _cluster-configuration-pull-before-run:
 
-``docker.pull_before_run``
+``docker.pull_before_run`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If enabled, the latest version of image will be pulled when starting Docker. If disabled, ``docker run`` will only pull the image if no cached version is present.
@@ -721,11 +721,11 @@ If enabled, the latest version of image will be pulled when starting Docker. If 
 * **Required:** No
 * **Importance:** Medium
 * **Type:** Boolean
-* **Default:** ``True``
+* **Default:** ``True`
 
 .. _cluster-configuration-run-options:
 
-``docker.run_options``
+``docker.run_options`
 ~~~~~~~~~~~~~~~~~~~~~~
 
 The extra options to pass to ``docker run``.
@@ -733,11 +733,11 @@ The extra options to pass to ``docker run``.
 * **Required:** No
 * **Importance:** Medium
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-head-run-options:
 
-``docker.head_run_options``
+``docker.head_run_options`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The extra options to pass to ``docker run`` for head node only.
@@ -745,11 +745,11 @@ The extra options to pass to ``docker run`` for head node only.
 * **Required:** No
 * **Importance:** Low
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-worker-run-options:
 
-``docker.worker_run_options``
+``docker.worker_run_options`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The extra options to pass to ``docker run`` for worker nodes only.
@@ -757,11 +757,11 @@ The extra options to pass to ``docker run`` for worker nodes only.
 * **Required:** No
 * **Importance:** Low
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-disable-automatic-runtime-detection:
 
-``docker.disable_automatic_runtime_detection``
+``docker.disable_automatic_runtime_detection`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If enabled, Ray will not try to use the NVIDIA Container Runtime if GPUs are present.
@@ -769,12 +769,12 @@ If enabled, Ray will not try to use the NVIDIA Container Runtime if GPUs are pre
 * **Required:** No
 * **Importance:** Low
 * **Type:** Boolean
-* **Default:** ``False``
+* **Default:** ``False`
 
 
 .. _cluster-configuration-disable-shm-size-detection:
 
-``docker.disable_shm_size_detection``
+``docker.disable_shm_size_detection`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If enabled, Ray will not automatically specify the size ``/dev/shm`` for the started container and the runtime's default value (64MiB for Docker) will be used.
@@ -783,12 +783,12 @@ If ``--shm-size=<>`` is manually added to ``run_options``, this is *automaticall
 * **Required:** No
 * **Importance:** Low
 * **Type:** Boolean
-* **Default:** ``False``
+* **Default:** ``False`
 
 
 .. _cluster-configuration-ssh-user:
 
-``auth.ssh_user``
+``auth.ssh_user`
 ~~~~~~~~~~~~~~~~~
 
 The user that Ray will authenticate with when launching new nodes.
@@ -799,7 +799,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-ssh-private-key:
 
-``auth.ssh_private_key``
+``auth.ssh_private_key`
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -836,7 +836,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-ssh-public-key:
 
-``auth.ssh_public_key``
+``auth.ssh_public_key`
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -863,7 +863,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-type:
 
-``provider.type``
+``provider.type`
 ~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -902,7 +902,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-region:
 
-``provider.region``
+``provider.region`
 ~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -935,7 +935,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-availability-zone:
 
-``provider.availability_zone``
+``provider.availability_zone`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -970,7 +970,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-location:
 
-``provider.location``
+``provider.location`
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -998,7 +998,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-resource-group:
 
-``provider.resource_group``
+``provider.resource_group`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1026,7 +1026,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-subscription-id:
 
-``provider.subscription_id``
+``provider.subscription_id`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1042,7 +1042,7 @@ The user that Ray will authenticate with when launching new nodes.
         * **Required:** No
         * **Importance:** High
         * **Type:** String
-        * **Default:** ``""``
+        * **Default:** ``""`
 
     .. tab-item:: GCP
 
@@ -1054,7 +1054,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-msi-name:
 
-``provider.msi_name``
+``provider.msi_name`
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1082,7 +1082,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-msi-resource-group:
 
-``provider.msi_resource_group``
+``provider.msi_resource_group`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1110,7 +1110,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-project-id:
 
-``provider.project_id``
+``provider.project_id`
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1130,7 +1130,7 @@ The user that Ray will authenticate with when launching new nodes.
         * **Required:** Yes
         * **Importance:** Low
         * **Type:** String
-        * **Default:** ``null``
+        * **Default:** ``null`
 
     .. tab-item:: vSphere
 
@@ -1138,7 +1138,7 @@ The user that Ray will authenticate with when launching new nodes.
 
 .. _cluster-configuration-cache-stopped-nodes:
 
-``provider.cache_stopped_nodes``
+``provider.cache_stopped_nodes`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If enabled, nodes will be *stopped* when the cluster scales down. If disabled, nodes will be *terminated* instead. Stopped nodes launch faster than terminated nodes.
@@ -1147,11 +1147,11 @@ If enabled, nodes will be *stopped* when the cluster scales down. If disabled, n
 * **Required:** No
 * **Importance:** Low
 * **Type:** Boolean
-* **Default:** ``True``
+* **Default:** ``True`
 
 .. _cluster-configuration-use-internal-ips:
 
-``provider.use_internal_ips``
+``provider.use_internal_ips`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If enabled, Ray will use private IP addresses for communication between nodes.
@@ -1168,11 +1168,11 @@ controlled by your cloud provider's configuration.
 * **Required:** No
 * **Importance:** Low
 * **Type:** Boolean
-* **Default:** ``False``
+* **Default:** ``False`
 
 .. _cluster-configuration-use-external-head-ip:
 
-``provider.use_external_head_ip``
+``provider.use_external_head_ip`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1192,7 +1192,7 @@ controlled by your cloud provider's configuration.
         * **Required:** No
         * **Importance:** Low
         * **Type:** Boolean
-        * **Default:** ``False``
+        * **Default:** ``False`
 
     .. tab-item:: GCP
 
@@ -1204,7 +1204,7 @@ controlled by your cloud provider's configuration.
 
 .. _cluster-configuration-security-group:
 
-``provider.security_group``
+``provider.security_group`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1231,7 +1231,7 @@ controlled by your cloud provider's configuration.
 
 .. _cluster-configuration-vsphere-config:
 
-``provider.vsphere_config``
+``provider.vsphere_config`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1259,7 +1259,7 @@ controlled by your cloud provider's configuration.
 
 .. _cluster-configuration-group-name:
 
-``security_group.GroupName``
+``security_group.GroupName`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The name of the security group. This name must be unique within the VPC.
@@ -1267,11 +1267,11 @@ The name of the security group. This name must be unique within the VPC.
 * **Required:** No
 * **Importance:** Low
 * **Type:** String
-* **Default:** ``"ray-autoscaler-{cluster-name}"``
+* **Default:** ``"ray-autoscaler-{cluster-name}"`
 
 .. _cluster-configuration-ip-permissions:
 
-``security_group.IpPermissions``
+``security_group.IpPermissions`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The inbound rules associated with the security group.
@@ -1282,7 +1282,7 @@ The inbound rules associated with the security group.
 
 .. _cluster-configuration-vsphere-credentials:
 
-``vsphere_config.credentials``
+``vsphere_config.credentials`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The credential to connect to the vSphere vCenter Server.
@@ -1293,7 +1293,7 @@ The credential to connect to the vSphere vCenter Server.
 
 .. _cluster-configuration-vsphere-user:
 
-``vsphere_config.credentials.user``
+``vsphere_config.credentials.user`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Username to connect to vCenter Server.
@@ -1304,7 +1304,7 @@ Username to connect to vCenter Server.
 
 .. _cluster-configuration-vsphere-password:
 
-``vsphere_config.credentials.password``
+``vsphere_config.credentials.password`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Password of the user to connect to vCenter Server.
@@ -1315,7 +1315,7 @@ Password of the user to connect to vCenter Server.
 
 .. _cluster-configuration-vsphere-server:
 
-``vsphere_config.credentials.server``
+``vsphere_config.credentials.server`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The vSphere vCenter Server address.
@@ -1326,7 +1326,7 @@ The vSphere vCenter Server address.
 
 .. _cluster-configuration-vsphere-frozen-vm:
 
-``vsphere_config.frozen_vm``
+``vsphere_config.frozen_vm`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The frozen VM related configurations.
@@ -1379,7 +1379,7 @@ Other cases not in above examples are invalid.
 
 .. _cluster-configuration-vsphere-frozen-vm-name:
 
-``vsphere_config.frozen_vm.name``
+``vsphere_config.frozen_vm.name`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The name or the name prefix of the frozen VM.
@@ -1392,7 +1392,7 @@ Can only be unset when ``resource_pool`` is set and pointing to an existing reso
 
 .. _cluster-configuration-vsphere-frozen-vm-library-item:
 
-``vsphere_config.frozen_vm.library_item``
+``vsphere_config.frozen_vm.library_item`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The library item (https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-D3DD122F-16A5-4F36-8467-97994A854B16.html#GUID-D3DD122F-16A5-4F36-8467-97994A854B16) of the OVF template of the frozen VM. If set, the frozen VM or a set of frozen VMs will be deployed from an OVF template specified by ``library_item``. Otherwise, frozen VM(s) should be existing.
@@ -1405,7 +1405,7 @@ Visit the VM Packer for Ray project (https://github.com/vmware-ai-labs/vm-packer
 
 .. _cluster-configuration-vsphere-frozen-vm-resource-pool:
 
-``vsphere_config.frozen_vm.resource_pool``
+``vsphere_config.frozen_vm.resource_pool`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The resource pool name of the frozen VMs, can point to an existing resource pool of frozen VMs. Otherwise, ``library_item`` must be specified and a set of frozen VMs will be deployed on each ESXi host.
@@ -1418,7 +1418,7 @@ The frozen VMs will be named as "{frozen_vm.name}-{the vm's ip address}"
 
 .. _cluster-configuration-vsphere-frozen-vm-cluster:
 
-``vsphere_config.frozen_vm.cluster``
+``vsphere_config.frozen_vm.cluster`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The vSphere cluster name, only takes effect when ``library_item`` is set and ``resource_pool`` is unset.
@@ -1430,7 +1430,7 @@ Indicates to deploy a single frozen VM on the vSphere cluster from OVF template.
 
 .. _cluster-configuration-vsphere-frozen-vm-datastore:
 
-``vsphere_config.frozen_vm.datastore``
+``vsphere_config.frozen_vm.datastore`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The target vSphere datastore name for storing the virtual machine files of the frozen VM to be deployed from OVF template.
@@ -1442,12 +1442,12 @@ Will take effect only when ``library_item`` is set. If ``resource_pool`` is also
 
 .. _cluster-configuration-vsphere-gpu-config:
 
-``vsphere_config.gpu_config``
+``vsphere_config.gpu_config`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _cluster-configuration-vsphere-gpu-config-pci-passthrough:
 
-``vsphere_config.gpu_config.dynamic_pci_passthrough``
+``vsphere_config.gpu_config.dynamic_pci_passthrough`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The switch controlling the way for binding the GPU from ESXi host to the Ray node VM.
@@ -1462,7 +1462,7 @@ The VM with Dynamic PCI passthrough GPU can still support vSphere DRS (https://w
 
 .. _cluster-configuration-node-config:
 
-``available_node_types.<node_type_name>.node_type.node_config``
+``available_node_types.<node_type_name>.node_type.node_config`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The configuration to be used to launch the nodes on the cloud service provider. Among other things, this will specify the instance type to be launched.
@@ -1473,7 +1473,7 @@ The configuration to be used to launch the nodes on the cloud service provider. 
 
 .. _cluster-configuration-resources:
 
-``available_node_types.<node_type_name>.node_type.resources``
+``available_node_types.<node_type_name>.node_type.resources`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The resources that a node type provides, which enables the autoscaler to automatically select the right type of nodes to launch given the resource demands of the application. The resources specified will be automatically passed to the ``ray start`` command for the node via an environment variable. If not provided, Autoscaler can automatically detect them only for AWS/Kubernetes cloud providers. For more information, see also the `resource demand scheduler <https://github.com/ray-project/ray/blob/master/python/ray/autoscaler/_private/resource_demand_scheduler.py>`_
@@ -1481,13 +1481,13 @@ The resources that a node type provides, which enables the autoscaler to automat
 * **Required:** Yes (except for AWS/K8s)
 * **Importance:** High
 * **Type:** :ref:`Resources <cluster-configuration-resources-type>`
-* **Default:** ``{}``
+* **Default:** ``{}`
 
 In some cases, adding special nodes without any resources may be desirable. Such nodes can be used as a driver which connects to the cluster to launch jobs. In order to manually add a node to an autoscaled cluster, the *ray-cluster-name* tag should be set and *ray-node-type* tag should be set to unmanaged. Unmanaged nodes can be created by setting the resources to ``{}`` and the :ref:`maximum workers <cluster-configuration-node-min-workers>` to 0. The Autoscaler will not attempt to start, stop, or update unmanaged nodes. The user is responsible for properly setting up and cleaning up unmanaged nodes.
 
 .. _cluster-configuration-node-min-workers:
 
-``available_node_types.<node_type_name>.node_type.min_workers``
+``available_node_types.<node_type_name>.node_type.min_workers`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The minimum number of workers to maintain for this node type regardless of utilization.
@@ -1495,13 +1495,13 @@ The minimum number of workers to maintain for this node type regardless of utili
 * **Required:** No
 * **Importance:** High
 * **Type:** Integer
-* **Default:** ``0``
-* **Minimum:** ``0``
+* **Default:** ``0`
+* **Minimum:** ``0`
 * **Maximum:** Unbounded
 
 .. _cluster-configuration-node-max-workers:
 
-``available_node_types.<node_type_name>.node_type.max_workers``
+``available_node_types.<node_type_name>.node_type.max_workers`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The maximum number of workers to have in the cluster for this node type regardless of utilization. This takes precedence over :ref:`minimum workers <cluster-configuration-node-min-workers>`. By default, the number of workers of a node type is unbounded, constrained only by the cluster-wide :ref:`max_workers <cluster-configuration-max-workers>`. (Prior to Ray 1.3.0, the default value for this field was 0.)
@@ -1512,12 +1512,12 @@ Note, for the nodes of type ``head_node_type`` the default number of max workers
 * **Importance:** High
 * **Type:** Integer
 * **Default:** cluster-wide :ref:`max_workers <cluster-configuration-max-workers>`
-* **Minimum:** ``0``
+* **Minimum:** ``0`
 * **Maximum:** cluster-wide :ref:`max_workers <cluster-configuration-max-workers>`
 
 .. _cluster-configuration-node-type-worker-setup-commands:
 
-``available_node_types.<node_type_name>.node_type.worker_setup_commands``
+``available_node_types.<node_type_name>.node_type.worker_setup_commands`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A list of commands to run to set up worker nodes of this type. These commands will replace the general :ref:`worker setup commands <cluster-configuration-worker-setup-commands>` for the node.
@@ -1525,11 +1525,11 @@ A list of commands to run to set up worker nodes of this type. These commands wi
 * **Required:** No
 * **Importance:** low
 * **Type:** List of String
-* **Default:** ``[]``
+* **Default:** ``[]`
 
 .. _cluster-configuration-cpu:
 
-``available_node_types.<node_type_name>.node_type.resources.CPU``
+``available_node_types.<node_type_name>.node_type.resources.CPU`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1569,7 +1569,7 @@ A list of commands to run to set up worker nodes of this type. These commands wi
 
 .. _cluster-configuration-gpu:
 
-``available_node_types.<node_type_name>.node_type.resources.GPU``
+``available_node_types.<node_type_name>.node_type.resources.GPU`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1608,7 +1608,7 @@ A list of commands to run to set up worker nodes of this type. These commands wi
 
 .. _cluster-configuration-memory:
 
-``available_node_types.<node_type_name>.node_type.resources.memory``
+``available_node_types.<node_type_name>.node_type.resources.memory`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1651,7 +1651,7 @@ A list of commands to run to set up worker nodes of this type. These commands wi
 
 .. _cluster-configuration-object-store-memory:
 
-``available_node_types.<node_type_name>.node_type.resources.object-store-memory``
+``available_node_types.<node_type_name>.node_type.resources.object-store-memory`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tab-set::
@@ -1690,7 +1690,7 @@ A list of commands to run to set up worker nodes of this type. These commands wi
 
 .. _cluster-configuration-node-docker:
 
-``available_node_types.<node_type_name>.docker``
+``available_node_types.<node_type_name>.docker`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A set of overrides to the top-level :ref:`Docker <cluster-configuration-docker>` configuration.
@@ -1698,7 +1698,7 @@ A set of overrides to the top-level :ref:`Docker <cluster-configuration-docker>`
 * **Required:** No
 * **Importance:** Low
 * **Type:** :ref:`docker <cluster-configuration-node-docker-type>`
-* **Default:** ``{}``
+* **Default:** ``{}`
 
 Examples
 --------

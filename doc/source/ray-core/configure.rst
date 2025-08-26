@@ -125,7 +125,7 @@ The following options specify the range of ports used by worker processes across
 
 Port numbers are how Ray differentiates input and output to and from multiple workers on a single node. Each worker takes input and gives output on a single port number. Therefore, by default, there's a maximum of 10,000 workers on each node, irrespective of number of CPUs.
 
-In general, you should give Ray a wide range of possible worker ports, in case any of those ports happen to be in use by some other program on your machine. However, when debugging, it's useful to explicitly specify a short list of worker ports such as ``--worker-port-list=10000,10001,10002,10003,10004``
+In general, you should give Ray a wide range of possible worker ports, in case any of those ports happen to be in use by some other program on your machine. However, when debugging, it's useful to explicitly specify a short list of worker ports such as ``--worker-port-list=10000,10001,10002,10003,10004`
 Note that this practice limits the number of workers, just like specifying a narrow range.
 
 Head node
@@ -325,23 +325,23 @@ Ray uses `Typesafe Config <https://lightbend.github.io/config/>`__ to read optio
 
 The list of available driver options:
 
-- ``ray.address``
+- ``ray.address`
 
   - The cluster address if the driver connects to an existing Ray cluster. If it's empty, Ray creates a new Ray cluster.
-  - Type: ``String``
+  - Type: ``String`
   - Default: empty string.
 
-- ``ray.job.code-search-path``
+- ``ray.job.code-search-path`
 
   - The paths for Java workers to load code from. Currently, Ray only supports directories. You can specify one or more directories split by a ``:``. You don't need to configure code search path if you run a Java application in single machine mode or local mode. Ray also uses the code search path to load Python code, if specified. This parameter is required for :ref:`cross_language`. If you specify a code search path, you can only run Python remote functions which you can find in the code search path.
-  - Type: ``String``
+  - Type: ``String`
   - Default: empty string.
-  - Example: ``/path/to/jars1:/path/to/jars2:/path/to/pys1:/path/to/pys2``
+  - Example: ``/path/to/jars1:/path/to/jars2:/path/to/pys1:/path/to/pys2`
 
-- ``ray.job.namespace``
+- ``ray.job.namespace`
 
   - The namespace of this job. Ray uses it for isolation between jobs. Jobs in different namespaces can't access each other. If it's not specified, Ray uses a randomized value.
-  - Type: ``String``
+  - Type: ``String`
   - Default: A random UUID string value.
 
 .. _`Apache Arrow`: https://arrow.apache.org/

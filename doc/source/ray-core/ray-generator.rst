@@ -52,7 +52,7 @@ before the task ``f`` finishes.
 
 Getting started
 ---------------
-Define a Python generator function and decorate it with ``ray.remote``
+Define a Python generator function and decorate it with ``ray.remote`
 to create a Ray generator.
 
 .. literalinclude:: doc_code/streaming_generator.py
@@ -67,7 +67,7 @@ compatible with generator and async generator APIs. You can access the
 Whenever a task invokes ``yield``, a corresponding output is ready and available from a generator as a Ray object reference.
 You can call ``next(gen)`` to obtain an object reference.
 If ``next`` has no more items to generate, it raises ``StopIteration``. If ``__anext__`` has no more items to generate, it raises
-``StopAsyncIteration``
+``StopAsyncIteration`
 
 The ``next`` API blocks the thread until the task generates a next object reference with ``yield``.
 Since the ``ObjectRefGenerator`` is just a Python generator, you can also use a for loop to
@@ -143,8 +143,8 @@ Fault tolerance
 :ref:`Fault tolerance features <fault-tolerance>` work with
 Ray generator tasks and actor tasks. For example;
 
-- :ref:`Task fault tolerance features <task-fault-tolerance>`: ``max_retries``, ``retry_exceptions``
-- :ref:`Actor fault tolerance features <actor-fault-tolerance>`: ``max_restarts``, ``max_task_retries``
+- :ref:`Task fault tolerance features <task-fault-tolerance>`: ``max_retries``, ``retry_exceptions`
+- :ref:`Actor fault tolerance features <actor-fault-tolerance>`: ``max_restarts``, ``max_task_retries`
 - :ref:`Object fault tolerance features <object-fault-tolerance>`: object reconstruction
 
 .. _generators-cancel:

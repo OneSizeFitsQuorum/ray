@@ -133,7 +133,7 @@ Convert this to a distributed multi-worker training function.
 Use the ``ray.train.torch.prepare_model`` and
 ``ray.train.torch.prepare_data_loader`` utility functions to
 set up your model and data for distributed training.
-This automatically wraps the model with ``DistributedDataParallel``
+This automatically wraps the model with ``DistributedDataParallel`
 and places it on the right device, and adds ``DistributedSampler`` to the DataLoaders.
 
 ```{literalinclude} /../../python/ray/train/examples/pytorch/torch_quick_start.py
@@ -142,7 +142,7 @@ and places it on the right device, and adds ``DistributedSampler`` to the DataLo
 :end-before: __torch_distributed_end__
 ```
 
-Instantiate a ``TorchTrainer``
+Instantiate a ``TorchTrainer`
 with 4 workers, and use it to run the new training function.
 
 ```{literalinclude} /../../python/ray/train/examples/pytorch/torch_quick_start.py
@@ -214,7 +214,7 @@ Now convert this to a distributed multi-worker training function.
 :end-before: __tf_distributed_end__
 ```
 
-Instantiate a ``TensorflowTrainer``
+Instantiate a ``TensorflowTrainer`
 with 4 workers, and use it to run the new training function.
 
 ```{literalinclude} /../../python/ray/train/examples/tf/tensorflow_quick_start.py

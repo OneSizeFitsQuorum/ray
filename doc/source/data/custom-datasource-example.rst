@@ -43,7 +43,7 @@ Optionally, specify valid file extensions. Ray Data ignores files with other ext
     :start-after: __datasource_constructor_start__
     :end-before: __datasource_constructor_end__
 
-Implement ``_read_stream``
+Implement ``_read_stream`
 ==========================
 
 ``_read_stream`` is a generator that yields one or more blocks of data from a file.
@@ -109,7 +109,7 @@ file format as the file extension.
     :start-after: __datasink_constructor_start__
     :end-before: __datasink_constructor_end__
 
-Implement ``write_row_to_file``
+Implement ``write_row_to_file`
 ===============================
 
 ``write_row_to_file`` writes a row of data to a file. Each row is a dictionary that maps

@@ -135,7 +135,7 @@ EnvRunner actor may trigger its ``on_sample_end`` event and the main Algorithm p
 
 .. currentmodule:: ray.rllib.callbacks.callbacks
 
-.. dropdown:: Algorithm-bound methods of ``RLlibCallback``
+.. dropdown:: Algorithm-bound methods of ``RLlibCallback`
 
     .. autosummary::
 
@@ -145,7 +145,7 @@ EnvRunner actor may trigger its ``on_sample_end`` event and the main Algorithm p
         RLlibCallback.on_env_runners_recreated
         RLlibCallback.on_checkpoint_loaded
 
-.. dropdown:: EnvRunner-bound methods of ``RLlibCallback``
+.. dropdown:: EnvRunner-bound methods of ``RLlibCallback`
 
     .. autosummary::
 

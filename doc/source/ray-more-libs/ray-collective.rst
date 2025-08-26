@@ -100,9 +100,9 @@ Supported Tensor Types
 ----------------------
 
 
-* ``torch.Tensor``
-* ``numpy.ndarray``
-* ``cupy.ndarray``
+* ``torch.Tensor`
+* ``numpy.ndarray`
+* ``cupy.ndarray`
 
 Usage
 -----

@@ -31,7 +31,7 @@ RayDP can be installed from PyPI and supports PySpark 3.0 and 3.1.
 Creating a Spark Session
 ========================
 
-To create a spark session, call ``raydp.init_spark``
+To create a spark session, call ``raydp.init_spark`
 
 For example,
 

@@ -97,7 +97,7 @@ Placement group scheduling is asynchronous. The `ray.util.placement_group` retur
 
 You can block your program until the placement group is ready using one of two APIs:
 
-* :func:`ready <ray.util.placement_group.PlacementGroup.ready>`, which is compatible with ``ray.get``
+* :func:`ready <ray.util.placement_group.PlacementGroup.ready>`, which is compatible with ``ray.get`
 * :func:`wait <ray.util.placement_group.PlacementGroup.wait>`, which blocks the program until the placement group is ready)
 
 .. tab-set::
@@ -362,7 +362,7 @@ You can also verify the actor is created using ``ray list actors``.
 
 Since 1 GPU remains, let's create a new actor that requires 1 GPU.
 This time, we also specify the ``placement_group_bundle_index``. Each bundle is given an "index" within the placement group.
-For example, a placement group of 2 bundles ``[{"CPU": 1}, {"GPU": 1}]`` has index 0 bundle ``{"CPU": 1}``
+For example, a placement group of 2 bundles ``[{"CPU": 1}, {"GPU": 1}]`` has index 0 bundle ``{"CPU": 1}`
 and index 1 bundle ``{"GPU": 1}``. Since we only have 1 bundle, we only have index 0. If you don't specify a bundle, the actor (or task)
 is scheduled on a random bundle that has unallocated reserved resources.
 
@@ -536,7 +536,7 @@ Ray provides several useful tools to inspect the placement group states and reso
 
       .. note::
 
-        State API is only available when you install Ray is with ``pip install "ray[default]"``
+        State API is only available when you install Ray is with ``pip install "ray[default]"`
 
 Inspect Placement Group Scheduling State
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

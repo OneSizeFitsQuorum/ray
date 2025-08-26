@@ -324,7 +324,7 @@ a ``lifetime`` counter, accumulating counts over the entire course of the experi
 the value back to 0. If you also add the ``with_throughput=True`` flag, the underlying metric automatically computes the throughput per second
 on each ``reduce()`` operation.
 
-The :py:class:`~ray.rllib.algorithms.algorithm.Algorithm` automatically compiles an extra key for each such metric, adding the suffix ``_throughput``
+The :py:class:`~ray.rllib.algorithms.algorithm.Algorithm` automatically compiles an extra key for each such metric, adding the suffix ``_throughput`
 to the original key and assigning it the value for the throughput per second.
 
 You can use the :py:meth:`~ray.rllib.utils.metrics.metrics_logger.MetricsLogger.peek` method to access the throughput value by passing the ``throughput=True`` flag.

@@ -68,7 +68,7 @@ don't require a restart), pass ``--no-restart`` to the update call.
 If you want to force re-generation of the config to pick up possible changes in
 the cloud environment, pass ``--no-config-cache`` to the update call.
 
-If you want to skip the setup commands and only run ``ray stop``/``ray start``
+If you want to skip the setup commands and only run ``ray stop``/``ray start`
 on all nodes, pass ``--restart-only`` to the update call.
 
 See :ref:`the documentation <ray-up-doc>` for ``ray up``.
@@ -228,5 +228,5 @@ they should checkout on the nodes. Note that each command runs in its own
 session. The final workflow to update the cluster then becomes just this:
 
 1. Make local changes to a git branch
-2. Commit the changes with ``git commit`` and ``git push``
-3. Update files on your Ray cluster with ``ray up``
+2. Commit the changes with ``git commit`` and ``git push`
+3. Update files on your Ray cluster with ``ray up`

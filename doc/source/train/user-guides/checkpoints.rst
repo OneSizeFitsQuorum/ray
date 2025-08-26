@@ -49,7 +49,7 @@ Here's how you save a checkpoint in the training loop:
     to disk to being uploaded to persistent storage via ``train.report``.
 
 As shown in the figure above, the best practice for saving checkpoints is to
-first dump the checkpoint to a local temporary directory. Then, the call to ``train.report``
+first dump the checkpoint to a local temporary directory. Then, the call to ``train.report`
 uploads the checkpoint to its final persistent storage location.
 Then, the local temporary directory can be safely cleaned up to free up disk space
 (e.g., from exiting the ``tempfile.TemporaryDirectory`` context).
@@ -96,8 +96,8 @@ Here are a few examples of saving checkpoints with different training frameworks
 
         Specifically, on each train epoch end, it
 
-        - collects all the logged metrics from ``trainer.callback_metrics``
-        - saves a checkpoint via ``trainer.save_checkpoint``
+        - collects all the logged metrics from ``trainer.callback_metrics`
+        - saves a checkpoint via ``trainer.save_checkpoint`
         - reports to Ray Train via :func:`ray.train.report(metrics, checkpoint) <ray.train.report>`
 
         .. literalinclude:: ../doc_code/checkpoints.py
@@ -136,7 +136,7 @@ Here are a few examples of saving checkpoints with different training frameworks
 
         Note that :class:`~ray.train.huggingface.transformers.RayTrainReportCallback`
         binds the latest metrics and checkpoints together,
-        so users can properly configure ``logging_strategy``, ``save_strategy`` and ``evaluation_strategy``
+        so users can properly configure ``logging_strategy``, ``save_strategy`` and ``evaluation_strategy`
         to ensure the monitoring metric is logged at the same step as checkpoint saving.
 
         For example, the evaluation metrics (``eval_loss`` in this case) are logged during

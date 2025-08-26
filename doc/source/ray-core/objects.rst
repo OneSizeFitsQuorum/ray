@@ -75,7 +75,7 @@ If the current node's object store does not contain the object, the object is do
           # Get the values of multiple object refs in parallel.
           assert ray.get([ray.put(i) for i in range(3)]) == [0, 1, 2]
 
-          # You can also set a timeout to return early from a ``get``
+          # You can also set a timeout to return early from a ``get`
           # that's blocking for too long.
           from ray.exceptions import GetTimeoutError
           # ``GetTimeoutError`` is a subclass of ``TimeoutError``.

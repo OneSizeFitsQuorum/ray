@@ -39,7 +39,7 @@ method of an Algorithm's config, like
 
             config.validate()
 
-    .. tab-item:: Pass individual callables to ``config.callbacks()``
+    .. tab-item:: Pass individual callables to ``config.callbacks()`
 
         .. testcode::
 

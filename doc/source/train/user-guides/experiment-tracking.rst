@@ -379,7 +379,7 @@ Missing Credentials
     wandb: ERROR api_key not configured (no-tty). call wandb.login(key=[your_api_key]).
 
 This is probably due to wandb credentials are not set up correctly
-on worker nodes. Make sure that you run ``wandb.login``
+on worker nodes. Make sure that you run ``wandb.login`
 or pass ``WANDB_API_KEY`` to each training function.
 See :ref:`Set up credentials <set-up-credentials>` for more details.
 

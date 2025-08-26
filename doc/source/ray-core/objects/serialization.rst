@@ -89,7 +89,7 @@ not work for you (fail to serialize some objects, too slow for certain objects, 
 There are at least 3 ways to define your custom serialization process:
 
 1. If you want to customize the serialization of a type of objects,
-   and you have access to the code, you can define ``__reduce__``
+   and you have access to the code, you can define ``__reduce__`
    function inside the corresponding class. This is commonly done
    by most Python libraries. Example code:
 

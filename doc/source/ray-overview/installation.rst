@@ -206,21 +206,21 @@ Multi-node clusters are untested. To get started with local Ray development:
 
 #. Install `miniforge <https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh>`_.
 
-   * ``wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh``
+   * ``wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh`
 
-   * ``bash Miniforge3-MacOSX-arm64.sh``
+   * ``bash Miniforge3-MacOSX-arm64.sh`
 
-   * ``rm Miniforge3-MacOSX-arm64.sh # Cleanup.``
+   * ``rm Miniforge3-MacOSX-arm64.sh # Cleanup.`
 
 #. Ensure you're using the miniforge environment (you should see (base) in your terminal).
 
-   * ``source ~/.bash_profile``
+   * ``source ~/.bash_profile`
 
-   * ``conda activate``
+   * ``conda activate`
 
 #. Install Ray as you normally would.
 
-   * ``pip install ray``
+   * ``pip install ray`
 
 .. _windows-support:
 

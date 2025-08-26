@@ -10,7 +10,7 @@ Instead you should get and process the results one batch at a time. Once a batch
 
 .. figure:: ../images/ray-get-too-many-objects.svg
 
-    Fetching too many objects at once with ``ray.get()``
+    Fetching too many objects at once with ``ray.get()`
 
 Code example
 ------------

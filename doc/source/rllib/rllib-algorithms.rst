@@ -124,7 +124,7 @@ See also how to use `parametric-actions in DQN <rllib-models.html#variable-lengt
     "noisy": True,
     "num_atoms": [more than 1],
     "v_min": -10.0,
-    "v_max": 10.0``
+    "v_max": 10.0`
     (set ``v_min`` and ``v_max`` according to your expected range of returns).
 
 **DQN-specific configs** (see also :ref:`generic algorithm settings <rllib-algo-configuration-generic-settings>`):

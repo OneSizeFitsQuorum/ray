@@ -63,7 +63,7 @@ while large blocks reduce scheduler and communication overhead. The default rang
 attempts to make a good tradeoff for most jobs.
 
 Ray Data attempts to bound block sizes between 1 MiB and 128 MiB. To change the block
-size range, configure the ``target_min_block_size`` and  ``target_max_block_size``
+size range, configure the ``target_min_block_size`` and  ``target_max_block_size`
 attributes of :class:`~ray.data.context.DataContext`.
 
 .. testcode::
@@ -161,7 +161,7 @@ The planner
 
 The Ray Data planner translates logical operators to one or more physical operators. For
 example, the planner translates the ``ReadOp`` logical operator into two physical
-operators: an ``InputDataBuffer`` and ``TaskPoolMapOperator``. Whereas the ``ReadOp``
+operators: an ``InputDataBuffer`` and ``TaskPoolMapOperator``. Whereas the ``ReadOp`
 logical operator only describes the input data, the ``TaskPoolMapOperator`` physical
 operator actually launches tasks to read the data.
 

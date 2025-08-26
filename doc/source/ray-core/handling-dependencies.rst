@@ -458,7 +458,7 @@ Suppose you are developing a library ``my_module`` on Ray.
 
 A typical iteration cycle will involve
 
-1. Making some changes to the source code of ``my_module``
+1. Making some changes to the source code of ``my_module`
 2. Running a Ray script to test the changes, perhaps on a distributed cluster.
 
 To ensure your local changes show up across all Ray workers and can be imported properly, use the ``py_modules`` field.
@@ -490,13 +490,13 @@ The ``runtime_env`` is a Python dictionary or a Python class :class:`ray.runtime
 
   - Examples
 
-    - ``"."  # cwd``
+    - ``"."  # cwd`
 
-    - ``"/src/my_project"``
+    - ``"/src/my_project"`
 
-    - ``"/src/my_project.zip"``
+    - ``"/src/my_project.zip"`
 
-    - ``"s3://path/to/my_dir.zip"``
+    - ``"s3://path/to/my_dir.zip"`
 
   Note: Setting a local directory per-task or per-actor is currently unsupported; it can only be set per-job (i.e., in ``ray.init()``).
 
@@ -509,19 +509,19 @@ The ``runtime_env`` is a Python dictionary or a Python class :class:`ray.runtime
 
   - Examples of entries in the list:
 
-    - ``"."``
+    - ``"."`
 
-    - ``"/local_dependency/my_dir_module"``
+    - ``"/local_dependency/my_dir_module"`
 
-    - ``"/local_dependency/my_file_module.py"``
+    - ``"/local_dependency/my_file_module.py"`
 
-    - ``"s3://bucket/my_module.zip"``
+    - ``"s3://bucket/my_module.zip"`
 
-    - ``my_module # Assumes my_module has already been imported, e.g. via 'import my_module'``
+    - ``my_module # Assumes my_module has already been imported, e.g. via 'import my_module'`
 
-    - ``my_module.whl``
+    - ``my_module.whl`
 
-    - ``"s3://bucket/my_module.whl"``
+    - ``"s3://bucket/my_module.whl"`
 
   The modules will be downloaded to each node on the cluster.
 
@@ -540,7 +540,7 @@ The ``runtime_env`` is a Python dictionary or a Python class :class:`ray.runtime
   Note: In accordance with ``.gitignore`` syntax, if there is a separator (``/``) at the beginning or middle (or both) of the pattern, then the pattern is interpreted relative to the level of the ``working_dir``.
   In particular, you shouldn't use absolute paths (e.g. `/Users/my_working_dir/subdir/`) with `excludes`; rather, you should use the relative path `/subdir/` (written here with a leading `/` to match only the top-level `subdir` directory, rather than all directories named `subdir` at all levels.)
 
-  - Example: ``{"working_dir": "/Users/my_working_dir/", "excludes": ["my_file.txt", "/subdir/", "path/to/dir", "*.log"]}``
+  - Example: ``{"working_dir": "/Users/my_working_dir/", "excludes": ["my_file.txt", "/subdir/", "path/to/dir", "*.log"]}`
 
 - ``pip`` (dict | List[str] | str): Either (1) a list of pip `requirements specifiers <https://pip.pypa.io/en/stable/cli/pip_install/#requirement-specifiers>`_, (2) a string containing the path to a local pip
   `“requirements.txt” <https://pip.pypa.io/en/stable/user_guide/#requirements-files>`_ file, or (3) a python dictionary that has three fields: (a) ``packages`` (required, List[str]): a list of pip packages,
@@ -552,11 +552,11 @@ The ``runtime_env`` is a Python dictionary or a Python class :class:`ray.runtime
   To use a library like Ray Serve or Ray Tune, you will need to include ``"ray[serve]"`` or ``"ray[tune]"`` here.
   The Ray version must match that of the cluster.
 
-  - Example: ``["requests==1.0.0", "aiohttp", "ray[serve]"]``
+  - Example: ``["requests==1.0.0", "aiohttp", "ray[serve]"]`
 
-  - Example: ``"./requirements.txt"``
+  - Example: ``"./requirements.txt"`
 
-  - Example: ``{"packages":["tensorflow", "requests"], "pip_check": False, "pip_version": "==22.0.2;python_version=='3.8.11'"}``
+  - Example: ``{"packages":["tensorflow", "requests"], "pip_check": False, "pip_version": "==22.0.2;python_version=='3.8.11'"}`
 
   When specifying a path to a ``requirements.txt`` file, the file must be present on your local machine and it must be a valid absolute path or relative filepath relative to your local current working directory, *not* relative to the ``working_dir`` specified in the ``runtime_env``.
   Furthermore, referencing local files *within* a ``requirements.txt`` file isn't directly supported (e.g., ``-r ./my-laptop/more-requirements.txt``, ``./my-pkg.whl``). Instead, use the ``${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}`` environment variable in the creation process. For example, use ``-r ${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}/my-laptop/more-requirements.txt`` or ``${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}/my-pkg.whl`` to reference local files, while ensuring they're in the ``working_dir``.
@@ -576,11 +576,11 @@ The ``runtime_env`` is a Python dictionary or a Python class :class:`ray.runtime
   To use a library like Ray Serve or Ray Tune, you will need to include ``"ray[serve]"`` or ``"ray[tune]"`` here.
   The Ray version must match that of the cluster.
 
-  - Example: ``["requests==1.0.0", "aiohttp", "ray[serve]"]``
+  - Example: ``["requests==1.0.0", "aiohttp", "ray[serve]"]`
 
-  - Example: ``"./requirements.txt"``
+  - Example: ``"./requirements.txt"`
 
-  - Example: ``{"packages":["tensorflow", "requests"], "uv_version": "==0.4.0;python_version=='3.8.11'"}``
+  - Example: ``{"packages":["tensorflow", "requests"], "uv_version": "==0.4.0;python_version=='3.8.11'"}`
 
   When specifying a path to a ``requirements.txt`` file, the file must be present on your local machine and it must be a valid absolute path or relative filepath relative to your local current working directory, *not* relative to the ``working_dir`` specified in the ``runtime_env``.
   Furthermore, referencing local files *within* a ``requirements.txt`` file isn't directly supported (e.g., ``-r ./my-laptop/more-requirements.txt``, ``./my-pkg.whl``). Instead, use the ``${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}`` environment variable in the creation process. For example, use ``-r ${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}/my-laptop/more-requirements.txt`` or ``${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}/my-pkg.whl`` to reference local files, while ensuring they're in the ``working_dir``.
@@ -592,13 +592,13 @@ The ``runtime_env`` is a Python dictionary or a Python class :class:`ray.runtime
   The Python and Ray version must match that of the cluster, so you likely should not specify them manually.
   Note that the ``conda`` and ``pip`` keys of ``runtime_env`` cannot both be specified at the same time---to use them together, please use ``conda`` and add your pip dependencies in the ``"pip"`` field in your conda ``environment.yaml``.
 
-  - Example: ``{"dependencies": ["pytorch", "torchvision", "pip", {"pip": ["pendulum"]}]}``
+  - Example: ``{"dependencies": ["pytorch", "torchvision", "pip", {"pip": ["pendulum"]}]}`
 
-  - Example: ``"./environment.yml"``
+  - Example: ``"./environment.yml"`
 
-  - Example: ``"pytorch_p36"``
+  - Example: ``"pytorch_p36"`
 
-  - Example: ``"/home/youruser/anaconda3/envs/pytorch_p36"``
+  - Example: ``"/home/youruser/anaconda3/envs/pytorch_p36"`
 
   When specifying a path to a ``environment.yml`` file, the file must be present on your local machine and it must be a valid absolute path or a relative filepath relative to your local current working directory, *not* relative to the ``working_dir`` specified in the ``runtime_env``.
   Furthermore, referencing local files *within* a ``environment.yml`` file isn't directly supported (e.g., ``-r ./my-laptop/more-requirements.txt``, ``./my-pkg.whl``). Instead, use the ``${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}`` environment variable in the creation process. For example, use ``-r ${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}/my-laptop/more-requirements.txt`` or ``${RAY_RUNTIME_ENV_CREATE_WORKING_DIR}/my-pkg.whl`` to reference local files, while ensuring they're in the ``working_dir``.
@@ -609,21 +609,21 @@ The ``runtime_env`` is a Python dictionary or a Python class :class:`ray.runtime
   You can also reference existing environment variables using ${ENV_VAR} to achieve the appending behavior.
   If the environment variable doesn't exist, it becomes an empty string `""`.
 
-  - Example: ``{"OMP_NUM_THREADS": "32", "TF_WARNINGS": "none"}``
+  - Example: ``{"OMP_NUM_THREADS": "32", "TF_WARNINGS": "none"}`
 
-  - Example: ``{"LD_LIBRARY_PATH": "${LD_LIBRARY_PATH}:/home/admin/my_lib"}``
+  - Example: ``{"LD_LIBRARY_PATH": "${LD_LIBRARY_PATH}:/home/admin/my_lib"}`
 
   - Non-existent variable example: ``{"ENV_VAR_NOT_EXIST": "${ENV_VAR_NOT_EXIST}:/home/admin/my_lib"}`` -> ``ENV_VAR_NOT_EXIST=":/home/admin/my_lib"``.
 
 - ``nsight`` (Union[str, Dict[str, str]]): specifies the config for the Nsight System Profiler. The value is either (1) "default", which refers to the `default config <https://github.com/ray-project/ray/blob/master/python/ray/_private/runtime_env/nsight.py#L20>`_, or (2) a dict of Nsight System Profiler options and their values.
   See :ref:`here <profiling-nsight-profiler>` for more details on setup and usage.
 
-  - Example: ``"default"``
+  - Example: ``"default"`
 
-  - Example: ``{"stop-on-exit": "true", "t": "cuda,cublas,cudnn", "ftrace": ""}``
+  - Example: ``{"stop-on-exit": "true", "t": "cuda,cublas,cudnn", "ftrace": ""}`
 
 - ``image_uri`` (dict): Require a given Docker image. The worker process runs in a container with this image.
-  - Example: ``{"image_uri": "anyscale/ray:2.31.0-py39-cpu"}``
+  - Example: ``{"image_uri": "anyscale/ray:2.31.0-py39-cpu"}`
 
   Note: ``image_uri`` is experimental. If you have some requirements or run into any problems, raise issues in `github <https://github.com/ray-project/ray/issues>`__.
 
@@ -631,17 +631,17 @@ The ``runtime_env`` is a Python dictionary or a Python class :class:`ray.runtime
   Fields:
   (1) setup_timeout_seconds, the timeout of runtime environment creation, timeout is in seconds.
 
-  - Example: ``{"setup_timeout_seconds": 10}``
+  - Example: ``{"setup_timeout_seconds": 10}`
 
-  - Example: ``RuntimeEnvConfig(setup_timeout_seconds=10)``
+  - Example: ``RuntimeEnvConfig(setup_timeout_seconds=10)`
 
   (2) ``eager_install`` (bool): Indicates whether to install the runtime environment on the cluster at ``ray.init()`` time, before the workers are leased. This flag is set to ``True`` by default.
   If set to ``False``, the runtime environment will be only installed when the first task is invoked or when the first actor is created.
   Currently, specifying this option per-actor or per-task is not supported.
 
-  - Example: ``{"eager_install": False}``
+  - Example: ``{"eager_install": False}`
 
-  - Example: ``RuntimeEnvConfig(eager_install=False)``
+  - Example: ``RuntimeEnvConfig(eager_install=False)`
 
 .. _runtime-environments-caching:
 
@@ -711,7 +711,7 @@ Conflict Example:
 You can set an environment variable `RAY_OVERRIDE_JOB_RUNTIME_ENV=1`
 to avoid raising an exception upon a conflict. In this case, the runtime environments
 are inherited in the same way as :ref:`Driver and Task and Actor both specify
-runtime environments <runtime-environments-inheritance>`, where ``ray job submit``
+runtime environments <runtime-environments-inheritance>`, where ``ray job submit`
 is a parent and ``ray.init`` is a child.
 
 .. _runtime-environments-inheritance:
@@ -847,7 +847,7 @@ Your ``runtime_env`` dictionary should contain:
   Check for hidden files and metadata directories in zipped dependencies.
   You can inspect a zip file's contents by running the ``zipinfo -1 zip_file_name.zip`` command in the Terminal.
   Some zipping methods can cause hidden files or metadata directories to appear in the zip file at the top level.
-  To avoid this, use the ``zip -r`` command directly on the directory you want to compress from its parent's directory. For example, if you have a directory structure such as: ``a/b`` and you what to compress ``b``, issue the ``zip -r b`` command from the directory ``a.``
+  To avoid this, use the ``zip -r`` command directly on the directory you want to compress from its parent's directory. For example, if you have a directory structure such as: ``a/b`` and you what to compress ``b``, issue the ``zip -r b`` command from the directory ``a.`
   If Ray detects more than a single directory at the top level, it will use the entire zip file instead of the top-level directory, which may lead to unexpected behavior.
 
 Currently, four types of remote URIs are supported for hosting ``working_dir`` and ``py_modules`` packages:
@@ -859,7 +859,7 @@ Currently, four types of remote URIs are supported for hosting ``working_dir`` a
 
   - Example:
 
-    - ``runtime_env = {"working_dir": "https://github.com/example_username/example_respository/archive/HEAD.zip"}``
+    - ``runtime_env = {"working_dir": "https://github.com/example_username/example_respository/archive/HEAD.zip"}`
 
 - ``S3``: ``S3`` refers to URIs starting with ``s3://`` that point to compressed packages stored in `AWS S3 <https://aws.amazon.com/s3/>`_.
   To use packages via ``S3`` URIs, you must have the ``smart_open`` and ``boto3`` libraries (you can install them using ``pip install smart_open`` and ``pip install boto3``).
@@ -869,7 +869,7 @@ Currently, four types of remote URIs are supported for hosting ``working_dir`` a
 
   - Example:
 
-    - ``runtime_env = {"working_dir": "s3://example_bucket/example_file.zip"}``
+    - ``runtime_env = {"working_dir": "s3://example_bucket/example_file.zip"}`
 
 - ``GS``: ``GS`` refers to URIs starting with ``gs://`` that point to compressed packages stored in `Google Cloud Storage <https://cloud.google.com/storage>`_.
   To use packages via ``GS`` URIs, you must have the ``smart_open`` and ``google-cloud-storage`` libraries (you can install them using ``pip install smart_open`` and ``pip install google-cloud-storage``).
@@ -879,7 +879,7 @@ Currently, four types of remote URIs are supported for hosting ``working_dir`` a
 
   - Example:
 
-    - ``runtime_env = {"working_dir": "gs://example_bucket/example_file.zip"}``
+    - ``runtime_env = {"working_dir": "gs://example_bucket/example_file.zip"}`
 
 - ``Azure``: ``Azure`` refers to URIs starting with ``azure://`` that point to compressed packages stored in `Azure Blob Storage <https://azure.microsoft.com/en-us/products/storage/blobs>`_.
   To use packages via ``Azure`` URIs, you must have the ``smart_open``, ``azure-storage-blob``, and ``azure-identity`` libraries (you can install them using ``pip install smart_open[azure] azure-storage-blob azure-identity``).
@@ -890,7 +890,7 @@ Currently, four types of remote URIs are supported for hosting ``working_dir`` a
 
   - Example:
 
-    - ``runtime_env = {"working_dir": "azure://container-name/example_file.zip"}``
+    - ``runtime_env = {"working_dir": "azure://container-name/example_file.zip"}`
 
 Note that the ``smart_open``, ``boto3``, ``google-cloud-storage``, ``azure-storage-blob``, and ``azure-identity`` packages are not installed by default, and it is not sufficient to specify them in the ``pip`` section of your ``runtime_env``.
 The relevant packages must already be installed on all nodes of the cluster when Ray starts.

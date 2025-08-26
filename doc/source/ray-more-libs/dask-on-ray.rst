@@ -32,55 +32,55 @@ workload. Using the Dask-on-Ray scheduler, the entire Dask ecosystem can be exec
      * - Ray Version
        - Dask Version
      * - ``2.48.0`` or above
-       - | ``2023.6.1 (Python version < 3.12)``
-         | ``2025.5.0 (Python version >= 3.12)``
-     * - ``2.40.0`` to ``2.47.1``
-       - | ``2022.10.2 (Python version < 3.12)``
-         | ``2024.6.0 (Python version >= 3.12)``
-     * - ``2.34.0`` to ``2.39.0``
-       - | ``2022.10.1 (Python version < 3.12)``
-         | ``2024.6.0 (Python version >= 3.12)``
-     * - ``2.8.0`` to ``2.33.x``
-       - ``2022.10.1``
-     * - ``2.5.0`` to ``2.7.x``
-       - | ``2022.2.0 (Python version < 3.8)``
-         | ``2022.10.1 (Python version >= 3.8)``
-     * - ``2.4.0``
-       - ``2022.10.1``
-     * - ``2.3.0``
-       - ``2022.10.1``
-     * - ``2.2.0``
-       - ``2022.10.1``
-     * - ``2.1.0``
-       - ``2022.2.0``
-     * - ``2.0.0``
-       - ``2022.2.0``
-     * - ``1.13.0``
-       - ``2022.2.0``
-     * - ``1.12.0``
-       - ``2022.2.0``
-     * - ``1.11.0``
-       - ``2022.1.0``
-     * - ``1.10.0``
-       - ``2021.12.0``
-     * - ``1.9.2``
-       - ``2021.11.0``
-     * - ``1.9.1``
-       - ``2021.11.0``
-     * - ``1.9.0``
-       - ``2021.11.0``
-     * - ``1.8.0``
-       - ``2021.9.1``
-     * - ``1.7.0``
-       - ``2021.9.1``
-     * - ``1.6.0``
-       - ``2021.8.1``
-     * - ``1.5.0``
-       - ``2021.7.0``
-     * - ``1.4.1``
-       - ``2021.6.1``
-     * - ``1.4.0``
-       - ``2021.5.0``
+       - | ``2023.6.1 (Python version < 3.12)`
+         | ``2025.5.0 (Python version >= 3.12)`
+     * - ``2.40.0`` to ``2.47.1`
+       - | ``2022.10.2 (Python version < 3.12)`
+         | ``2024.6.0 (Python version >= 3.12)`
+     * - ``2.34.0`` to ``2.39.0`
+       - | ``2022.10.1 (Python version < 3.12)`
+         | ``2024.6.0 (Python version >= 3.12)`
+     * - ``2.8.0`` to ``2.33.x`
+       - ``2022.10.1`
+     * - ``2.5.0`` to ``2.7.x`
+       - | ``2022.2.0 (Python version < 3.8)`
+         | ``2022.10.1 (Python version >= 3.8)`
+     * - ``2.4.0`
+       - ``2022.10.1`
+     * - ``2.3.0`
+       - ``2022.10.1`
+     * - ``2.2.0`
+       - ``2022.10.1`
+     * - ``2.1.0`
+       - ``2022.2.0`
+     * - ``2.0.0`
+       - ``2022.2.0`
+     * - ``1.13.0`
+       - ``2022.2.0`
+     * - ``1.12.0`
+       - ``2022.2.0`
+     * - ``1.11.0`
+       - ``2022.1.0`
+     * - ``1.10.0`
+       - ``2021.12.0`
+     * - ``1.9.2`
+       - ``2021.11.0`
+     * - ``1.9.1`
+       - ``2021.11.0`
+     * - ``1.9.0`
+       - ``2021.11.0`
+     * - ``1.8.0`
+       - ``2021.9.1`
+     * - ``1.7.0`
+       - ``2021.9.1`
+     * - ``1.6.0`
+       - ``2021.8.1`
+     * - ``1.5.0`
+       - ``2021.7.0`
+     * - ``1.4.1`
+       - ``2021.6.1`
+     * - ``1.4.0`
+       - ``2021.5.0`
 
 Scheduler
 ---------
@@ -98,7 +98,7 @@ Here's an example:
 .. note::
   For execution on a Ray cluster, you should *not* use the
   `Dask.distributed <https://distributed.dask.org/en/latest/quickstart.html>`__
-  client; simply use plain Dask and its collections, and pass ``ray_dask_get``
+  client; simply use plain Dask and its collections, and pass ``ray_dask_get`
   to ``.compute()`` calls, set the scheduler in one of the other ways detailed `here <https://docs.dask.org/en/latest/scheduling.html#configuration>`__, or use our ``enable_dask_on_ray`` configuration helper. Follow the instructions for
   :ref:`using Ray on a cluster <cluster-index>` to modify the
   ``ray.init()`` call.
@@ -273,7 +273,7 @@ execution time exceeds some user-defined threshold:
 .. note::
   The existing Dask scheduler callbacks (``start``, ``start_state``,
   ``pretask``, ``posttask``, ``finish``) are also available, which can be used to
-  introspect the Dask task to Ray task conversion process, but note that the ``pretask``
+  introspect the Dask task to Ray task conversion process, but note that the ``pretask`
   and ``posttask`` hooks are executed before and after the Ray task is *submitted*, not
   executed, and that ``finish`` is executed after all Ray tasks have been
   *submitted*, not executed.

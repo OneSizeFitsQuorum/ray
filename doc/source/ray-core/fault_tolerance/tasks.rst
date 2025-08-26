@@ -19,7 +19,7 @@ to get the result, either by calling ``ray.get`` or if the worker is executing
 another task that depends on the object. If the user's exception type can be subclassed,
 the raised exception is an instance of both ``RayTaskError`` and the user's exception type
 so the user can try-catch either of them. Otherwise, the wrapped exception is just
-``RayTaskError`` and the actual user's exception type can be accessed via the ``cause``
+``RayTaskError`` and the actual user's exception type can be accessed via the ``cause`
 field of the ``RayTaskError``.
 
 .. literalinclude:: ../doc_code/task_exceptions.py
@@ -136,9 +136,9 @@ Cancelling misbehaving tasks
 ----------------------------
 
 If a task is hanging, you may want to cancel the task to continue to make
-progress. You can do this by calling ``ray.cancel`` on an ``ObjectRef``
+progress. You can do this by calling ``ray.cancel`` on an ``ObjectRef`
 returned by the task. By default, this will send a KeyboardInterrupt to the
-task's worker if it is mid-execution.  Passing ``force=True`` to ``ray.cancel``
+task's worker if it is mid-execution.  Passing ``force=True`` to ``ray.cancel`
 will force-exit the worker. See :func:`the API reference <ray.cancel>` for
 ``ray.cancel`` for more details.
 

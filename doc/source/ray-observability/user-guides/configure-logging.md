@@ -94,7 +94,7 @@ The resulting output follows:
 
 ### Coloring Actor log prefixes
 By default, Ray prints Actor log prefixes in light blue.
-Turn color logging off by setting the environment variable ``RAY_COLOR_PREFIX=0``
+Turn color logging off by setting the environment variable ``RAY_COLOR_PREFIX=0`
 - for example, when outputting logs to a file or other location that doesn't support ANSI codes.
 Or activate multi-color prefixes by setting the environment variable ``RAY_COLOR_PREFIX=1``;
 this indexes into an array of colors modulo the PID of each process.

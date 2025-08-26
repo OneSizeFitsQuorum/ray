@@ -40,7 +40,7 @@ These are the environment variables Ray Tune currently considers:
 * **TUNE_MAX_LEN_IDENTIFIER**: Maximum length of trial subdirectory names (those
   with the parameter values in them)
 * **TUNE_MAX_PENDING_TRIALS_PG**: Maximum number of pending trials when placement groups are used. Defaults
-  to ``auto``, which will be updated to ``max(200, cluster_cpus * 1.1)`` for random/grid search and ``1``
+  to ``auto``, which will be updated to ``max(200, cluster_cpus * 1.1)`` for random/grid search and ``1`
   for any other search algorithms.
 * **TUNE_PLACEMENT_GROUP_PREFIX**: Prefix for placement groups created by Ray Tune. This prefix is used
   e.g. to identify placement groups that should be cleaned up on start/stop of the tuning run. This is
@@ -78,7 +78,7 @@ These are the environment variables Ray Tune currently considers:
   unsuccessful. After that, the trial is not restored to its previous checkpoint but rather from scratch.
   Default is ``0``. While this retry counter is taking effect, per trial failure number will not be incremented, which
   is compared against ``max_failures``.
-* **TUNE_ONLY_STORE_CHECKPOINT_SCORE_ATTRIBUTE**:  If set to ``1``, only the metric defined by ``checkpoint_score_attribute``
+* **TUNE_ONLY_STORE_CHECKPOINT_SCORE_ATTRIBUTE**:  If set to ``1``, only the metric defined by ``checkpoint_score_attribute`
   will be stored with each ``Checkpoint``. As a result, ``Result.best_checkpoints`` will contain only this metric,
   omitting others that would normally be included. This can significantly reduce memory usage, especially when many
   checkpoints are stored or when metrics are large. Defaults to ``0`` (i.e., all metrics are stored).
@@ -92,5 +92,5 @@ These are the environment variables Ray Tune currently considers:
 
 There are some environment variables that are mostly relevant for integrated libraries:
 
-* **WANDB_API_KEY**: Weights and Biases API key. You can also use ``wandb login``
+* **WANDB_API_KEY**: Weights and Biases API key. You can also use ``wandb login`
   instead.

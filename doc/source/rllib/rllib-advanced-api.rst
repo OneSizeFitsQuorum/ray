@@ -145,7 +145,7 @@ b) log-likelihood:
    :start-after: __sphinx_doc_begin_get_exploration_action__
    :end-before: __sphinx_doc_end_get_exploration_action__
 
-At the highest level, the ``Algorithm.compute_actions`` and ``Policy.compute_actions``
+At the highest level, the ``Algorithm.compute_actions`` and ``Policy.compute_actions`
 methods have a boolean ``explore`` switch, which RLlib passes into
 ``Exploration.get_exploration_action``. If ``explore=None``, RLlib uses the value of
 ``Algorithm.config[“explore”]``, which serves as a main switch for
@@ -223,7 +223,7 @@ RLlib runs an "evaluation step":
    :start-after: __rllib-adv_api_evaluation_1_begin__
    :end-before: __rllib-adv_api_evaluation_1_end__
 
-An evaluation step runs, using its own ``EnvRunner`` instances, for ``evaluation_duration``
+An evaluation step runs, using its own ``EnvRunner`` instances, for ``evaluation_duration`
 episodes or time-steps, depending on the ``evaluation_duration_unit`` setting, which can take values
 of either ``"episodes"``, which is the default, or ``"timesteps"``.
 
@@ -232,7 +232,7 @@ of either ``"episodes"``, which is the default, or ``"timesteps"``.
    :start-after: __rllib-adv_api_evaluation_2_begin__
    :end-before: __rllib-adv_api_evaluation_2_end__
 
-Note that when using ``evaluation_duration_unit=timesteps`` and the ``evaluation_duration``
+Note that when using ``evaluation_duration_unit=timesteps`` and the ``evaluation_duration`
 setting isn't divisible by the number of evaluation workers, RLlib rounds up the number of time-steps specified to
 the nearest whole number of time-steps that's divisible by the number of evaluation
 workers.
@@ -309,7 +309,7 @@ RLlib determines the level of parallelism within the evaluation step by the
 ``evaluation_num_env_runners`` setting. Set this parameter to a larger value if you want the desired
 evaluation episodes or time-steps to run as much in parallel as possible.
 For example, if ``evaluation_duration=10``, ``evaluation_duration_unit=episodes``,
-and ``evaluation_num_env_runners=10``, each evaluation ``EnvRunner``
+and ``evaluation_num_env_runners=10``, each evaluation ``EnvRunner`
 only has to run one episode in each evaluation step.
 
 In case you observe occasional failures in the evaluation EnvRunners during
@@ -338,7 +338,7 @@ the other evaluation EnvRunners still complete the job.
 
 If you want to entirely customize the evaluation step,
 set ``custom_eval_function`` in the config to a callable, which takes the Algorithm
-object and an :py:class:`~ray.rllib.env.env_runner_group.EnvRunnerGroup` object, the Algorithm's ``self.evaluation_workers``
+object and an :py:class:`~ray.rllib.env.env_runner_group.EnvRunnerGroup` object, the Algorithm's ``self.evaluation_workers`
 :py:class:`~ray.rllib.env.env_runner_group.EnvRunnerGroup` instance, and returns a metrics dictionary.
 See `algorithm.py <https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py>`__
 for further documentation.

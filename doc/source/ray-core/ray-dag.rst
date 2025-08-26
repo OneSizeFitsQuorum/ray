@@ -86,7 +86,7 @@ Ray DAG with custom InputNode
 
 ``InputNode`` is the singleton node of a DAG that represents user input value at
 runtime. It should be used within a context manager with no args, and called
-as args of ``dag_node.execute()``
+as args of ``dag_node.execute()`
 
 .. tab-set::
 
@@ -100,7 +100,7 @@ as args of ``dag_node.execute()``
 Ray DAG with multiple MultiOutputNode
 -------------------------------------
 
-``MultiOutputNode`` is useful when you have more than 1 output from a DAG. ``dag_node.execute()``
+``MultiOutputNode`` is useful when you have more than 1 output from a DAG. ``dag_node.execute()`
 returns a list of Ray object references passed to ``MultiOutputNode``. The below example
 shows the multi output node of 2 outputs.
 

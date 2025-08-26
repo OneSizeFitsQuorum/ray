@@ -6,7 +6,7 @@ Monitoring with the CLI or SDK
 Monitoring and debugging capabilities in Ray are available through a CLI or SDK.
 
 
-CLI command ``ray status``
+CLI command ``ray status`
 ----------------------------
 You can monitor node status and resource usage by running the CLI command, ``ray status``, on the head node. It displays
 

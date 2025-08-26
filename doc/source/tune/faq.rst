@@ -274,7 +274,7 @@ leveraging distributed training via Ray Train. In these cases, you can use
 
 Here, you're requesting 2 additional CPUs for remote tasks. These two additional
 actors do not necessarily have to live on the same node as your main trainable.
-In fact, you can control this via the ``strategy`` parameter. In this example, ``PACK``
+In fact, you can control this via the ``strategy`` parameter. In this example, ``PACK`
 will try to schedule the actors on the same node, but allows them to be scheduled
 on other nodes as well. Please refer to the
 :ref:`placement groups documentation <ray-placement-group-doc-ref>` to learn more
@@ -438,7 +438,7 @@ If this is the case, the dataset is serialized and written to disk repeatedly du
 checkpointing, which takes a long time.
 
 **Solution**: Use :func:`tune.with_parameters <ray.tune.with_parameters>` to pass large objects to
-function trainables via the objects store. For class trainables you can do this manually via ``ray.put()``
+function trainables via the objects store. For class trainables you can do this manually via ``ray.put()`
 and ``ray.get()``. If you need to pass a class definition, consider passing an
 indicator (e.g. a string) instead and let the trainable select the class instead. Generally, your config
 dictionary should only contain primitive types, like numbers or strings.
@@ -465,7 +465,7 @@ Each result is processed by the search algorithm, trial scheduler, and callbacks
 trial syncer). If you're reporting a large number of results per trial (e.g. multiple results per second),
 this can take a long time.
 
-**Solution**: The solution here is obvious: Just don't report results that often. In class trainables, ``step()``
+**Solution**: The solution here is obvious: Just don't report results that often. In class trainables, ``step()`
 should maybe process a larger chunk of data. In function trainables, you can report only every n-th iteration
 of the training loop. Try to balance the number of results you really need to make scheduling or searching
 decisions. If you need more fine grained metrics for logging or tracking, consider using a separate logging

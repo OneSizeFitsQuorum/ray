@@ -189,7 +189,7 @@ that implements saving and loading checkpoints.
     # This starts the run!
     results = tuner.fit()
 
-In this example, trial checkpoints will be saved to: ``s3://my-checkpoints-bucket/path/my-tune-exp/<trial_name>/checkpoint_<step>``
+In this example, trial checkpoints will be saved to: ``s3://my-checkpoints-bucket/path/my-tune-exp/<trial_name>/checkpoint_<step>`
 
 .. _tune-syncing-restore-from-uri:
 

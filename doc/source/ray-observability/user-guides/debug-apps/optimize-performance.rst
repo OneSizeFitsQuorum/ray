@@ -40,7 +40,7 @@ application! The most common reasons are the following.
   environment variable like ``MKL_NUM_THREADS`` (or the equivalent depending on
   your installation) to ``1``.
 
-  For many - but not all - libraries, you can diagnose this by opening ``top``
+  For many - but not all - libraries, you can diagnose this by opening ``top`
   while your application is running. If one process is using most of the CPUs,
   and the others are using a small amount, this may be the problem. The most
   common exception is PyTorch, which will appear to be using all the cores
@@ -94,7 +94,7 @@ trace is shown. To show native code frames, set the URL parameter ``native=1`` (
 
 Clicking "CPU Flame Graph" takes a number of stack trace samples and combine them into a flame graph visualization.
 This flame graph can be useful for understanding the CPU activity of the particular process. To adjust the duration
-of the flame graph, you can change the ``duration`` parameter in the URL. Similarly, you can change the ``native``
+of the flame graph, you can change the ``duration`` parameter in the URL. Similarly, you can change the ``native`
 parameter to enable native profiling.
 
 .. image:: /images/flamegraph.png

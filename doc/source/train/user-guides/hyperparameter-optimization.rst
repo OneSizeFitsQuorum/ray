@@ -85,7 +85,7 @@ set :class:`tune.TuneConfig(max_concurrent_trials) <ray.tune.TuneConfig>` on the
 
 As a concrete example, consider a fixed sized cluster with 128 CPUs and 8 GPUs.
 
-* The ``Tuner(param_space)`` sweeps over 4 hyperparameter configurations with a grid search: ``param_space={“train_loop_config”: {“batch_size”: tune.grid_search([8, 16, 32, 64])}}``
+* The ``Tuner(param_space)`` sweeps over 4 hyperparameter configurations with a grid search: ``param_space={“train_loop_config”: {“batch_size”: tune.grid_search([8, 16, 32, 64])}}`
 * Each Ray Train run is configured to train with 4 GPU workers: ``ScalingConfig(num_workers=4, use_gpu=True)``. Since there are only 8 GPUs, only 2 Train runs can acquire their full set of resources at a time.
 * However, since there are many CPUs available in the cluster, the 4 total Ray Tune trials (which default to requesting 1 CPU) can be launched immediately.
   This results in 2 extra Ray Tune trial processes being launched, even though their inner Ray Train run just waits for resources until one of the other trials finishes.

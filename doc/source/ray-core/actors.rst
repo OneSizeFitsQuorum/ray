@@ -147,7 +147,7 @@ Specify resource requirements in actors. See :ref:`resource-requirements` for mo
 Calling the actor
 -----------------
 
-You can interact with the actor by calling its methods with the ``remote``
+You can interact with the actor by calling its methods with the ``remote`
 operator. You can then call ``get`` on the object ref to retrieve the actual
 value.
 
@@ -404,7 +404,7 @@ In Ray, Task cancellation behavior is contingent on the Task's current state:
 
 **Unscheduled tasks**:
 If Ray hasn't scheduled an Actor Task yet, Ray attempts to cancel the scheduling.
-When Ray successfully cancels at this stage, it invokes ``ray.get(actor_task_ref)``
+When Ray successfully cancels at this stage, it invokes ``ray.get(actor_task_ref)`
 which produces a :class:`TaskCancelledError <ray.exceptions.TaskCancelledError>`.
 
 **Running actor tasks (regular actor, threaded actor)**:

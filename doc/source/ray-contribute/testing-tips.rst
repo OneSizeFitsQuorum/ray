@@ -7,7 +7,7 @@ We've put together a list of tips and tricks for common testing practices for Ra
 .. contents::
   :local:
 
-Tip 1: Fixing the resource quantity with ``ray.init(num_cpus=...)``
+Tip 1: Fixing the resource quantity with ``ray.init(num_cpus=...)`
 -------------------------------------------------------------------
 
 By default, ``ray.init()`` detects the number of CPUs and GPUs on your local machine/cluster.
@@ -18,7 +18,7 @@ If tests are written to depend on ``ray.init()``, they may be implicitly written
 
 This may easily result in tests exhibiting unexpected, flaky, or faulty behavior that is hard to reproduce.
 
-To overcome this, you should override the detected resources by setting them in ``ray.init`` like: ``ray.init(num_cpus=2)``
+To overcome this, you should override the detected resources by setting them in ``ray.init`` like: ``ray.init(num_cpus=2)`
 
 Tip 2: Sharing the ray cluster across tests if possible
 --------------------------------------------------------
@@ -64,7 +64,7 @@ Depending on your application, there are certain cases where it may be unsafe to
 2. If your remote actor/task sets any sort of process-level global variables.
 
 
-Tip 3: Create a mini-cluster with ``ray.cluster_utils.Cluster``
+Tip 3: Create a mini-cluster with ``ray.cluster_utils.Cluster`
 ---------------------------------------------------------------
 
 If writing an application for a cluster setting, you may want to mock a multi-node Ray cluster. This can be done with the ``ray.cluster_utils.Cluster`` utility.

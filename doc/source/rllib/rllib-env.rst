@@ -229,7 +229,7 @@ For a complete example using a custom environment, see the
 In the preceding example, the ``env_creator`` function takes a ``config`` argument.
 This config is primarily a dictionary containing required settings.
 However, you can also access additional properties within the ``config`` variable. For example,
-use ``config.worker_index`` to get the remote EnvRunner index or ``config.num_workers``
+use ``config.worker_index`` to get the remote EnvRunner index or ``config.num_workers`
 for the total number of EnvRunners used. This approach can help customize environments
 within an ensemble and make environments running on some EnvRunners behave differently from
 those running on other EnvRunners.
@@ -292,7 +292,7 @@ in combination.
 1. **Vectorization within a single process:** Many environments achieve high
    frame rates per core but are limited by policy inference latency. To address
    this limitation, create multiple environments per process to batch the policy forward pass
-   across these vectorized environments. Set ``config.env_runners(num_envs_per_env_runner=..)``
+   across these vectorized environments. Set ``config.env_runners(num_envs_per_env_runner=..)`
    to create more than one environment copy per :py:class:`~ray.rllib.envs.env_runner.EnvRunner`
    actor. Additionally, you can make the individual sub-environments within a vector
    independent processes through Python's multiprocessing used by gymnasium.
@@ -316,4 +316,4 @@ Expensive Environments
 Some environments may require substantial resources to initialize and run. If your environments require
 more than 1 CPU per :py:class:`~ray.rllib.envs.env_runner.EnvRunner`, you can provide more resources for each
 actor by setting the following config options:
-``config.env_runners(num_cpus_per_env_runner=.., num_gpus_per_env_runner=..)``
+``config.env_runners(num_cpus_per_env_runner=.., num_gpus_per_env_runner=..)`

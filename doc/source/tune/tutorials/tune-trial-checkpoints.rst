@@ -63,7 +63,7 @@ You can checkpoint with three different mechanisms: manually, periodically, and 
 Manual Checkpointing
 ~~~~~~~~~~~~~~~~~~~~
 
-A custom Trainable can manually trigger checkpointing by returning ``should_checkpoint: True``
+A custom Trainable can manually trigger checkpointing by returning ``should_checkpoint: True`
 (or ``tune.result.SHOULD_CHECKPOINT: True``) in the result dictionary of `step`.
 This can be especially helpful in spot instances:
 
@@ -110,19 +110,19 @@ is determined manually within the user-defined training loop. See the compatibil
    * -
      - Class API
      - Function API
-   * - ``num_to_keep``
+   * - ``num_to_keep`
      - ✅
      - ✅
-   * - ``checkpoint_score_attribute``
+   * - ``checkpoint_score_attribute`
      - ✅
      - ✅
-   * - ``checkpoint_score_order``
+   * - ``checkpoint_score_order`
      - ✅
      - ✅
-   * - ``checkpoint_frequency``
+   * - ``checkpoint_frequency`
      - ✅
      - ❌
-   * - ``checkpoint_at_end``
+   * - ``checkpoint_at_end`
      - ✅
      - ❌
 

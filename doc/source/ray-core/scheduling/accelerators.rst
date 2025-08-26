@@ -55,7 +55,7 @@ If you need to, you can :ref:`override <specify-node-resources>` this.
 
             You can set the ``CUDA_VISIBLE_DEVICES`` environment variable before starting a Ray node
             to limit the NVIDIA GPUs that are visible to Ray.
-            For example, ``CUDA_VISIBLE_DEVICES=1,3 ray start --head --num-gpus=2``
+            For example, ``CUDA_VISIBLE_DEVICES=1,3 ray start --head --num-gpus=2`
             lets Ray only see devices 1 and 3.
 
     .. tab-item:: AMD GPU
@@ -65,7 +65,7 @@ If you need to, you can :ref:`override <specify-node-resources>` this.
 
             You can set the ``ROCR_VISIBLE_DEVICES`` environment variable before starting a Ray node
             to limit the AMD GPUs that are visible to Ray.
-            For example, ``ROCR_VISIBLE_DEVICES=1,3 ray start --head --num-gpus=2``
+            For example, ``ROCR_VISIBLE_DEVICES=1,3 ray start --head --num-gpus=2`
             lets Ray only see devices 1 and 3.
 
     .. tab-item:: Intel GPU
@@ -75,7 +75,7 @@ If you need to, you can :ref:`override <specify-node-resources>` this.
 
             You can set the ``ONEAPI_DEVICE_SELECTOR`` environment variable before starting a Ray node
             to limit the Intel GPUs that are visible to Ray.
-            For example, ``ONEAPI_DEVICE_SELECTOR=1,3 ray start --head --num-gpus=2``
+            For example, ``ONEAPI_DEVICE_SELECTOR=1,3 ray start --head --num-gpus=2`
             lets Ray only see devices 1 and 3.
 
     .. tab-item:: AWS Neuron Core
@@ -85,7 +85,7 @@ If you need to, you can :ref:`override <specify-node-resources>` this.
 
             You can set the ``NEURON_RT_VISIBLE_CORES`` environment variable before starting a Ray node
             to limit the AWS Neuro Cores that are visible to Ray.
-            For example, ``NEURON_RT_VISIBLE_CORES=1,3 ray start --head --resources='{"neuron_cores": 2}'``
+            For example, ``NEURON_RT_VISIBLE_CORES=1,3 ray start --head --resources='{"neuron_cores": 2}'`
             lets Ray only see devices 1 and 3.
 
             See the `Amazon documentation<https://awslabs.github.io/data-on-eks/docs/category/inference-on-eks>` for more examples of Ray on Neuron with EKS as an orchestration substrate.
@@ -97,7 +97,7 @@ If you need to, you can :ref:`override <specify-node-resources>` this.
 
             You can set the ``TPU_VISIBLE_CHIPS`` environment variable before starting a Ray node
             to limit the Google TPUs that are visible to Ray.
-            For example, ``TPU_VISIBLE_CHIPS=1,3 ray start --head --resources='{"TPU": 2}'``
+            For example, ``TPU_VISIBLE_CHIPS=1,3 ray start --head --resources='{"TPU": 2}'`
             lets Ray only see devices 1 and 3.
 
     .. tab-item:: Intel Gaudi
@@ -107,7 +107,7 @@ If you need to, you can :ref:`override <specify-node-resources>` this.
 
             You can set the ``HABANA_VISIBLE_MODULES`` environment variable before starting a Ray node
             to limit the Intel Gaudi HPUs that are visible to Ray.
-            For example, ``HABANA_VISIBLE_MODULES=1,3 ray start --head --resources='{"HPU": 2}'``
+            For example, ``HABANA_VISIBLE_MODULES=1,3 ray start --head --resources='{"HPU": 2}'`
             lets Ray only see devices 1 and 3.
 
     .. tab-item:: Huawei Ascend
@@ -117,7 +117,7 @@ If you need to, you can :ref:`override <specify-node-resources>` this.
 
             You can set the ``ASCEND_RT_VISIBLE_DEVICES`` environment variable before starting a Ray node
             to limit the Huawei Ascend NPUs that are visible to Ray.
-            For example, ``ASCEND_RT_VISIBLE_DEVICES=1,3 ray start --head --resources='{"NPU": 2}'``
+            For example, ``ASCEND_RT_VISIBLE_DEVICES=1,3 ray start --head --resources='{"NPU": 2}'`
             lets Ray only see devices 1 and 3.
 
     .. tab-item:: Rebellions RBLN
@@ -127,7 +127,7 @@ If you need to, you can :ref:`override <specify-node-resources>` this.
 
             You can set the ``RBLN_DEVICES`` environment variable before starting a Ray node
             to limit the Rebellions RBLNs that are visible to Ray.
-            For example, ``RBLN_DEVICES=1,3 ray start --head --resources='{"RBLN": 2}'``
+            For example, ``RBLN_DEVICES=1,3 ray start --head --resources='{"RBLN": 2}'`
             lets Ray only see devices 1 and 3.
 
 .. note::
@@ -650,7 +650,7 @@ it when the task finishes executing. This can lead to problems the next time a
 task tries to use the same GPU. To address the problem, Ray disables the worker
 process reuse between GPU tasks by default, where the GPU resources is released after
 the task process exits. Since this adds overhead to GPU task scheduling,
-you can re-enable worker reuse by setting ``max_calls=0``
+you can re-enable worker reuse by setting ``max_calls=0`
 in the :func:`ray.remote <ray.remote>` decorator.
 
 .. testcode::

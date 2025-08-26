@@ -128,7 +128,7 @@ We use [`myst-parser`](https://myst-parser.readthedocs.io/en/latest/) to allow y
 [Markedly Structured Text (MyST)](https://myst-parser.readthedocs.io/en/latest/).
 The two formats can be converted to each other, so the choice is up to you.
 Having said that, it's important to know that MyST is
-[common markdown compliant](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#commonmark-block-tokens). Past experience has shown that most developers are familiar with `md` syntax, so
+[CommonMark compliant](https://myst-parser.readthedocs.io/en/latest/syntax/reference.html#commonmark-block-tokens). Past experience has shown that most developers are familiar with `md` syntax, so
 if you intend to add a new document, we recommend starting from an `.md` file.
 
 The Ray documentation also fully supports executable formats like [Jupyter Notebooks](https://jupyter.org/).

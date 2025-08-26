@@ -121,13 +121,13 @@ Requests: Client → Server
 
 - **``PING``**
 
-  - Example: ``{"type": "PING"}``
+  - Example: ``{"type": "PING"}`
   - Purpose: Initial handshake to establish communication.
   - Expected Response: ``{"type": "PONG"}``.
 
 - **``GET_CONFIG``**
 
-  - Example: ``{"type": "GET_CONFIG"}``
+  - Example: ``{"type": "GET_CONFIG"}`
   - Purpose: Request the relevant configuration (for example, how many timesteps to collect for a single `EPISODES_AND_GET_STATE` message; see below).
   - Expected Response: ``{"type": "SET_CONFIG", "env_steps_per_sample": 500, "force_on_policy": true}``.
 
@@ -148,12 +148,12 @@ Responses: Server → Client
 
 - **``PONG``**
 
-  - Example: ``{"type": "PONG"}``
+  - Example: ``{"type": "PONG"}`
   - Purpose: Acknowledgment of the ``PING`` request to confirm connectivity.
 
 - **``SET_STATE``**
 
-  - Example: ``{"type": "PONG"}``
+  - Example: ``{"type": "PONG"}`
   - Purpose: Provide the client with the current state (for example, model weights).
   - Body:
 

@@ -21,7 +21,7 @@ Physical resources are resources that a machine physically has such as physical 
 and logical resources are virtual resources defined by a system.
 
 Ray resources are **logical** and don’t need to have 1-to-1 mapping with physical resources.
-For example, you can start a Ray head node with 0 logical CPUs via ``ray start --head --num-cpus=0``
+For example, you can start a Ray head node with 0 logical CPUs via ``ray start --head --num-cpus=0`
 even if it physically has eight
 (This signals the Ray scheduler to not schedule any tasks or actors that require logical CPU resources
 on the head node, mainly to reserve the head node for running Ray system processes.).
@@ -66,7 +66,7 @@ Besides pre-defined resources, you can also specify a Ray node's custom resource
 Some use cases for custom resources:
 
 - Your node has special hardware and you can represent it as a custom resource.
-  Then your tasks or actors can request the custom resource via ``@ray.remote(resources={"special_hardware": 1})``
+  Then your tasks or actors can request the custom resource via ``@ray.remote(resources={"special_hardware": 1})`
   and Ray will schedule the tasks or actors to the node that has the custom resource.
 - You can use custom resources as labels to tag nodes and you can achieve label based affinity scheduling.
   For example, you can do ``ray.remote(resources={"custom_label": 0.001})`` to schedule tasks or actors to nodes with ``custom_label`` custom resource.

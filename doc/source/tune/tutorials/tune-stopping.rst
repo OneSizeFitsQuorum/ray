@@ -31,7 +31,7 @@ down training gracefully and saves the final experiment state.
 
 .. note::
 
-    Forcefully terminating a Tune experiment, for example, through multiple ``Ctrl+C``
+    Forcefully terminating a Tune experiment, for example, through multiple ``Ctrl+C`
     commands, will not give Tune the opportunity to snapshot the experiment state
     one last time. If you resume the experiment in the future, this could result
     in resuming with stale state.

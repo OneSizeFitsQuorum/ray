@@ -71,19 +71,19 @@ For PyArrow Users
 
    * - PyArrow Table API
      - Ray Data API
-   * - ``pa.Table.schema``
+   * - ``pa.Table.schema`
      - :meth:`ds.schema() <ray.data.Dataset.schema>`
-   * - ``pa.Table.num_rows``
+   * - ``pa.Table.num_rows`
      - :meth:`ds.count() <ray.data.Dataset.count>`
-   * - ``pa.Table.filter()``
+   * - ``pa.Table.filter()`
      - :meth:`ds.filter() <ray.data.Dataset.filter>`
-   * - ``pa.Table.drop()``
+   * - ``pa.Table.drop()`
      - :meth:`ds.drop_columns() <ray.data.Dataset.drop_columns>`
-   * - ``pa.Table.add_column()``
+   * - ``pa.Table.add_column()`
      - :meth:`ds.add_column() <ray.data.Dataset.add_column>`
-   * - ``pa.Table.groupby()``
+   * - ``pa.Table.groupby()`
      - :meth:`ds.groupby() <ray.data.Dataset.groupby>`
-   * - ``pa.Table.sort_by()``
+   * - ``pa.Table.sort_by()`
      - :meth:`ds.sort() <ray.data.Dataset.sort>`
 
 

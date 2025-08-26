@@ -476,21 +476,21 @@ The following table describes how the arguments for PyTorch DataLoader map to Ra
 
    * - PyTorch DataLoader arguments
      - Ray Data API
-   * - ``batch_size``
+   * - ``batch_size`
      - ``batch_size`` argument to :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>`
-   * - ``shuffle``
+   * - ``shuffle`
      - ``local_shuffle_buffer_size`` argument to :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>`
-   * - ``collate_fn``
+   * - ``collate_fn`
      - ``collate_fn`` argument to :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>`
-   * - ``sampler``
+   * - ``sampler`
      - Not supported. Can be manually implemented after iterating through the dataset with :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>`.
-   * - ``batch_sampler``
+   * - ``batch_sampler`
      - Not supported. Can be manually implemented after iterating through the dataset with :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>`.
-   * - ``drop_last``
+   * - ``drop_last`
      - ``drop_last`` argument to :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>`
-   * - ``num_workers``
+   * - ``num_workers`
      - Use ``prefetch_batches`` argument to :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>` to indicate how many batches to prefetch. The number of prefetching threads are automatically configured according to ``prefetch_batches``.
-   * - ``prefetch_factor``
+   * - ``prefetch_factor`
      - Use ``prefetch_batches`` argument to :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>` to indicate how many batches to prefetch. The number of prefetching threads are automatically configured according to ``prefetch_batches``.
-   * - ``pin_memory``
+   * - ``pin_memory`
      - Pass in ``device`` to :meth:`ds.iter_torch_batches() <ray.data.Dataset.iter_torch_batches>` to get tensors that have already been moved to the correct device.

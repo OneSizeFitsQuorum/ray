@@ -79,7 +79,7 @@ of the execution:
     > /home/ubuntu/tmp/debugging.py(7)f()
     -> return x * x
 
-You can inspect the value of ``x`` with ``print(x)``. You can see the current source code with ``ll``
+You can inspect the value of ``x`` with ``print(x)``. You can see the current source code with ``ll`
 and change stack frames with ``up`` and ``down``. For now let us continue the execution with ``c``.
 
 After the execution is continued, hit ``Control + D`` to get back to the list of break points. Select

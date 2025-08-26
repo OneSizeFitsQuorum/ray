@@ -19,7 +19,7 @@ Skein uses a declarative specification (either written as a yaml file or using t
 You will first need to install Skein: ``pip install skein``.
 
 The Skein ``yaml`` file and example Ray program used here are provided in the
-`Ray repository`_ to get you started. Refer to the provided ``yaml``
+`Ray repository`_ to get you started. Refer to the provided ``yaml`
 files to be sure that you maintain important configuration options for Ray to
 function properly.
 

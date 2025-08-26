@@ -38,7 +38,7 @@ any of the other RLlib components, into production.
     :width: 750
     :align: left
 
-    **Creating a new instance directly from a checkpoint**: Use the ``classmethod``
+    **Creating a new instance directly from a checkpoint**: Use the ``classmethod`
     :py:meth:`~ray.rllib.utils.checkpoints.Checkpointable.from_checkpoint` to instantiate objects directly
     from a checkpoint. RLlib first uses the saved meta data to create a bare-bones instance of the originally
     checkpointed object, and then restores its state from the state information in the checkpoint dir.
@@ -152,7 +152,7 @@ Checkpoint versions
 RLlib uses a checkpoint versioning system to figure out how to restore an Algorithm or any
 subcomponent from a given directory.
 
-From Ray 2.40 on, you can find the checkpoint version in the human readable ``metadata.json``
+From Ray 2.40 on, you can find the checkpoint version in the human readable ``metadata.json`
 file inside all checkpoint directories.
 
 Also starting from `Ray 2.40`, RLlib checkpoints are backward compatible. This means that

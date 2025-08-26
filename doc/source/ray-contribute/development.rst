@@ -223,7 +223,7 @@ directory will take effect without reinstalling the package.
 
   If your machine is running out of memory during the build or the build is causing other programs to crash, try adding the following line to ``~/.bazelrc``:
 
-  ``build --local_ram_resources=HOST_RAM*.5 --local_cpu_resources=4``
+  ``build --local_ram_resources=HOST_RAM*.5 --local_cpu_resources=4`
 
   The ``build --disk_cache=~/bazel-cache`` option can be useful to speed up repeated builds too.
 
@@ -265,9 +265,9 @@ You can also use the included script to install Bazel:
 
 2. Add the following Miniforge subdirectories to PATH. If Miniforge was installed for all users, the following paths are correct. If Miniforge is installed for a single user, adjust the paths accordingly.
 
-   - ``C:\ProgramData\miniforge3``
-   - ``C:\ProgramData\miniforge3\Scripts``
-   - ``C:\ProgramData\miniforge3\Library\bin``
+   - ``C:\ProgramData\miniforge3`
+   - ``C:\ProgramData\miniforge3\Scripts`
+   - ``C:\ProgramData\miniforge3\Library\bin`
 
 3. Define an environment variable ``BAZEL_SH`` to point to ``bash.exe``. If git for Windows was installed for all users, bash's path should be ``C:\Program Files\Git\bin\bash.exe``. If git was installed for a single user, adjust the path accordingly.
 
@@ -308,10 +308,10 @@ You can tweak the build with the following environment variables (when running `
   for more information about valid arguments.
 - ``IS_AUTOMATED_BUILD``: Used in conda-forge CI to tweak the build for the managed CI machines
 - ``SRC_DIR``: Can be set to the root of the source checkout, defaults to
-  ``None`` which is ``cwd()``
+  ``None`` which is ``cwd()`
 - ``BAZEL_SH``: used on Windows to find a ``bash.exe``, see below
 - ``BAZEL_PATH``: used on Windows to find ``bazel.exe``, see below
-- ``MINGW_DIR``: used on Windows to find ``bazel.exe`` if not found in ``BAZEL_PATH``
+- ``MINGW_DIR``: used on Windows to find ``bazel.exe`` if not found in ``BAZEL_PATH`
 
 Installing additional dependencies for development
 --------------------------------------------------
@@ -353,7 +353,7 @@ you commit new code changes with git. To temporarily skip pre-commit checks, use
 
    git commit -n
 
-If you find that ``scripts/format.sh`` makes a change that is different from what ``pre-commit``
+If you find that ``scripts/format.sh`` makes a change that is different from what ``pre-commit`
 does, please `report an issue here`_.
 
 .. _report an issue here: https://github.com/ray-project/ray/issues/new?template=bug-report.yml

@@ -138,7 +138,7 @@ uses the TrialScheduler to prioritize and execute trials,
 queries the SearchAlgorithm for new
 configurations to evaluate, and handles the fault tolerance logic.
 
-**Fault Tolerance**: The TuneController executes checkpointing if ``checkpoint_freq``
+**Fault Tolerance**: The TuneController executes checkpointing if ``checkpoint_freq`
 is set, along with automatic trial restarting in case of trial failures (if ``max_failures`` is set).
 For example, if a node is lost while a trial (specifically, the corresponding
 Trainable of the trial) is still executing on that node and checkpointing
