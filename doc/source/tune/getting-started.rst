@@ -44,7 +44,7 @@ connected layer, and a softmax function.
    :start-after:  __model_def_begin__
    :end-before:  __model_def_end__
 
-Below, we have implemented functions for training and evaluating your Pytorch model.
+Below, we have implemented functions for training and evaluating your PyTorch model.
 We define a ``train`` and a ``test`` function for that purpose.
 If you know how to do this, skip ahead to the next section.
 
@@ -60,7 +60,7 @@ If you know how to do this, skip ahead to the next section.
 Setting up a ``Tuner`` for a Training Run with Tune
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Below, we define a function that trains the Pytorch model for multiple epochs.
+Below, we define a function that trains the PyTorch model for multiple epochs.
 This function will be executed on a separate :ref:`Ray Actor (process) <actor-guide>` underneath the hood,
 so we need to communicate the performance of the model back to Tune (which is on the main Python process).
 
@@ -150,7 +150,7 @@ Note that each library has a specific way of defining the search space.
 Evaluating Your Model after Tuning
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can evaluate best trained model using the :ref:`ExperimentAnalysis object <tune-analysis-docs>` to retrieve the best model:
+You can evaluate the best trained model using the :ref:`ExperimentAnalysis object <tune-analysis-docs>` to retrieve the best model:
 
 .. literalinclude:: /../../python/ray/tune/tests/tutorial.py
    :language: python

@@ -116,7 +116,7 @@ For **layer sizes** we also suggest trying **powers of 2**. For small problems
 
 For **discount factors** in reinforcement learning we suggest sampling uniformly
 between 0.9 and 1.0. Depending on the problem, a much stricter range above 0.97
-or oeven above 0.99 can make sense (e.g. for Atari).
+or even above 0.99 can make sense (e.g. for Atari).
 
 
 How can I use nested/conditional search spaces?
@@ -674,7 +674,7 @@ running at a time. A symptom was when trials from job A used parameters specifie
 leading to unexpected results.
 
 Please refer to
-[this github issue](https://github.com/ray-project/ray/issues/30091#issuecomment-1431676976)
+`this github issue <https://github.com/ray-project/ray/issues/30091#issuecomment-1431676976>`_
 for more context and a workaround if you run into this issue.
 
 .. _tune-iterative-experimentation:
