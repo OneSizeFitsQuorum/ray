@@ -207,7 +207,9 @@ method:
 Scaling with `num_env_runners` and `num_learners`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. todo (sven): link to scaling guide, once separated out in its own rst.
+.. note::
+
+    For more details on scaling your RLlib experiments, see the :ref:`scaling guide <rllib-scaling-guide>`.
 
 Set the number of :py:class:`~ray.rllib.env.env_runner.EnvRunner` actors used to collect training samples
 through the ``num_env_runners`` argument to the :py:meth:`~ray.rllib.algorithms.algorithm_config.AlgorithmConfig.env_runners`
@@ -219,7 +221,7 @@ method:
 
     # Also use `num_envs_per_env_runner` to vectorize your environment on each EnvRunner actor.
     # Note that this option is only available in single-agent setups.
-    #  The Ray Team is working on a solution for this restriction.
+    # The Ray Team is working on a solution for this restriction.
     config.env_runners(num_envs_per_env_runner=10)
 
 Set the number of :py:class:`~ray.rllib.core.learner.learner.Learner` actors used to update your models
