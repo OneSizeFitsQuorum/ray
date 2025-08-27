@@ -35,7 +35,7 @@ api/index
 Ray Serve is a scalable model serving library for building online inference APIs.
 Serve is framework-agnostic, so you can use a single toolkit to serve everything from deep learning models built with frameworks like PyTorch, TensorFlow, and Keras, to Scikit-Learn models, to arbitrary Python business logic. It has several features and performance optimizations for serving Large Language Models such as response streaming, dynamic request batching, multi-node/multi-GPU serving, etc.
 
-Ray Serve is particularly well suited for [model composition](serve-model-composition) and many model serving, enabling you to build a complex inference service consisting of multiple ML models and business logic all in Python code.
+Ray Serve is particularly well suited for [model composition](serve-model-composition) and multi-model serving, enabling you to build a complex inference service consisting of multiple ML models and business logic all in Python code.
 
 Ray Serve is built on top of Ray, so it easily scales to many machines and offers flexible scheduling support such as fractional GPUs so you can share resources and serve many machine learning models at low cost.
 
@@ -133,7 +133,7 @@ It supports dynamically scaling the resources for a model up and down by adjusti
 :::{dropdown} Avoid framework or vendor lock-in
 :animate: fade-in-slide-down
 
-Machine learning moves fast, with new libraries and model architectures being released all the time, it's important to avoid locking yourself into a solution that is tied to a specific framework.
+Machine learning moves fast, with new libraries and model architectures being released all the time. It's important to avoid locking yourself into a solution that is tied to a specific framework.
 This is particularly important in serving, where making changes to your infrastructure can be time consuming, expensive, and risky.
 Additionally, many hosted solutions are limited to a single cloud provider which can be a problem in today's multi-cloud world.
 
