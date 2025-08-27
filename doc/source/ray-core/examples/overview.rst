@@ -12,7 +12,7 @@ Ray Core Examples
 .. Organize example .rst files in the same manner as the
    .py files in ray/python/ray/train/examples.
 
-Below are examples for using Ray Core for a variety use cases.
+Below are examples for using Ray Core for a variety of use cases.
 
 Beginner
 --------
