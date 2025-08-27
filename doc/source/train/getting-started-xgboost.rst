@@ -34,7 +34,7 @@ For reference, the final code will look something like this:
 2. :class:`~ray.train.ScalingConfig` defines the number of distributed training workers and whether to use GPUs.
 3. :class:`~ray.train.xgboost.XGBoostTrainer` launches the distributed training job.
 
-Compare a XGBoost training script with and without Ray Train.
+Compare an XGBoost training script with and without Ray Train.
 
 .. tab-set::
 

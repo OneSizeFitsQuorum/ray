@@ -25,6 +25,7 @@ For reference, the final code is as follows:
 
     def train_func():
         # Your PyTorch Lightning training code here.
+        ...
 
     scaling_config = ScalingConfig(num_workers=2, use_gpu=True)
     trainer = TorchTrainer(train_func, scaling_config=scaling_config)
