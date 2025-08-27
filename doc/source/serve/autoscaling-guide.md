@@ -43,7 +43,7 @@ Setting `num_replicas="auto"` is equivalent to the following deployment configur
 You can set `num_replicas="auto"` and override its default values (shown above) by specifying `autoscaling_config`, or you can omit `num_replicas="auto"` and fully configure autoscaling yourself.
 :::
 
-Let's dive into what each of these parameters do.
+Let's dive into what each of these parameters does.
 
 * **target_ongoing_requests** is the average number of ongoing requests per replica that the Serve autoscaler tries to ensure. You can adjust it based on your request processing length (the longer the requests, the smaller this number should be) as well as your latency objective (the shorter you want your latency to be, the smaller this number should be).
 * **max_ongoing_requests** is the maximum number of ongoing requests allowed for a replica. Note this parameter is not part of the autoscaling config because it's relevant to all deployments, but it's important to set it relative to the target value if you turn on autoscaling for your deployment.

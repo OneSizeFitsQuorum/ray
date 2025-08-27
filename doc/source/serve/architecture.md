@@ -121,6 +121,6 @@ often used to implement [model composition](serve-model-composition).
 
 ### What happens to large requests?
 
-Serve utilizes Ray’s [shared memory object store](plasma-store) and in process memory
+Serve utilizes Ray’s [shared memory object store](plasma-store) and in-process memory
 store. Small request objects are directly sent between actors via network
 call. Larger request objects (100KiB+) are written to the object store and the replica can read them via zero-copy read.
