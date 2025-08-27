@@ -2,7 +2,7 @@
 # Set Up a gRPC Service
 
 This section helps you understand how to:
-- Build a user defined gRPC service and protobuf
+- Build a user-defined gRPC service and protobuf
 - Start Serve with gRPC enabled
 - Deploy gRPC applications
 - Send gRPC requests to Serve deployments
