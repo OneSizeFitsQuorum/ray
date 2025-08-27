@@ -23,7 +23,7 @@ should use a larger default. <https://github.com/ray-project/ray/issues/1376>`_.
 
 2. Avoid unnecessary memory usage.
 IPython stores the output of every cell in a local Python variable
-indefinitely. This causes Ray to pin the objects even though you application
+indefinitely. This causes Ray to pin the objects even though your application
 may not actually be using them.
 Therefore, explicitly calling ``print`` or ``repr`` is better than letting
 the Notebook automatically generate the output.

@@ -28,8 +28,8 @@ computation graph.
 
 
 When ``.bind()`` is called on a ``ray.remote`` decorated class or function, it will
-generate an intermediate representation (IR) node that act as backbone and
-building blocks of the DAG that is statically holding the computation graph
+generate an intermediate representation (IR) node that acts as a backbone and
+building block of the DAG that statically holds the computation graph
 together, where each IR node is resolved to value at execution time with
 respect to their topological order.
 
