@@ -1,7 +1,7 @@
 Miscellaneous Topics
 ====================
 
-This page will cover some miscellaneous topics in Ray.
+This page covers some miscellaneous topics in Ray.
 
 .. contents::
   :local:
@@ -11,7 +11,7 @@ Dynamic Remote Parameters
 
 You can dynamically adjust resource requirements or return values of ``ray.remote`` during execution with ``.options``.
 
-For example, here we instantiate many copies of the same actor with varying resource requirements. Note that to create these actors successfully, Ray will need to be started with sufficient CPU resources and the relevant custom resources:
+For example, here you instantiate many copies of the same actor with varying resource requirements. Note that to create these actors successfully, Ray needs to start with sufficient CPU resources and the relevant custom resources:
 
 .. testcode::
 
@@ -77,9 +77,8 @@ And specify a name for tasks (and actor methods too) at task submission time:
    obj = f.options(name="special_f").remote(3)
    assert ray.get(obj) == 4
 
-This name will appear as the task name in the machine view of the dashboard, will appear
-as the worker process name when this task is executing (if a Python task), and will
-appear as the task name in the logs.
+This name appears as the task name in the machine view of the dashboard, appears
+as the worker process name when this task is executing (if a Python task), and appears as the task name in the logs.
 
 .. image:: images/task_name_dashboard.png
 

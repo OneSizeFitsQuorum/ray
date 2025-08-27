@@ -9,12 +9,12 @@ Your Ray application may have dependencies that exist outside of your Ray script
 * Your Ray script may be looking for some specific environment variables to be available.
 * Your Ray script may import some files outside of the script.
 
-One frequent problem when running on a cluster is that Ray expects these "dependencies" to exist on each Ray node. If these are not present, you may run into issues such as ``ModuleNotFoundError``, ``FileNotFoundError`` and so on.
+One frequent problem when running on a cluster is that Ray expects these "dependencies" to exist on each Ray node. If these aren't present, you may run into issues such as ``ModuleNotFoundError``, ``FileNotFoundError`` and so on.
 
-To address this problem, you can (1) prepare your dependencies on the cluster in advance (e.g. using a container image) using the Ray :ref:`Cluster Launcher <vm-cluster-quick-start>`, or (2) use Ray's :ref:`runtime environments <runtime-environments>` to install them on the fly.
+To address this problem, you can (1) prepare your dependencies on the cluster in advance (for example using a container image) using the Ray :ref:`Cluster Launcher <vm-cluster-quick-start>`, or (2) use Ray's :ref:`runtime environments <runtime-environments>` to install them on the fly.
 
-For production usage or non-changing environments, we recommend installing your dependencies into a container image and specifying the image using the Cluster Launcher.
-For dynamic environments (e.g. for development and experimentation), we recommend using runtime environments.
+For production usage or non-changing environments, installing your dependencies into a container image and specifying the image using the Cluster Launcher is recommended.
+For dynamic environments (for example for development and experimentation), using runtime environments is recommended.
 
 
 Concepts
@@ -26,11 +26,11 @@ Concepts
 
 - **Files**. Code files, data files or other files that your Ray application needs to run.
 
-- **Packages**. External libraries or executables required by your Ray application, often installed via ``pip`` or ``conda``.
+- **Packages**. External libraries or executables required by your Ray application, often installed using ``pip`` or ``conda``.
 
-- **Local machine** and **Cluster**.  Usually, you may want to separate the Ray cluster compute machines/pods from the machine/pod that handles and submits the application. You can submit a Ray Job via :ref:`the Ray Job Submission mechanism <jobs-overview>`, or use `ray attach` to connect to a cluster interactively. We call the machine submitting the job your *local machine*.
+- **Local machine** and **Cluster**.  Usually, you may want to separate the Ray cluster compute machines/pods from the machine/pod that handles and submits the application. You can submit a Ray Job using :ref:`the Ray Job Submission mechanism <jobs-overview>`, or use `ray attach` to connect to a cluster interactively. Ray calls the machine submitting the job your *local machine*.
 
-- **Job**. A :ref:`Ray job <cluster-clients-and-jobs>` is a single application: it is the collection of Ray tasks, objects, and actors that originate from the same script.
+- **Job**. A :ref:`Ray job <cluster-clients-and-jobs>` is a single application: it's the collection of Ray tasks, objects, and actors that originate from the same script.
 
 .. _using-the-cluster-launcher:
 
@@ -41,8 +41,8 @@ The first way to set up dependencies is to prepare a single environment across t
 
 - You can build all your files and dependencies into a container image and specify this in your :ref:`Cluster YAML Configuration <cluster-config>`.
 
-- You can also install packages using ``setup_commands`` in the Ray Cluster configuration file (:ref:`reference <cluster-configuration-setup-commands>`); these commands will be run as each node joins the cluster.
-  Note that for production settings, it is recommended to build any necessary packages into a container image instead.
+- You can also install packages using ``setup_commands`` in the Ray Cluster configuration file (:ref:`reference <cluster-configuration-setup-commands>`); these commands run as each node joins the cluster.
+  Note that for production settings, it's recommended to build any necessary packages into a container image instead.
 
 - You can push local files to the cluster using ``ray rsync_up`` (:ref:`reference<ray-rsync>`).
 
