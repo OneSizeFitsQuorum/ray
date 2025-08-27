@@ -89,7 +89,7 @@ You can also specify the input argument for `train_func` as a dictionary via the
 
     Avoid passing large data objects through `train_loop_config` to reduce the
     serialization and deserialization overhead. Instead,
-    initialize large objects (e.g. datasets, models) directly in `train_func`.
+    initialize large objects (for example, datasets, models) directly in `train_func`.
 
     .. code-block:: diff
 
@@ -113,7 +113,7 @@ You can also specify the input argument for `train_func` as a dictionary via the
 
          trainer = ray.train.xgboost.XGBoostTrainer(train_func, train_loop_config=config, ...)
 
-Ray Train automatically performs the worker communication setup that is needed to do distributed xgboost training.
+Ray Train automatically performs the worker communication setup that's needed to do distributed XGBoost training.
 
 Report metrics and save checkpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -168,7 +168,7 @@ When running distributed XGBoost training, each worker should use a different sh
 
 A common way to do this is to pre-shard the dataset and then assign each worker a different set of files to read.
 
-Pre-sharding the dataset is not very flexible to changes in the number of workers, since some workers may be assigned more data than others. For more flexibility, Ray Data provides a solution for sharding the dataset at runtime.
+Pre-sharding the dataset isn't very flexible to changes in the number of workers, since some workers may be assigned more data than others. For more flexibility, Ray Data provides a solution for sharding the dataset at runtime.
 
 Use Ray Data to shard the dataset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -298,7 +298,7 @@ Create a :class:`~ray.train.RunConfig` object to specify the path where results
 .. warning::
 
     Specifying a *shared storage location* (such as cloud storage or NFS) is
-    *optional* for single-node clusters, but it is **required for multi-node clusters.**
+    *optional* for single-node clusters, but it's **required for multi-node clusters.**
     Using a local path will :ref:`raise an error <multinode-local-storage-warning>`
     during checkpointing for multi-node clusters.
 
