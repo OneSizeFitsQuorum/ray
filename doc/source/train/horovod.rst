@@ -71,7 +71,7 @@ To customize the backend setup, you can pass a
         scaling_config=ScalingConfig(num_workers=2),
     )
 
-For more configurability, see the :py:class:`~ray.train.data_parallel_trainer.DataParallelTrainer` API.
+For more configuration options, see the :py:class:`~ray.train.data_parallel_trainer.DataParallelTrainer` API.
 
 Run a training function
 -----------------------

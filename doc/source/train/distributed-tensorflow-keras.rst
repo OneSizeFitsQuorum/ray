@@ -70,7 +70,7 @@ splits evenly across worker processes.
     related to local parallelism or threading
     :ref:`aside from "OMP_NUM_THREADS" <omp-num-thread-note>`.
     If you want greater control over TensorFlow threading, use
-    the ``tf.config.threading`` module (eg.
+    the ``tf.config.threading`` module (for example,
     ``tf.config.threading.set_inter_op_parallelism_threads(num_cpus)``)
     at the beginning of your ``train_loop_per_worker`` function.
 
@@ -114,7 +114,7 @@ To customize the backend setup, you can pass a
     )
 
 
-For more configurability, see the :py:class:`~ray.train.data_parallel_trainer.DataParallelTrainer` API.
+For more configuration options, see the :py:class:`~ray.train.data_parallel_trainer.DataParallelTrainer` API.
 
 
 Run a training function

@@ -242,7 +242,7 @@ Refer to the tracking libraries' documentation for semantics.
 
        def train_func():
             if ray.train.get_context().get_world_rank() == 0:
-                   wandb.init(..., config={"ray_train_persistent_storage_path": "TODO: fill in when API stablizes"})
+                   wandb.init(..., config={"ray_train_persistent_storage_path": "TODO: fill in when API stabilizes"})
 
 .. tip::
 
@@ -319,7 +319,7 @@ PyTorch
 PyTorch Lightning
 -----------------
 
-You can use the native Logger integration in PyTorch Lightning with W&B, CometML, MLFlow,
+You can use the native Logger integration in PyTorch Lightning with W&B, CometML, MLflow,
 and Tensorboard, while using Ray Train's TorchTrainer.
 
 The following example walks you through the process. The code here is runnable.
