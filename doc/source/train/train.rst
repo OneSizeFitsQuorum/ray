@@ -1,4 +1,4 @@
-.. _train-docs:
+... _train-docs:
 
 Ray Train: Scalable Model Training
 ==================================
