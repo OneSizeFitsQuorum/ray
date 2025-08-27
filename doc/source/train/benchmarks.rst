@@ -11,7 +11,7 @@ GPU image training
 ------------------
 
 This task uses the TorchTrainer module to train different amounts of data
-using an Pytorch ResNet model.
+using a PyTorch ResNet model.
 
 We test out the performance across different cluster sizes and data sizes.
 
