@@ -23,4 +23,4 @@ See also
 
 * :doc:`Ray Train Examples <../../examples>` for more use cases.
 
-* :ref:`Distributed Tensorflow & Keras <train-tensorflow-overview>` for a tutorial.
+* :ref:`Distributed TensorFlow & Keras <train-tensorflow-overview>` for a tutorial.
