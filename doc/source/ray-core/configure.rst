@@ -5,7 +5,7 @@ Configuring Ray
 
 .. note:: For running Java applications, see `Java Applications`_.
 
-This page discusses the various way to configure Ray, both from the Python API
+This page discusses the various ways to configure Ray, both from the Python API
 and from the command line. Take a look at the ``ray.init`` `documentation
 <package-ref.html#ray.init>`__ for a complete overview of the configurations.
 
