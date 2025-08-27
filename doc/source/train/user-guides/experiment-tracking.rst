@@ -242,7 +242,7 @@ Refer to the tracking libraries' documentation for semantics.
 
        def train_func():
             if ray.train.get_context().get_world_rank() == 0:
-                   wandb.init(..., config={"ray_train_persistent_storage_path": "TODO: fill in when API stablizes"})
+                   wandb.init(..., config={"ray_train_persistent_storage_path": "TODO: fill in when API stabilizes"})
 
 .. tip::
 
@@ -303,7 +303,7 @@ PyTorch
 
 .. dropdown:: Log to W&B
 
-    .. literalinclude:: ../../../../python/ray/train/examples/experiment_tracking//torch_exp_tracking_wandb.py
+    .. literalinclude:: ../../../../python/ray/train/examples/experiment_tracking/torch_exp_tracking_wandb.py
             :emphasize-lines: 16, 19-21, 59-60, 62-63
             :language: python
             :start-after: __start__
