@@ -1,5 +1,5 @@
-.. TODO: we comment out the hiring message, as it's too much with the RL conf announcement.
-    uncomment again after the summit on March 29th.
+.. TODO: We commented out the hiring message, as it's too much with the RL conf announcement.
+.. Uncomment again after the summit on March 29th.
 
 ..
     .. admonition:: We're hiring!
