@@ -112,7 +112,7 @@ When you push a list of input episodes through a connector pipeline, the pipelin
 This batch always starts as an empty python dictionary and undergoes different formats and phases while passing through the different
 pieces of the pipeline.
 
-The following applies to all :ref:`env-to-module <env-to-module-pipeline-docs>` and learner connector pipelines (documentation in progress).
+The following applies to all :ref:`env-to-module <env-to-module-pipeline-docs>` and :ref:`learner connector pipelines <learner-pipeline-docs>`.
 
 .. figure:: images/connector_v2/pipeline_batch_phases_single_agent.svg
     :width: 1000
@@ -182,18 +182,3 @@ and :py:class:`~ray.rllib.connectors.common.add_states_from_episodes_to_batch.Ad
         from ray.rllib.core.rl_module.default_model_config import DefaultModelConfig
 
         config.rl_module(model_config=DefaultModelConfig(max_seq_len=...))
-
-
-.. Debugging ConnectorV2 Pipelines
-.. ===============================
-
-.. TODO (sven): Move the following to the "how to contribute to RLlib" page and rename that page "how to develop, debug and contribute to RLlib?"
-
-.. You can debug your custom ConnectorV2 pipelines (and any RLlib component in general) through the following simple steps:
-
-.. Run without any remote :py:class:`~ray.rllib.env.env_runner.EnvRunner` workers. After defining your :py:class:`~ray.rllib.algorithms.algorithm_config.AlgorithmConfig` object, do: `config.env_runners(num_env_runners=0)`.
-.. Run without any remote :py:class:`~ray.rllib.core.learner.learner.Learner` workers. After defining your :py:class:`~ray.rllib.algorithms.algorithm_config.AlgorithmConfig` object, do: `config.learners(num_learners=0)`.
-.. Switch off Ray Tune, if applicable. After defining your :py:class:`~ray.rllib.algorithms.algorithm_config.AlgorithmConfig` object, do: `algo = config.build()`, then `while True: algo.train()`.
-.. Set a breakpoint in the ConnectorV2 piece (or any other RLlib component) you would like to debug and start the experiment script in your favorite IDE in debugging mode.
-
-.. .. figure:: images/debugging_rllib_in_ide.png
