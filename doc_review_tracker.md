@@ -3,10 +3,10 @@
 ## Files to Review
 
 ### Main Documentation Files
-- [ ] `/home/runner/work/ray/ray/doc/source/train/train.rst` (Main entry point)
-- [ ] `/home/runner/work/ray/ray/doc/source/train/overview.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/user-guides.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/more-frameworks.rst`
+- [x] `/home/runner/work/ray/ray/doc/source/train/train.rst` (Main entry point) - No issues found
+- [x] `/home/runner/work/ray/ray/doc/source/train/overview.rst` - Fixed punctuation in scaling configuration reference
+- [x] `/home/runner/work/ray/ray/doc/source/train/user-guides.rst` - No issues found
+- [x] `/home/runner/work/ray/ray/doc/source/train/more-frameworks.rst` - No issues found
 
 ### Getting Started Guides
 - [ ] `/home/runner/work/ray/ray/doc/source/train/getting-started-pytorch.rst`
