@@ -32,11 +32,10 @@ key concepts and general architecture of RLlib.
 AlgorithmConfig and Algorithm
 -----------------------------
 
-.. todo (sven): Change the following link to the actual algorithm and algorithm-config page, once done. Right now, it's pointing to the algos-overview page, instead!
-
 .. tip::
     The following is a quick overview of **RLlib AlgorithmConfigs and Algorithms**.
-    See here for a :ref:`detailed description of the Algorithm class <rllib-algorithms-doc>`.
+    See here for a :ref:`detailed description of the AlgorithmConfig API <rllib-algo-configuration-docs>` and 
+    the :ref:`Algorithm class <rllib-algorithms-doc>`.
 
 The RLlib :py:class:`~ray.rllib.algorithms.algorithm.Algorithm` class serves as a runtime for your RL experiments,
 bringing together all components required for learning an optimal solution to your :ref:`RL environment <rllib-key-concepts-environments>`.
@@ -54,8 +53,6 @@ During its construction, the :py:class:`~ray.rllib.algorithms.algorithm.Algorith
 its :py:class:`~ray.rllib.core.learner.learner_group.LearnerGroup`, containing
 ``m`` :py:class:`~ray.rllib.core.learner.learner.Learner` `actors <actors.html>`__.
 This way, you can scale up sample collection and training, respectively, from a single core to many thousands of cores in a cluster.
-
-.. todo: Separate out our scaling guide into its own page in new PR
 
 See this :ref:`scaling guide <rllib-scaling-guide>` for more details here.
 
