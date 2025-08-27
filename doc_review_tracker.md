@@ -9,11 +9,11 @@
 - [x] `/home/runner/work/ray/ray/doc/source/train/more-frameworks.rst` - No issues found
 
 ### Getting Started Guides
-- [ ] `/home/runner/work/ray/ray/doc/source/train/getting-started-pytorch.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/getting-started-pytorch-lightning.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/getting-started-transformers.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/getting-started-xgboost.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/getting-started-lightgbm.rst`
+- [x] `/home/runner/work/ray/ray/doc/source/train/getting-started-pytorch.rst` - No issues found
+- [x] `/home/runner/work/ray/ray/doc/source/train/getting-started-pytorch-lightning.rst` - Fixed typo "acelerator" → "accelerator"
+- [x] `/home/runner/work/ray/ray/doc/source/train/getting-started-transformers.rst` - No issues found
+- [x] `/home/runner/work/ray/ray/doc/source/train/getting-started-xgboost.rst` - No issues found
+- [x] `/home/runner/work/ray/ray/doc/source/train/getting-started-lightgbm.rst` - No issues found
 
 ### Framework-Specific Guides
 - [ ] `/home/runner/work/ray/ray/doc/source/train/deepspeed.rst`
@@ -113,6 +113,6 @@
 
 ## Progress Summary
 - **Total Files**: 39
-- **Completed**: 0
+- **Completed**: 9
 - **In Progress**: 0
-- **Remaining**: 39
+- **Remaining**: 30

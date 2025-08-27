@@ -269,7 +269,7 @@ Configure parallel devices
 
 In addition, Ray TorchTrainer has already configured the correct
 ``CUDA_VISIBLE_DEVICES`` for you. One should always use all available
-GPUs by setting ``devices="auto"`` and ``acelerator="auto"``.
+GPUs by setting ``devices="auto"`` and ``accelerator="auto"``.
 
 
 .. code-block:: diff
