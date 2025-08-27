@@ -166,14 +166,14 @@ outputs are *NOT* synced to cloud and can only be found in the worker nodes that
     This can happen with some schedulers or with node failures.
     We may prioritize enabling this if there are enough user requests.
     If this impacts your workflow, consider commenting on
-    [this ticket](https://github.com/ray-project/ray/issues/32142).
+    `this ticket <https://github.com/ray-project/ray/issues/32142>`_.
 
 
 Leave us feedback on this feature
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 We know that logging and observability can be a huge performance boost for your workflow. Let us know what is your
 preferred way to interact with logging that happens in trainables. Leave you comments in
-[this ticket](https://github.com/ray-project/ray/issues/32142).
+`this ticket <https://github.com/ray-project/ray/issues/32142>`_.
 
 .. _trainable-logging:
 
