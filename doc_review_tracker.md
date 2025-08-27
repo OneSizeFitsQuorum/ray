@@ -16,10 +16,10 @@
 - [x] `/home/runner/work/ray/ray/doc/source/train/getting-started-lightgbm.rst` - No issues found
 
 ### Framework-Specific Guides
-- [ ] `/home/runner/work/ray/ray/doc/source/train/deepspeed.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/distributed-tensorflow-keras.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/horovod.rst`
-- [ ] `/home/runner/work/ray/ray/doc/source/train/huggingface-accelerate.rst`
+- [x] `/home/runner/work/ray/ray/doc/source/train/deepspeed.rst` - No issues found
+- [x] `/home/runner/work/ray/ray/doc/source/train/distributed-tensorflow-keras.rst` - No issues found
+- [x] `/home/runner/work/ray/ray/doc/source/train/horovod.rst` - No issues found
+- [x] `/home/runner/work/ray/ray/doc/source/train/huggingface-accelerate.rst` - No issues found
 
 ### API Documentation
 - [ ] `/home/runner/work/ray/ray/doc/source/train/api/api.rst`

@@ -11,7 +11,7 @@ GPU image training
 ------------------
 
 This task uses the TorchTrainer module to train different amounts of data
-using an Pytorch ResNet model.
+using a PyTorch ResNet model.
 
 We test out the performance across different cluster sizes and data sizes.
 
@@ -46,10 +46,10 @@ We test out the performance across different cluster sizes and data sizes.
 
 .. _pytorch-training-parity:
 
-Pytorch Training Parity
+PyTorch Training Parity
 -----------------------
 
-This task checks the performance parity between native Pytorch Distributed and
+This task checks the performance parity between native PyTorch Distributed and
 Ray Train's distributed TorchTrainer.
 
 We demonstrate that the performance is similar (within 2.5\%) between the two frameworks.
@@ -70,24 +70,24 @@ overhead of a few seconds for both methods that is negligible for longer trainin
       - **Command**
     * - 4 m5.2xlarge nodes (4 workers)
       - FashionMNIST
-      - 196.64 s (vs 194.90 s Pytorch)
+      - 196.64 s (vs 194.90 s PyTorch)
       - `python workloads/torch_benchmark.py run --num-runs 3 --num-epochs 20 --num-workers 4 --cpus-per-worker 8`
     * - 4 m5.2xlarge nodes (16 workers)
       - FashionMNIST
-      - 430.88 s (vs 475.97 s Pytorch)
+      - 430.88 s (vs 475.97 s PyTorch)
       - `python workloads/torch_benchmark.py run --num-runs 3 --num-epochs 20 --num-workers 16 --cpus-per-worker 2`
     * - 4 g4dn.12xlarge node (16 workers)
       - FashionMNIST
-      - 149.80 s (vs 146.46 s Pytorch)
+      - 149.80 s (vs 146.46 s PyTorch)
       - `python workloads/torch_benchmark.py run --num-runs 3 --num-epochs 20 --num-workers 16 --cpus-per-worker 4 --use-gpu`
 
 
 .. _tf-training-parity:
 
-Tensorflow Training Parity
+TensorFlow Training Parity
 --------------------------
 
-This task checks the performance parity between native Tensorflow Distributed and
+This task checks the performance parity between native TensorFlow Distributed and
 Ray Train's distributed TensorflowTrainer.
 
 We demonstrate that the performance is similar (within 1\%) between the two frameworks.
