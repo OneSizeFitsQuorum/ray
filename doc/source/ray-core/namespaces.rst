@@ -6,7 +6,7 @@ Using Namespaces
 A namespace is a logical grouping of jobs and named actors. When an actor is
 named, its name must be unique within the namespace.
 
-In order to set your applications namespace, it should be specified when you
+In order to set your application's namespace, it should be specified when you
 first connect to the cluster.
 
 .. tab-set::
@@ -242,7 +242,7 @@ will not have access to actors in other namespaces.
 
 Getting the current namespace
 -----------------------------
-You can access to the current namespace using :ref:`runtime_context APIs <runtime-context-apis>`.
+You can access the current namespace using :ref:`runtime_context APIs <runtime-context-apis>`.
 
 .. tab-set::
 
