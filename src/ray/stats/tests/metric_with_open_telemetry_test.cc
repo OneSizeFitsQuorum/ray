@@ -24,7 +24,7 @@ namespace observability {
 using namespace std::literals;
 using OpenTelemetryMetricRecorder = ray::observability::OpenTelemetryMetricRecorder;
 using StatsConfig = ray::stats::StatsConfig;
-using TagsMap = absl::flat_hash_map<std::string, std::string>;
+using TagsMap = std::map<std::string, std::string>;
 
 static ray::stats::Gauge MetricGaugeTest("metric_gauge_test",
                                          "A test gauge metric",
@@ -61,7 +61,7 @@ class MetricTest : public ::testing::Test {
 
   std::optional<double> GetObservableMetricValue(
       const std::string &name,
-      const absl::flat_hash_map<std::string, std::string> &tags) {
+      const std::map<std::string, std::string> &tags) {
     auto &recorder = OpenTelemetryMetricRecorder::GetInstance();
     std::lock_guard<std::mutex> lock(recorder.mutex_);
     auto it = recorder.observations_by_name_.find(name);

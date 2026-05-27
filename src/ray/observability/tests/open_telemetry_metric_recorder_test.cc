@@ -38,7 +38,7 @@ class OpenTelemetryMetricRecorderTest : public ::testing::Test {
 
   std::optional<double> GetObservableMetricValue(
       const std::string &name,
-      const absl::flat_hash_map<std::string, std::string> &tags) {
+      const std::map<std::string, std::string> &tags) {
     std::lock_guard<std::mutex> lock(recorder_.mutex_);
     auto it = recorder_.observations_by_name_.find(name);
     if (it == recorder_.observations_by_name_.end()) {

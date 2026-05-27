@@ -664,7 +664,7 @@ class ReporterAgent(
                 metric.description,
             )
             data_points = metric.gauge.data_points
-        if metric.WhichOneof("data") == "sum":
+        elif metric.WhichOneof("data") == "sum":
             if metric.sum.is_monotonic:
                 self._open_telemetry_metric_recorder.register_counter_metric(
                     metric.name,
@@ -679,7 +679,10 @@ class ReporterAgent(
         for data_point in data_points:
             self._open_telemetry_metric_recorder.set_metric_value(
                 metric.name,
-                {tag.key: tag.value.string_value for tag in data_point.attributes},
+                {
+                    tag.key: tag.value.string_value
+                    for tag in sorted(data_point.attributes, key=lambda x: x.key)
+                },
                 # Note that all data points received from other Ray components are
                 # always double values. This is because the c++ apis
                 # (open_telemetry_metric_recorder.cc) only create metrics with double

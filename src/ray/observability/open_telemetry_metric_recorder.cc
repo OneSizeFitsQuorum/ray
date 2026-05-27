@@ -329,7 +329,7 @@ void OpenTelemetryMetricRecorder::RegisterHistogramMetric(
 
 void OpenTelemetryMetricRecorder::SetMetricValue(
     const std::string &name,
-    absl::flat_hash_map<std::string, std::string> &&tags,
+    std::map<std::string, std::string> &&tags,
     double value) {
   std::lock_guard<std::mutex> lock(mutex_);
   if (observations_by_name_.contains(name)) {
@@ -341,7 +341,7 @@ void OpenTelemetryMetricRecorder::SetMetricValue(
 
 void OpenTelemetryMetricRecorder::SetObservableMetricValue(
     const std::string &name,
-    absl::flat_hash_map<std::string, std::string> &&tags,
+    std::map<std::string, std::string> &&tags,
     double value) {
   auto it = observations_by_name_.find(name);
   RAY_CHECK(it != observations_by_name_.end())
@@ -352,7 +352,7 @@ void OpenTelemetryMetricRecorder::SetObservableMetricValue(
 
 void OpenTelemetryMetricRecorder::SetSynchronousMetricValue(
     const std::string &name,
-    absl::flat_hash_map<std::string, std::string> &&tags,
+    std::map<std::string, std::string> &&tags,
     double value) {
   auto it = registered_instruments_.find(name);
   RAY_CHECK(it != registered_instruments_.end())

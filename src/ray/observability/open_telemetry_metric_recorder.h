@@ -92,7 +92,7 @@ class OpenTelemetryMetricRecorder {
 
   // Set the value of a metric given the tags and the metric value.
   void SetMetricValue(const std::string &name,
-                      absl::flat_hash_map<std::string, std::string> &&tags,
+                      std::map<std::string, std::string> &&tags,
                       double value);
 
   // Helper function to collect gauge metric values. This function is called only once
@@ -117,9 +117,7 @@ class OpenTelemetryMetricRecorder {
   // Map of metric names to their observations (aka. set of tags and metric values).
   // This contains all data points for a given metric for a given interval. This map
   // should only be used for Gauge metrics.
-  absl::flat_hash_map<
-      std::string,
-      absl::flat_hash_map<absl::flat_hash_map<std::string, std::string>, double>>
+  absl::flat_hash_map<std::string, std::map<std::map<std::string, std::string>, double>>
       observations_by_name_;
   // Map of metric names to their instrument pointers. This is used to ensure
   // that each metric is only registered once.
@@ -143,17 +141,17 @@ class OpenTelemetryMetricRecorder {
   const std::string meter_name_ = "ray";
 
   void SetObservableMetricValue(const std::string &name,
-                                absl::flat_hash_map<std::string, std::string> &&tags,
+                                std::map<std::string, std::string> &&tags,
                                 double value);
 
   void SetSynchronousMetricValue(const std::string &name,
-                                 absl::flat_hash_map<std::string, std::string> &&tags,
+                                 std::map<std::string, std::string> &&tags,
                                  double value);
 
   // Get the value of an observable metric given the name and the tags. This function
   // is used only for testing.
   std::optional<double> GetObservableMetricValue(
-      const std::string &name, const absl::flat_hash_map<std::string, std::string> &tags);
+      const std::string &name, const std::map<std::string, std::string> &tags);
 
   opentelemetry::nostd::shared_ptr<opentelemetry::metrics::Meter> GetMeter() {
     return meter_provider_->GetMeter(meter_name_);

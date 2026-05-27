@@ -14,6 +14,7 @@
 
 #include "ray/stats/metric.h"
 
+#include <map>
 #include <memory>
 
 #include "opencensus/stats/measure_registry.h"
@@ -115,7 +116,7 @@ void Metric::Record(double value, TagsType tags) {
 
   if (::RayConfig::instance().enable_open_telemetry()) {
     // Collect tags from both the metric-specific tags and the global tags.
-    absl::flat_hash_map<std::string, std::string> open_telemetry_tags;
+    std::map<std::string, std::string> open_telemetry_tags;
     // Add default values for missing tag keys.
     for (const auto &tag_key : tag_keys_) {
       open_telemetry_tags[tag_key.name()] = "";
