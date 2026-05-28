@@ -639,7 +639,10 @@ class ReporterAgent(
             if data_point.count == 0:
                 continue
 
-            tags = {tag.key: tag.value.string_value for tag in data_point.attributes}
+            tags = {
+                tag.key: tag.value.string_value
+                for tag in sorted(data_point.attributes, key=lambda x: x.key)
+            }
             batch_data_points.append(
                 {
                     "tags": tags,
@@ -648,6 +651,16 @@ class ReporterAgent(
             )
 
         if batch_data_points:
+            # Normalize attribute sets across all histogram data points in this batch
+            # to the union of all their keys (filling missing keys with "").  This
+            # prevents label-shift in the Prometheus exporter when different data
+            # points carry different attribute sets (e.g. some have SessionName,
+            # others do not).
+            all_keys = sorted(
+                {k for dp in batch_data_points for k in dp["tags"]}
+            )
+            for dp in batch_data_points:
+                dp["tags"] = {k: dp["tags"].get(k, "") for k in all_keys}
             self._open_telemetry_metric_recorder.record_histogram_aggregated_batch(
                 metric.name,
                 batch_data_points,

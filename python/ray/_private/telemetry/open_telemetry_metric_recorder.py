@@ -85,8 +85,26 @@ class OpenTelemetryMetricRecorder:
                 agg_fn = MetricCardinality.get_aggregation_function(
                     metric_name, metric_type
                 )
+
+                # Normalize attribute sets to use the union of all keys across every
+                # observation group.  The Prometheus exporter (v0.55b1) has a variable-
+                # leak bug where the `label_keys` from the *last* data point processed
+                # in the inner loop is used to create the metric family for *all* data
+                # points.  When different observations carry different attribute sets
+                # (e.g. some C++ workers include SessionName, others do not), the
+                # mismatched label count causes a zip-based label shift in Prometheus.
+                # Filling missing keys with "" gives every Observation the same sorted
+                # key set, so the exporter always sees a consistent label schema.
+                all_keys = sorted(
+                    {k for filtered in values_by_filtered_tags for k, _ in filtered}
+                )
                 return [
-                    Observation(agg_fn(values), attributes=dict(filtered))
+                    Observation(
+                        agg_fn(values),
+                        attributes={
+                            k: dict(filtered).get(k, "") for k in all_keys
+                        },
+                    )
                     for filtered, values in values_by_filtered_tags.items()
                 ]
 

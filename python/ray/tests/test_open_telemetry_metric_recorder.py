@@ -2,9 +2,10 @@ import sys
 from unittest.mock import MagicMock, patch
 
 import pytest
-from opentelemetry.metrics import NoOpHistogram
+from opentelemetry.metrics import NoOpHistogram, Observation
 
 from ray._private.metrics_agent import Gauge, Record
+from ray._private.telemetry.metric_types import MetricType
 from ray._private.telemetry.open_telemetry_metric_recorder import (
     OpenTelemetryMetricRecorder,
 )
@@ -302,5 +303,108 @@ def test_record_histogram_aggregated_batch(
     mock_logger_warning.assert_not_called()
 
 
+@patch("opentelemetry.metrics.set_meter_provider")
+@patch("opentelemetry.metrics.get_meter")
+def test_observable_callback_normalizes_mixed_attribute_sets_gauge(
+    mock_get_meter, mock_set_meter_provider
+):
+    """
+    Regression test for label misalignment caused by the v0.55b1 Prometheus
+    exporter bug.
+
+    When different C++ workers report the same metric with different global tag
+    sets (e.g. one has SessionName, another does not), the Prometheus exporter's
+    `_translate_to_prometheus` reuses `label_keys` from the *last* data point for
+    all metric families.  If an earlier data point has more keys, its
+    GaugeMetricFamily is created with too few label names and prometheus_client's
+    zip() produces misaligned series.
+
+    The fix: the observable callback normalises every Observation for the same
+    metric to the *union* of all attribute keys, filling "" for missing ones.
+    This test verifies that behaviour for gauges.
+    """
+    mock_get_meter.return_value = MagicMock()
+    recorder = OpenTelemetryMetricRecorder()
+    recorder.register_gauge_metric(name="test_gauge", description="Test Gauge")
+
+    # Simulate two workers reporting the same metric with different attribute sets.
+    # Worker A has SessionName; worker B does not.
+    recorder.set_metric_value(
+        name="test_gauge",
+        tags={"Component": "worker_a", "SessionName": "s1", "dataset": "train"},
+        value=1.0,
+    )
+    recorder.set_metric_value(
+        name="test_gauge",
+        tags={"Component": "worker_b", "dataset": "test"},
+        value=2.0,
+    )
+
+    # Trigger the observable callback directly.
+    callback = recorder._create_observable_callback("test_gauge", MetricType.GAUGE)
+    # Manually populate observations (register_gauge_metric only creates the slot;
+    # the actual data was set above via set_metric_value which writes to the same dict).
+    observations: list[Observation] = callback(options=None)
+
+    # Both observations must carry the same sorted union of keys.
+    assert len(observations) == 2
+    all_attrs = [set(obs.attributes.keys()) for obs in observations]
+    assert all_attrs[0] == all_attrs[1], (
+        "Both observations must have the same attribute key set"
+    )
+    expected_keys = {"Component", "SessionName", "dataset"}
+    assert all_attrs[0] == expected_keys
+
+    # The observation that originally lacked SessionName should have "" for it.
+    obs_b = next(o for o in observations if o.attributes["Component"] == "worker_b")
+    assert obs_b.attributes["SessionName"] == "", (
+        "Missing attribute should be filled with empty string"
+    )
+
+    # The observation that had SessionName should keep its original value.
+    obs_a = next(o for o in observations if o.attributes["Component"] == "worker_a")
+    assert obs_a.attributes["SessionName"] == "s1"
+
+
+@patch("opentelemetry.metrics.set_meter_provider")
+@patch("opentelemetry.metrics.get_meter")
+def test_observable_callback_normalizes_mixed_attribute_sets_counter(
+    mock_get_meter, mock_set_meter_provider
+):
+    """
+    Same regression check as above but for counter metrics.
+    """
+    mock_get_meter.return_value = MagicMock()
+    recorder = OpenTelemetryMetricRecorder()
+    recorder.register_counter_metric(
+        name="test_counter", description="Test Counter"
+    )
+
+    recorder.set_metric_value(
+        name="test_counter",
+        tags={"Component": "worker_a", "SessionName": "s1", "dataset": "train"},
+        value=10.0,
+    )
+    recorder.set_metric_value(
+        name="test_counter",
+        tags={"Component": "worker_b", "dataset": "test"},
+        value=5.0,
+    )
+
+    callback = recorder._create_observable_callback(
+        "test_counter", MetricType.COUNTER
+    )
+    observations: list[Observation] = callback(options=None)
+
+    assert len(observations) == 2
+    all_keys = [set(obs.attributes.keys()) for obs in observations]
+    assert all_keys[0] == all_keys[1]
+    assert all_keys[0] == {"Component", "SessionName", "dataset"}
+
+    obs_b = next(o for o in observations if o.attributes["Component"] == "worker_b")
+    assert obs_b.attributes["SessionName"] == ""
+
+
 if __name__ == "__main__":
     sys.exit(pytest.main(["-svv", __file__]))
+
