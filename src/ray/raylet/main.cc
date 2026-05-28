@@ -784,9 +784,7 @@ int main(int argc, char *argv[]) {
         core_worker_subscriber.get(),
         worker_rpc_pool.get(),
         [&](const ray::ObjectID &obj_id, const ray::rpc::ErrorType &error_type) {
-          ray::rpc::ObjectReference ref;
-          ref.set_object_id(obj_id.Binary());
-          node_manager->MarkObjectsAsFailed(error_type, {ref}, ray::JobID::Nil());
+          object_manager->MarkObjectFailed(obj_id, error_type);
         });
 
     // Catch up: if SIGTERM arrived before this callback ran,
@@ -871,12 +869,6 @@ int main(int argc, char *argv[]) {
             result = std::move(results[0]);
           }
           return result;
-        },
-        /*fail_pull_request=*/
-        [&](const ray::ObjectID &object_id, ray::rpc::ErrorType error_type) {
-          ray::rpc::ObjectReference ref;
-          ref.set_object_id(object_id.Binary());
-          node_manager->MarkObjectsAsFailed(error_type, {ref}, ray::JobID::Nil());
         },
         std::make_shared<plasma::PlasmaClient>(),
         std::move(object_store_runner),
