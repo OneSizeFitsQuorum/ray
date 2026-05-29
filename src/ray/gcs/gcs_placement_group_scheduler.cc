@@ -711,10 +711,6 @@ void GcsPlacementGroupScheduler::CommitBundleResources(
       }
     }
   }
-
-  for (const auto &listener : resources_changed_listeners_) {
-    listener();
-  }
 }
 
 LeaseStatusTracker::LeaseStatusTracker(

@@ -356,9 +356,6 @@ class GcsPlacementGroupScheduler : public GcsPlacementGroupSchedulerInterface {
           &group_to_bundles,
       const std::vector<SchedulePgRequest> &prepared_pgs) override;
 
-  /// Add resources changed listener.
-  void AddResourcesChangedListener(std::function<void()> listener);
-
  protected:
   /// Send bundles PREPARE requests to a node. The PREPARE requests will lock resources
   /// on a node until COMMIT or CANCEL requests are sent to a node.
@@ -487,9 +484,6 @@ class GcsPlacementGroupScheduler : public GcsPlacementGroupSchedulerInterface {
 
   /// The nodes which are releasing unused bundles.
   absl::flat_hash_set<NodeID> nodes_of_releasing_unused_bundles_;
-
-  /// The resources changed listeners.
-  std::vector<std::function<void()>> resources_changed_listeners_;
 
   friend class GcsPlacementGroupSchedulerTest;
   FRIEND_TEST(GcsPlacementGroupSchedulerTest, TestCheckingWildcardResource);
