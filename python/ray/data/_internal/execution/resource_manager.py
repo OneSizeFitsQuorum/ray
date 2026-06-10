@@ -455,9 +455,6 @@ class ResourceManager:
             and not op.has_execution_finished()
         )
 
-    def get_eligible_ops(self) -> List[PhysicalOperator]:
-        return [op for op in self._topology if self.is_op_eligible(op)]
-
     def _get_downstream_ineligible_ops(
         self, op: PhysicalOperator
     ) -> Iterable[PhysicalOperator]:
@@ -830,7 +827,7 @@ class ReservationOpResourceAllocator(OpResourceAllocator):
         self._idle_detector = self.IdleDetector()
 
     def _update_reservation(self, limits: ExecutionResources):
-        eligible_ops = self._resource_manager.get_eligible_ops()
+        eligible_ops = self._get_eligible_ops()
 
         self._op_reserved.clear()
         self._reserved_for_op_outputs.clear()
@@ -967,7 +964,7 @@ class ReservationOpResourceAllocator(OpResourceAllocator):
         remaining_shared = self._update_reservation(limits)
 
         self._op_budgets.clear()
-        eligible_ops = self._resource_manager.get_eligible_ops()
+        eligible_ops = self._get_eligible_ops()
         if len(eligible_ops) == 0:
             return
 
