@@ -503,6 +503,7 @@ class TestParseUri:
         [
             ("gcs://file.zip", Protocol.GCS, "file.zip"),
             ("s3://bucket/file.zip", Protocol.S3, "s3_bucket_file.zip"),
+            ("http://test.com/file.zip", Protocol.HTTP, "http_test_com_file.zip"),
             ("https://test.com/file.zip", Protocol.HTTPS, "https_test_com_file.zip"),
             ("gs://bucket/file.zip", Protocol.GS, "gs_bucket_file.zip"),
             ("azure://container/file.zip", Protocol.AZURE, "azure_container_file.zip"),
@@ -510,6 +511,11 @@ class TestParseUri:
                 "abfss://container@account.dfs.core.windows.net/file.zip",
                 Protocol.ABFSS,
                 "abfss_container_account_dfs_core_windows_net_file.zip",
+            ),
+            (
+                "http://test.com/package-0.0.1-py2.py3-none-any.whl?param=value",
+                Protocol.HTTP,
+                "package-0.0.1-py2.py3-none-any.whl",
             ),
             (
                 "https://test.com/package-0.0.1-py2.py3-none-any.whl?param=value",
@@ -784,10 +790,10 @@ class TestS3Protocol:
             assert transport_params["client"] == mock_unsigned_client
 
 
-def test_https_handler_requires_smart_open(monkeypatch):
+def test_http_handler_requires_smart_open(monkeypatch):
     monkeypatch.setitem(sys.modules, "smart_open", None)
     with pytest.raises(ImportError):
-        ProtocolsProvider._handle_https_protocol()
+        ProtocolsProvider._handle_http_protocol()
 
 
 def test_https_downloader_uses_smart_open_headers(tmp_path, monkeypatch):
@@ -820,6 +826,45 @@ def test_https_downloader_uses_smart_open_headers(tmp_path, monkeypatch):
 
     assert dest_file.read_bytes() == payload
     assert captured["uri"] == "https://example.com/test.zip"
+    assert captured["mode"] == "rb"
+    tp = captured["transport_params"]
+    assert tp is not None
+    assert "headers" in tp
+    assert tp["headers"]["User-Agent"].startswith("ray-runtime-env-curl")
+    assert tp["headers"]["Accept"] == "*/*"
+    assert tp["timeout"] == 60
+
+
+def test_http_downloader_uses_smart_open_headers(tmp_path, monkeypatch):
+    payload = b"dummy-zip-content"
+    captured = {}
+
+    class DummyResponse(io.BytesIO):
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            self.close()
+
+    def fake_open(uri, mode, transport_params=None):
+        captured["uri"] = uri
+        captured["mode"] = mode
+        captured["transport_params"] = transport_params
+        return DummyResponse(payload)
+
+    monkeypatch.setitem(
+        sys.modules, "smart_open", types.SimpleNamespace(open=fake_open)
+    )
+
+    dest_file = tmp_path / "downloaded_via_smart_open.zip"
+    ProtocolsProvider.download_remote_uri(
+        protocol="http",
+        source_uri="http://example.com/test.zip",
+        dest_file=str(dest_file),
+    )
+
+    assert dest_file.read_bytes() == payload
+    assert captured["uri"] == "http://example.com/test.zip"
     assert captured["mode"] == "rb"
     tp = captured["transport_params"]
     assert tp is not None
@@ -998,9 +1043,9 @@ def test_ray_ignore_and_git_ignore_together(
     )
 
     # Check the number of exclusion functions returned
-    assert len(exclude_funcs) == len(
-        expected_excludes
-    ), f"Should have {expected_excludes}"
+    assert len(exclude_funcs) == len(expected_excludes), (
+        f"Should have {expected_excludes}"
+    )
 
     # .gitignore patterns
     assert any(f(git_ignore_file) for f in exclude_funcs) == include_gitignore

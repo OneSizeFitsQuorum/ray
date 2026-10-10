@@ -1,9 +1,12 @@
 import enum
 import os
+import re
+from ipaddress import ip_address
 from urllib.parse import urlparse
 
 RAY_RUNTIME_ENV_HTTP_USER_AGENT_ENV_VAR = "RAY_RUNTIME_ENV_HTTP_USER_AGENT"
 RAY_RUNTIME_ENV_BEARER_TOKEN_ENV_VAR = "RAY_RUNTIME_ENV_BEARER_TOKEN"
+RAY_RUNTIME_ENV_HTTP_KERBEROS_HOSTS_ENV_VAR = "RAY_RUNTIME_ENV_HTTP_KERBEROS_HOSTS"
 _DEFAULT_HTTP_USER_AGENT = "ray-runtime-env-curl/1.0"
 
 
@@ -25,6 +28,8 @@ class ProtocolsProvider:
             "pip",
             # For uv environments install locally on each node.
             "uv",
+            # Remote http path, assumes everything packed in one zip file.
+            "http",
             # Remote https path, assumes everything packed in one zip file.
             "https",
             # Remote s3 path, assumes everything packed in one zip file.
@@ -41,7 +46,7 @@ class ProtocolsProvider:
 
     @classmethod
     def get_remote_protocols(cls):
-        return {"https", "s3", "gs", "azure", "abfss", "file"}
+        return {"http", "https", "s3", "gs", "azure", "abfss", "file"}
 
     @classmethod
     def _handle_s3_protocol(cls):
@@ -217,14 +222,45 @@ class ProtocolsProvider:
         return headers
 
     @classmethod
-    def _handle_https_protocol(cls):
-        """Set up HTTPS protocol handling with curl-like headers."""
+    def _http_kerberos_hosts(cls, hostname):
+        hosts = {
+            host.strip().lower()
+            for host in os.environ.get(
+                RAY_RUNTIME_ENV_HTTP_KERBEROS_HOSTS_ENV_VAR, ""
+            ).split(",")
+            if host.strip()
+        }
+        if hostname not in hosts:
+            return set()
+        if any(
+            not re.fullmatch(r"[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?", host)
+            for host in hosts
+        ):
+            raise ValueError(
+                f"{RAY_RUNTIME_ENV_HTTP_KERBEROS_HOSTS_ENV_VAR} must contain "
+                "comma-separated hostnames, without schemes, ports or wildcards."
+            )
+        for host in hosts:
+            try:
+                ip_address(host)
+            except ValueError:
+                continue
+            raise ValueError(
+                f"{RAY_RUNTIME_ENV_HTTP_KERBEROS_HOSTS_ENV_VAR} requires DNS "
+                "hostnames, not IP addresses. Use the server's DNS name in "
+                "both the download URL and the host list."
+            )
+        return hosts
+
+    @classmethod
+    def _handle_http_protocol(cls):
+        """Set up HTTP/HTTPS protocol handling with curl-like headers."""
 
         try:
             from smart_open import open as smart_open_open
         except ImportError:
             raise ImportError(
-                "You must `pip install smart_open` to fetch HTTPS URIs. "
+                "You must `pip install smart_open` to fetch HTTP/HTTPS URIs. "
                 + cls._MISSING_DEPENDENCIES_WARNING
             )
 
@@ -235,6 +271,33 @@ class ProtocolsProvider:
             }
             if transport_params:
                 params.update(transport_params)
+            parsed = urlparse(uri)
+            hosts = (
+                cls._http_kerberos_hosts(parsed.hostname)
+                if parsed.scheme in ("http", "https")
+                else set()
+            )
+            if hosts:
+                if os.environ.get(RAY_RUNTIME_ENV_BEARER_TOKEN_ENV_VAR):
+                    raise ValueError(
+                        "Kerberos and Bearer Token authentication cannot be used "
+                        "together for the same download. Unset "
+                        f"{RAY_RUNTIME_ENV_BEARER_TOKEN_ENV_VAR} or remove the host "
+                        f"from {RAY_RUNTIME_ENV_HTTP_KERBEROS_HOSTS_ENV_VAR}."
+                    )
+                if parsed.username is not None or parsed.password is not None:
+                    raise ValueError(
+                        "Kerberos downloads require URLs without embedded credentials."
+                    )
+                try:
+                    import requests_kerberos  # noqa: F401
+                except ImportError as exc:
+                    raise ImportError(
+                        "You must `pip install requests-kerberos` to fetch "
+                        "Kerberos-protected HTTP/HTTPS URIs. "
+                        + cls._MISSING_DEPENDENCIES_WARNING
+                    ) from exc
+                params["kerberos"] = True
             return smart_open_open(uri, mode, transport_params=params)
 
         return open_file, None
@@ -262,8 +325,8 @@ class ProtocolsProvider:
             def open_file(uri, mode, *, transport_params=None):
                 return open(uri, mode)
 
-        elif protocol == "https":
-            open_file, tp = cls._handle_https_protocol()
+        elif protocol in ("http", "https"):
+            open_file, tp = cls._handle_http_protocol()
         elif protocol == "s3":
             open_file, tp = cls._handle_s3_protocol()
         elif protocol == "gs":
