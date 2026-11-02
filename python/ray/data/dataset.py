@@ -2475,6 +2475,14 @@ class Dataset:
         final batch can be smaller than ``batch_size``, including in the middle
         of the dataset. Rows never move between shuffle batches.
 
+        Input blocks should use consistent column dtypes. Cross-block batching
+        follows Pandas concatenation rules: differing categorical definitions
+        can promote a column to ``object``. Normalize categorical dtypes before
+        shuffling if you need to retain them. Arrow row-selection limits also
+        apply: a batch spanning different dictionaries can exceed a narrow
+        dictionary index type's capacity and raise ``ArrowInvalid``. Use a wider
+        dictionary index type in that case.
+
         For example, with four consecutive input blocks of five rows each and
         ``batch_size=8``, task grouping can produce shuffle batches of
         ``[8, 2, 8, 2]`` rows: each task consumes two blocks and shuffles eight
