@@ -120,6 +120,19 @@ Size shuffle batches for the memory available to each task. Account for input, o
 
 `shuffle_batches` uses Ray's optimized row selection for eligible chunked tensor columns, avoiding concatenation of the entire tensor column before gathering rows. Other inputs use existing fallback paths. The [fixed-shaped tensor optimization](https://github.com/ray-project/ray/pull/64961) and [variable-shaped tensor optimization](https://github.com/ray-project/ray/pull/66197) report several-fold ingestion speedups with that fast path enabled in large-tensor generation and local-shuffle pipelines, excluding model computation. Both local buffer shuffling and `shuffle_batches` use this optimization. Those measurements don't establish the combined training speedup from moving local shuffling into parallel tasks. Measure throughput on your workload when choosing between them.
 
+#### How does `shuffle_batches` compare to a PyArrow shuffle function?
+
+The following CPU ingestion benchmark compares `shuffle_batches` with a `map_batches` function that calls `batch.take(indices)` on a PyArrow table. Both use the same input layout, batch sizes, task resources, and consumers. The exact-window cases also use the same strict repartition stage. The benchmark enables the tensor row-selection fast path for `shuffle_batches`.
+
+| Usage | PyArrow baseline, rows per second | `shuffle_batches`, rows per second | Speedup |
+| --- | ---: | ---: | ---: |
+| Target-sized batches | 153,238 | 346,435 | 2.26× |
+| Exact-window composition | 102,559 | 326,475 | 3.18× |
+
+The benchmark uses one node with eight vCPUs, an Intel `Xeon Platinum 8362` processor, a 12 GiB object store, and four NumPy consumers. Rows contain 4 KiB tensors across 160 source blocks. The target shuffle batch size is 262,144 rows, and the consumer batch size is 4,096 rows. Each consumer skips 100 warmup batches and measures the next 200. Results are medians of three fresh executions, with no object spilling. The environment uses NumPy 1.26.4 and PyArrow 19.0.1. See the [benchmark script at the measured revision](https://github.com/ray-project/ray/blob/8232d6a11c16ae13c84974abd1d9add8a86c62f4/release/nightly_tests/dataset/benchmark_shuffle_batches.py).
+
+These measurements exclude model computation and compare two parallel batch-shuffle implementations. They don't measure training speedup over a local shuffle buffer. Source blocks are smaller than the target shuffle batch size in this workload. Splitting larger input blocks can coalesce tensor chunks during batching and reduce opportunities for the fast path.
+
 (map_batches_shuffle)=
 
 ### Shuffle rows with `map_batches`
