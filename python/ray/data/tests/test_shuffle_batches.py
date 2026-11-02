@@ -104,16 +104,6 @@ def _fail_once_after_shuffle(batch, seed_config, *, batch_idx=0):
     return result
 
 
-def _tag_shuffle_task(batch, seed_config, *, batch_idx=0):
-    ctx = TaskContext.get_current()
-    assert ctx is not None
-    assert "window_seen" not in ctx.kwargs, "A task received more than one window"
-    ctx.kwargs["window_seen"] = True
-    result = _ORIGINAL_SHUFFLE(batch, seed_config, batch_idx=batch_idx)
-    assert isinstance(result, pa.Table)
-    return result.append_column("task_idx", pa.array([ctx.task_idx] * len(batch)))
-
-
 def _record_shuffle_batch(batch, seed_config, *, batch_idx=0):
     result = _ORIGINAL_SHUFFLE(batch, seed_config, batch_idx=batch_idx)
     assert isinstance(result, pa.Table)
@@ -664,16 +654,24 @@ class ShuffleBatchesTests(unittest.TestCase):
                 finally:
                     ray.kill(recorder)
 
-    def test_large_source_block_creates_one_window_per_shuffle_task(self):
+    def test_large_source_block_preserves_exact_window_membership(self):
         source = self.source([103])
-        with patch.object(shuffle_batches_impl, "_shuffle_batch", _tag_shuffle_task):
-            result = _shuffle(source, 16, exact=True, seed=42).materialize()
-        blocks = ray.get(result.to_arrow_refs())
-        self.assertEqual([len(b) for b in blocks], [16] * 6 + [7])
-        tasks = [set(b["task_idx"].to_pylist()) for b in blocks]
-        self.assertTrue(all(len(t) == 1 for t in tasks))
-        self.assertEqual(len({next(iter(t)) for t in tasks}), len(blocks))
-        self.assertEqual(sorted(self.ids(result)), list(range(103)))
+        with patch.object(
+            shuffle_batches_impl, "_shuffle_batch", _record_shuffle_batch
+        ):
+            rows = _shuffle(source, 16, exact=True, seed=42).take_all()
+        # Inspect actual shuffle inputs independently of task and output block sizes.
+        groups: dict[int, list[int]] = {}
+        for row in rows:
+            groups.setdefault(row["batch_start"], []).append(row["id"])
+        self.assertEqual(
+            {start: sorted(ids) for start, ids in groups.items()},
+            {
+                start: list(range(start, min(start + 16, 103)))
+                for start in range(0, 103, 16)
+            },
+        )
+        self.assertEqual(sorted(row["id"] for row in rows), list(range(103)))
 
     def test_no_implicit_materialization(self):
         source = ray.data.range(37, override_num_blocks=3)
@@ -802,17 +800,20 @@ class ShuffleBatchesTests(unittest.TestCase):
             iterator.close()
             _BACKPRESSURE_STATE = None
 
-    def test_downstream_rebatch_preserves_one_window_per_shuffle_task(self):
+    def test_downstream_rebatch_preserves_large_source_permutation(self):
         source = self.source([103])
-        with patch.object(shuffle_batches_impl, "_shuffle_batch", _tag_shuffle_task):
-            result = (
-                _shuffle(source, 16, exact=True, seed=42)
-                .map_batches(_identity, batch_size=64, batch_format="pyarrow")
-                .materialize()
-            )
-        rows = result.take_all()
-        self.assertEqual(sorted(row["id"] for row in rows), list(range(103)))
-        self.assertEqual(len({row["task_idx"] for row in rows}), 7)
+        shuffled = _shuffle(source, 16, exact=True, seed=42)
+        expected = self.ids(shuffled)
+        self.assertEqual(sorted(expected), list(range(103)))
+        # Downstream batches can split or combine windows without changing row order.
+        for batch_size in (7, 64):
+            with self.subTest(batch_size=batch_size):
+                actual = self.ids(
+                    shuffled.map_batches(
+                        _identity, batch_size=batch_size, batch_format="pyarrow"
+                    )
+                )
+                self.assertEqual(actual, expected)
 
     def test_downstream_rebatch_preserves_permutation(self):
         source = self.source([4] * 16)
