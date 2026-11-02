@@ -96,7 +96,7 @@ Two factors determine how closely each batch matches the target ratio under per-
 
 In the extreme case, you train on a single worker with no gradient accumulation. Every global batch is then a single local batch, so every batch comes from a single dataset.
 
-To switch to random mixing, add a streaming shuffle after {meth}`~ray.data.Dataset.mix`. The shuffle redistributes rows across block boundaries, so each batch directly contains rows from multiple datasets in roughly the requested proportion, regardless of how many workers you train on. {meth}`~ray.data.Dataset.mix` still governs the ratio, and the shuffle spreads that ratio within each batch.
+To mix rows within training batches, add a shuffle after {meth}`~ray.data.Dataset.mix`. A shuffle can mix rows across input block boundaries, so a training batch can contain rows from multiple datasets even on a single worker. `mix` continues to govern source selection, but each batch's composition depends on which sources occur within the shuffle buffer or batch.
 
 ```{image} /data/images/dataset_mixing/random_mix.png
 :alt: Random mixing, where a shuffle after mix() redistributes rows so that each worker batch contains rows from multiple datasets in the target proportion.
@@ -105,12 +105,9 @@ To switch to random mixing, add a streaming shuffle after {meth}`~ray.data.Datas
 Use either of the following streaming-friendly shuffle options in Ray Data:
 
 - {ref}`Local buffer shuffle <local_shuffle_buffer>`, which you enable by passing `local_shuffle_buffer_size` to {meth}`~ray.data.DataIterator.iter_batches`.
-- {ref}`map_batches shuffle <map_batches_shuffle>`.
+- {ref}`Parallel batch shuffle <shuffle_batches_shuffle>`. Choose batches large enough to span blocks from multiple sources. Target-sized batching can produce smaller task-tail batches, so the mixing scope can vary.
 
 ```{testcode}
-import numpy as np
-import pyarrow as pa
-
 LOCAL_BATCH_SIZE = 128
 
 ds1 = ray.data.from_items([{"x": 1} for _ in range(750)]).map(preprocess)
@@ -121,14 +118,9 @@ ds2 = ds2.repartition(target_num_rows_per_block=LOCAL_BATCH_SIZE)
 
 mixed = ds1.mix(ds2, weights=[0.75, 0.25])
 
-# Add a shuffle after mix() to get random mixing.
-def random_shuffle(batch: pa.Table) -> pa.Table:
-    indices = np.random.permutation(len(batch))
-    return batch.take(indices)
-
-# Set the shuffle buffer size to be large enough for good mixing quality across datasets.
-SHUFFLE_BUFFER_SIZE = 64 * LOCAL_BATCH_SIZE
-mixed = mixed.map_batches(random_shuffle, batch_size=SHUFFLE_BUFFER_SIZE, batch_format="pyarrow")
+# Shuffle across input blocks to mix rows from multiple sources.
+SHUFFLE_BATCH_SIZE = 64 * LOCAL_BATCH_SIZE
+mixed = mixed.shuffle_batches(batch_size=SHUFFLE_BATCH_SIZE)
 ```
 
 (stopping-conditions)=
