@@ -106,18 +106,18 @@ Use either of the following streaming-friendly shuffle options in Ray Data:
 - {ref}`Parallel batch shuffle <shuffle_batches_shuffle>`. Choose batches large enough to span blocks from multiple sources. Target-sized batching can produce smaller task-tail batches, so the mixing scope can vary.
 
 ```{testcode}
-BATCH_SIZE = 128
+LOCAL_BATCH_SIZE = 128
 
 ds1 = ray.data.from_items([{"x": 1} for _ in range(750)]).map(preprocess)
 ds2 = ray.data.from_items([{"x": 2} for _ in range(250)]).map(preprocess)
 
-ds1 = ds1.repartition(target_num_rows_per_block=BATCH_SIZE)
-ds2 = ds2.repartition(target_num_rows_per_block=BATCH_SIZE)
+ds1 = ds1.repartition(target_num_rows_per_block=LOCAL_BATCH_SIZE)
+ds2 = ds2.repartition(target_num_rows_per_block=LOCAL_BATCH_SIZE)
 
 mixed = ds1.mix(ds2, weights=[0.75, 0.25])
 
 # Shuffle across input blocks to mix rows from multiple sources.
-SHUFFLE_BATCH_SIZE = 64 * BATCH_SIZE
+SHUFFLE_BATCH_SIZE = 64 * LOCAL_BATCH_SIZE
 mixed = mixed.shuffle_batches(batch_size=SHUFFLE_BATCH_SIZE)
 ```
 
