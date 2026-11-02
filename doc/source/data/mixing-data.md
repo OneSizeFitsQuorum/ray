@@ -92,12 +92,14 @@ If your rows are small in bytes, repartition to a multiple of the batch size, su
 (random-mixing)=
 ### Add a shuffle for random mixing
 
-Per-block mixing controls which source supplies each block. A consumer batch that fits within one block can therefore contain rows from only one source, even when the overall dataset matches the target weights.
+Two factors determine how closely each batch matches the target ratio under per-block mixing. The first is the size of the input blocks, which the preceding section covers. The second is the number of training workers that contribute to each global batch. A global batch aggregates `num_workers * grad_accum_steps` local batches. When you standardize block sizes to the local batch size, as the preceding section shows, each local batch comes from a single dataset. The more local batches each global batch contains, the closer its ratio stays to the target.
 
-To mix rows within consumer batches, add a shuffle after {meth}`~ray.data.Dataset.mix`. A shuffle can mix rows across input block boundaries before consumption. `mix` continues to govern source selection, but each batch's composition depends on which sources occur within the shuffle buffer or batch.
+In the extreme case, you train on a single worker with no gradient accumulation. Every global batch is then a single local batch, so every batch comes from a single dataset.
+
+To switch to random mixing, add a streaming shuffle after {meth}`~ray.data.Dataset.mix`. The shuffle redistributes rows across block boundaries, so each batch directly contains rows from multiple datasets in roughly the requested proportion, regardless of how many workers you train on. {meth}`~ray.data.Dataset.mix` still governs the ratio, and the shuffle spreads that ratio within each batch.
 
 ```{image} /data/images/dataset_mixing/random_mix.png
-:alt: Random mixing, where a shuffle after mix() mixes rows from multiple sources before consumers build batches.
+:alt: Random mixing, where a shuffle after mix() redistributes rows so that each worker batch contains rows from multiple datasets in the target proportion.
 ```
 
 Use either of the following streaming-friendly shuffle options in Ray Data:
